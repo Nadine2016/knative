@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="functions" category="compute" audience="compute" href="/docs/functions?topic=functions-getting-started" path="functions"}
+{: .toc subcollection="knative" category="compute" audience="compute" href="/docs/knative?topic=knative-getting-started" path="knative"}
 Knative service
 
     {: .navgroup id="learn"}
@@ -47,6 +47,7 @@ Knative service
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
+
     {: .topicgroup}
     CLI reference
         cli-reference.md
