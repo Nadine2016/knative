@@ -43,7 +43,6 @@ Knative service
         at.md
     
     high-availability.md
-
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
