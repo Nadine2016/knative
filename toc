@@ -1,0 +1,66 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="functions" category="compute" audience="compute" href="/docs/functions?topic=functions-getting-started" path="functions"}
+Knative service
+
+    {: .navgroup id="learn"}
+    getting-started.md
+    
+    {: .topicgroup}
+    About
+        about.md
+        architecture.md
+        
+    
+    {: .topicgroup}
+    Tutorial
+        [Coligo tutorial](https://test.cloud.ibm.com/docs/tutorials?topic=solution-tutorials-coligo){: new_window}
+    {: .navgroup-end}
+    
+    {: .navgroup id="howto"}
+    planning.md
+    cli-install.md
+    project.md 
+        
+    {: .topicgroup}
+    Running Knative services in the cloud
+        prep.md
+        deploy.md
+        
+        
+    {: .topicgroup}
+    Running batch jobs in the cloud
+        build-job.md
+        deploy-job.md
+        
+    {: .topicgroup}
+    Enhancing security for Knative
+        iam.md
+        architecture-workload-isolation.md
+        service-connection.md
+        data-security.md
+        at.md
+    
+    high-availability.md
+
+    {: .navgroup-end}
+
+    {: .navgroup id="reference"}
+    {: .topicgroup}
+    CLI reference
+        cli-reference.md
+        [Knative CLI Reference](https://github.com/knative/client/blob/master/docs/cmd/kn.md){: new_window}
+        [Kubernetes CLI Reference](https://cloud.ibm.com/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli){: new_window}
+    
+    api.md
+    limits.md
+    regions.md
+    release-notes.md
+    {: .navgroup-end}
+
+    {: .navgroup id="help"}
+    faq.md
+    troubleshoot.md
+    get-support.md
+    {: .navgroup-end}
