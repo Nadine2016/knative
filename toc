@@ -46,13 +46,11 @@ Knative service
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
-
     {: .topicgroup}
     CLI reference
         cli-reference.md
         [Knative CLI Reference](https://github.com/knative/client/blob/master/docs/cmd/kn.md){: new_window}
-        [Kubernetes CLI Reference](https://cloud.ibm.com/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli){: new_window}
-    
+        [Kubernetes CLI Reference](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli){: new_window}
     api.md
     limits.md
     regions.md
