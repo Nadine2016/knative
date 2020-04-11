@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2020
-lastupdated: "2020-1-31"
+  years: 2017, 2020
+lastupdated: "2020-04-11"
 
-keywords: knative
+keywords: getting support, knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 
