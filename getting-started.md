@@ -4,7 +4,7 @@ copyright:
   years: 2012
 lastupdated: "2020-2-23"
 
-keywords: knative
+keywords: knative, getting started
 
 subcollection: functions
 
@@ -30,7 +30,7 @@ subcollection: functions
 Coligo provides a platform to unify the deployment of functions, applications and pre-built containers to Kubernetes-based infrastructure. It provides a “one-stop-shop” experience for developers, enabling higher productivity and faster time to market. Coligo is built on open-source projects such as Kubernetes, Istio, Knative, and Tekton.
 {: shortdesc}
 
-Coligo is available in the console at [Coligo overview](https://dev.console.test.cloud.ibm.com/knative/overview). From this interface, you can [create your project](/docs/functions?topic=functions-manage-project) and then get started [deploying apps](/docs/functions?topic=functions-knative-deploy-app) and [running jobs](/docs/functions?topic=functions-kn-job-deploy).
+Coligo is available in the console at [Coligo overview](https://dev.console.test.cloud.ibm.com/knative/overview). From this interface, you can [create your project](/docs/knative?topic=knative-manage-project) and then get started [deploying apps](/docs/functions?topic=functions-knative-deploy-app) and [running jobs](/docs/functions?topic=functions-kn-job-deploy).
 
 Coligo also includes an [installable CLI plugin](/docs/functions?topic=functions-kn-install-cli).
 
