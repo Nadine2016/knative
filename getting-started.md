@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2012
-lastupdated: "2020-2-23"
+  years: 2020
+lastupdated: "2020-04-12"
 
 keywords: knative, getting started
 
