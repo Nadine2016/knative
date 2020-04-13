@@ -2,11 +2,11 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-1-31"
+lastupdated: "2020-04-13"
 
 keywords: knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 

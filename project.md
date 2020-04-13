@@ -1,3 +1,5 @@
+---
+
 copyright:
   years: 2020
 lastupdated: "2020-04-13"
@@ -13,12 +15,14 @@ subcollection: knative
 {:screen: .screen}
 {:pre: .pre}
 {:table: .aria-labeledby="caption"}
+{:external: target="_blank" .external}
 {:codeblock: .codeblock}
 {:tip: .tip}
 {:note: .note}
 {:important: .important}
 {:deprecated: .deprecated}
 {:download: .download}
+{:gif: data-image-type='gif'}
 {:preview: .preview}
 
 # Managing projects
@@ -28,13 +32,13 @@ Learn how to create and target projects.
 {: #shortdesc} 
 
 ## What is a project?
-With Coligo, you can create Identity and Access (IAM) managed projects to group components, such as applications or jobs. Then, you can create IAM access policies for the projects. For an overview of IAM, see [Managing user access](docs/functions?topic=functions-iam). Projects incur no costs, but instead serve as folders for your applications and jobs.
+With Coligo, you can create Identity and Access (IAM) managed projects to group components, such as applications or jobs. Then, you can create IAM access policies for the projects. For an overview of IAM, see [Managing user access](/docs/knative?topic=knative-knative-iam). Projects incur no costs, but instead serve as folders for your applications and jobs.
 
 ### How can I see what projects I can access?
 
 You can see a list of your projects in the [Coligo console](https://cloud.ibm.com/coligo){: external}.
 
-You can also run the [`project list`](/docs/functions?topic=functions-kn-cli#cli-project-list) command. 
+You can also run the [`project list`](/docs/knative?topic=knative-kn-cli#cli-project-list) command. 
 
 ```
 ibmcloud coligo project list
@@ -54,7 +58,7 @@ name          type            id                                    description
 
 You can see a list of your project components by selecting a project from [Coligo console](https://cloud.ibm.com/coligo){: external}.
 
-You can also run the [`project get`](/docs/functions?topic=functions-kn-cli#cli-project-get) command. Replace `PROJECT_NAME` with the name of your project.
+You can also run the [`project get`](/docs/knative?topic=knative-kn-cli#cli-project-get) command. Replace `PROJECT_NAME` with the name of your project.
 
 ```
 ibmcloud coligo project get --name PROJECT_NAME
@@ -78,9 +82,9 @@ You can update the name or description of the project from the **Projects Settin
 
 ### Create a project with the CLI
 
-1. Install the [Coligo CLI](/docs/functions?topic=functions-kn-install-cli). Target the resource group that you want to use for the project. 
+1. Install the [Coligo CLI](/docs/knative?topic=knative-kn-install-cli). Target the resource group that you want to use for the project. 
 
-2. Create an project with the [`project create`](/docs/functions?topic=functions-kn-cli#cli-project-create) command. Optional: Include a description for your project by using the `-d` or `--description` flag. If your description is longer than one word, it must be in quotations.
+2. Create an project with the [`project create`](/docs/knative?topic=knative-kn-cli#cli-project-create) command. Optional: Include a description for your project by using the `-d` or `--description` flag. If your description is longer than one word, it must be in quotations.
 
   ```
   ibmcloud coligo project --name PROJECT_NAME [--description PROJ_DESC]
@@ -94,7 +98,7 @@ You can update the name or description of the project from the **Projects Settin
   ```
   {: screen}
 
-3. Verify that your new project is created with the [`project get`](/docs/functions?topic=functions-kn-cli#cli-project-get) command.
+3. Verify that your new project is created with the [`project get`](/docs/knative?topic=knative-kn-cli#cli-project-get) command.
 
   ```
   ibmcloud coligo project get --name PROJ_NAME
@@ -124,7 +128,7 @@ After you create a project, target it for use with Coligo. You can use the conso
 From the [Coligo console](https://cloud.ibm.com/coligo){: external} project menu, select target project.
 
 ### Target a project with the CLI
-To target a project with the CLI, use the [`project target`](/docs/functions?topic=functions-kn-cli#cli-project-target) command. 
+To target a project with the CLI, use the [`project target`](/docs/knative?topic=knative-kn-cli#cli-project-target) command. 
 
 ```
 ibmcloud coligo project target --name PROJECT_NAME
@@ -140,7 +144,7 @@ When you no longer need a project, you can delete it. Deleting a project deletes
 From the [Coligo console](https://cloud.ibm.com/coligo){: external} project menu, select delete project.
 
 ### Delete a project through the CLI
-To delete a project with the CLI, use the [`project delete`](/docs/functions?topic=functions-kn-cli#cli-project-delete) command. 
+To delete a project with the CLI, use the [`project delete`](/docs/knative?topic=knative-kn-cli#cli-project-delete) command. 
 
 ```
 ibmcloud coligo project delete --name PROJECT_NAME

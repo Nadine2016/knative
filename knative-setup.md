@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2014, 2019
-lastupdated: "2019-10-04"
+  years: 2020
+lastupdated: "2020-04-13"
 
 keywords: knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 
@@ -15,6 +15,7 @@ subcollection: functions
 {:screen: .screen}
 {:pre: .pre}
 {:table: .aria-labeledby="caption"}
+{:external: target="_blank" .external}
 {:codeblock: .codeblock}
 {:tip: .tip}
 {:note: .note}
@@ -22,6 +23,7 @@ subcollection: functions
 {:deprecated: .deprecated}
 {:download: .download}
 {:preview: .preview}
+{:gif: data-image-type='gif'}
 
 ## Using Knative services to deploy a serverless app
 {: #knative-deploy-app}
@@ -393,9 +395,9 @@ The current implementation of Knative does not provide a standard way to force y
 ## Related links  
 {: #knative-related-links}
 
-- Try out this [Knative workshop ![External link icon](../icons/launch-glyph.svg "External link icon")](https://github.com/IBM/knative101/tree/master/workshop) to deploy your first `Node.js` fibonacci app to your cluster.
+- Try out this [Knative workshop ![External link icon](../icons/launch-glyph.svg "External link icon")](https://github.com/IBM/knative101/tree/master/workshop){: external} to deploy your first `Node.js` fibonacci app to your cluster.
   - Explore how to use the Knative `Build` primitive to build an image from a Dockerfile in GitHub and automatically push the image to your namespace in {{site.data.keyword.registrylong_notm}}.  
   - Learn how you can set up routing for network traffic from the IBM-provided Ingress subdomain to the Istio Ingress gateway that is provided by Knative.
   - Roll out a new version of your app and use Istio to control the amount of traffic that is routed to each app version.
-- Explore [Knative `Eventing` ![External link icon](../icons/launch-glyph.svg "External link icon")](https://github.com/knative/docs/tree/master/docs/eventing/samples) samples.
-- Learn more about Knative with the [Knative documentation ![External link icon](../icons/launch-glyph.svg "External link icon")](https://github.com/knative/docs).
+- Explore [Knative `Eventing` ![External link icon](../icons/launch-glyph.svg "External link icon")](https://github.com/knative/docs/tree/master/docs/eventing/samples){: external} samples.
+- Learn more about Knative with the [Knative documentation ![External link icon](../icons/launch-glyph.svg "External link icon")](https://github.com/knative/docs){: external}.

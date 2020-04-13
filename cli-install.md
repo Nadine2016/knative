@@ -2,11 +2,11 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-1-31"
+lastupdated: "2020-04-13"
 
 keywords: knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 
@@ -20,7 +20,6 @@ subcollection: functions
 {:tip: .tip}
 {:note: .note}
 {:important: .important}
-{:external: target="_blank" .external}
 {:deprecated: .deprecated}
 {:download: .download}
 {:gif: data-image-type='gif'}
@@ -135,7 +134,7 @@ Complete the following steps to install the Coligo CLI plug-in
   
 4. Optionally, install [`jq`](https://stedolan.github.io/jq){: external} to process JSON in the command line. This package allows you to view and parse JSON responses in the command line.
 
-For more information about Coligo commands, see the [`ibmcloud coligo` commands](/docs/functions?topic=functions-kn-cli).
+For more information about Coligo commands, see the [`ibmcloud coligo` commands](/docs/knative?topic=knative-kn-cli).
 
 
 ## Updating the Coligo CLI

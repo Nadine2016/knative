@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-04-08"
+  years: 2020
+lastupdated: "2020-04-13"
 
 keywords: knative, public isolation for knative, compute isolation for knative, knative architecture, workload isolation in knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 
@@ -20,7 +20,6 @@ subcollection: functions
 {:tip: .tip}
 {:note: .note}
 {:important: .important}
-{:external: target="_blank" .external}
 {:deprecated: .deprecated}
 {:download: .download}
 {:gif: data-image-type='gif'}

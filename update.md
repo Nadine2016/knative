@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2014, 2019
-lastupdated: "2019-10-21"
+  years: 2020
+lastupdated: "2020-04-13"
 
 keywords: knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 
@@ -15,12 +15,14 @@ subcollection: functions
 {:screen: .screen}
 {:pre: .pre}
 {:table: .aria-labeledby="caption"}
+{:external: target="_blank" .external}
 {:codeblock: .codeblock}
 {:tip: .tip}
 {:note: .note}
 {:important: .important}
 {:deprecated: .deprecated}
 {:download: .download}
+{:gif: data-image-type='gif'}
 {:preview: .preview}
 
 # Updating Knative services 

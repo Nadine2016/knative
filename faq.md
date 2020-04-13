@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-10-04"
+  years: 2020
+lastupdated: "2020-04-13"
 
 keywords: knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 
@@ -20,7 +20,6 @@ subcollection: functions
 {:tip: .tip}
 {:note: .note}
 {:important: .important}
-{:external: target="_blank" .external}
 {:deprecated: .deprecated}
 {:download: .download}
 {:gif: data-image-type='gif'}

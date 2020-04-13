@@ -2,11 +2,11 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-1-31"
+lastupdated: "2020-04-13"
 
 keywords: knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 
@@ -36,14 +36,14 @@ Learn how to build a container image from your source code.
     - How do I migrate common non-containerized jobs? 
     - Where should I store the image?
 
-1. Fork the repo [jeremiaswerner/knative_demo](https://github.com/jeremiaswerner/knative_demo) 
+1. Fork the repo [jeremiaswerner/knative_demo](https://github.com/jeremiaswerner/knative_demo){: external} 
 
    * open the page and click on fork in the upper right corner of the repo
    * specify the target repository, typically your GitHub account
    * Press on "Clone or download" and copy the "ssh" url
    * Checkout the git repository with `git clone git@github.com:jeremiaswerner/knative_demo.git`
    
-2. Register and Login to [DockerHub](https://hub.docker.com/)
+2. Register and Login to [DockerHub](https://hub.docker.com/){: external}
 
 In the demo below you can exchange the image repository `jeremiaswerner/helloworld` with your personal repository and image.
 
@@ -65,4 +65,4 @@ In the demo below you can exchange the image repository `jeremiaswerner/hellowor
 
 5. Use this uploaded image to create your custom Knative service as described in steps 4-5
 
-More sophisticated examples can be found in the Knative communitry, see [sample](https://github.com/knative/docs/tree/master/docs/serving/samples)
+More sophisticated examples can be found in the Knative community, see [sample](https://github.com/knative/docs/tree/master/docs/serving/samples){: external}

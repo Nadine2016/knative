@@ -1,11 +1,12 @@
 ---
 
 copyright:
-  years:  2017, 2020
-lastupdated: "2020-03-03"
+  years: 2020
+lastupdated: "2020-04-13"
 
 keywords: IAM access for _servicename_, permissions for _servicename_, identity and access management for _servicename_, roles for _servicename_, actions for _servicename_, assigning access for _servicename_
 
+subcollection: knative
 ---
 
 {:new_window: target="_blank"}
@@ -13,9 +14,14 @@ keywords: IAM access for _servicename_, permissions for _servicename_, identity 
 {:screen: .screen}
 {:pre: .pre}
 {:table: .aria-labeledby="caption"}
+{:external: target="_blank" .external}
 {:codeblock: .codeblock}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:deprecated: .deprecated}
 {:download: .download}
+{:gif: data-image-type='gif'}
 
 # Managing user access
 {: #knative-iam}
@@ -32,7 +38,7 @@ In order for others to work with entities in your project, you must to set the a
 
 The minimum Platform level access is Viewer. The minimum Service level access is Reader. For more information about Platform and Service level access roles, see [Platform management roles](#iam_platform_roles) and [Service-specific roles](#service_specific_roles).
 
-Want to learn more about IAM key concepts? Check out [the IAM concepts](/docs/iam?topic=iam-iamoverview){: external} or the [Best practices for assigning access](/docs/iam?topic=iam-account_setup){: external}.
+Want to learn more about IAM key concepts? Check out [the IAM concepts](/docs/iam?topic=iam-iamoverview) or the [Best practices for assigning access](/docs/iam?topic=iam-account_setup).
 {: tip}
 
 ### How do I set IAM policies so that others can create a project in my account?
@@ -124,6 +130,6 @@ ibmcloud iam user-policy-create name@example.com --roles Viewer --service-name c
   </tbody>
 </table>
 
-For more information about IAM commands, see the [IAM CLI reference docs](/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud_commands_iam#ibmcloud_iam_user_policy_create){: external}.
+For more information about IAM commands, see the [IAM CLI reference docs](/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud_commands_iam#ibmcloud_iam_user_policy_create).
 
  

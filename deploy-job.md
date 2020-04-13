@@ -2,11 +2,11 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-1-31"
+lastupdated: "2020-04-13"
 
 keywords: knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 
@@ -44,7 +44,7 @@ Job definitions are templates that you can use to define common job types. You c
 {: #create-job-def-ui}
 
 **Before you begin**:
-* [Target a project](/docs/functions?topic=functions-manage-project)
+* [Target a project](/docs/knative?topic=knative-manage-project)
 
 1. After targeting your project, select it from the console.
 2. Select Job definition. If you already have components in your project, click Create component and then Job definition.
@@ -54,8 +54,8 @@ Job definitions are templates that you can use to define common job types. You c
 {: #create-job-def-cli}
 
 **Before you begin**:
-* [Target a project](/docs/functions?topic=functions-manage-project)
-* Set up your [Coligo](/docs/functions?topic=functions-kn-install-cli) environment
+* [Target a project](/docs/knative?topic=knative-manage-project)
+* Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
 
 To create a job definition with the CLI, run the `ibmcloud coligo jobdef create` command. This command requires a name and an image and also allows other optional arguments. The followig example create a job definition named `hello` that uses the container image `busybox` and uses the arguments `/bin/sh -c echo Hello $JOB_INDEX ENV1 is $ENV1, ENV2 is $ENV2, ENV3 is $ENV3`, assigning 128 MB as memory and 1 CPU to the container.
 
@@ -74,7 +74,7 @@ After you create your job definitions, you can use that definition to describe t
 {: #run-job-ui}
 
 **Before you begin**:
-* [Target a project](/docs/functions?topic=functions-manage-project)
+* [Target a project](/docs/knative?topic=knative-manage-project)
 
 1. After targeting your project, select it from the console.
 2. Select a job definition. If you do not have any jobs defined, [create a job definition](#create-job-def).
@@ -85,8 +85,8 @@ After you create your job definitions, you can use that definition to describe t
 {: #run-job-cli}
 
 **Before you begin**:
-* [Target a project](/docs/functions?topic=functions-manage-project)
-* Set up your [Coligo](/docs/functions?topic=functions-kn-install-cli) environment
+* [Target a project](/docs/knative?topic=knative-manage-project)
+* Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
 
 To run a job with the CLI, use the `ibmcloud coligo job run` command. The following example creates three new pods to run the container image specified in the `hello` job definition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
 

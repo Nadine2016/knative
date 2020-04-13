@@ -2,11 +2,11 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-1-31"
+lastupdated: "2020-04-13"
 
 keywords: knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 
@@ -823,7 +823,7 @@ ibmcloud coligo secret create --name SECRET_NAME --from-registry URL --username 
 <dt>`--name`</dt>
 <dd>The name of the secret. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project.</dd>
 <dt>`-r`, `--from-registry`</dt>
-<dd><Provide the URL of the image registry that contains the secret. This value is required./dd>
+<dd><Provide the URL of the image registry that contains the secret. This value is required.</dd>
 <dt>`-u`, `--username`</dt>
 <dd>Provide the username for the secret in the registry. This value is required.</dd>
 <dt>`-p`, `--password`</dt>

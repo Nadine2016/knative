@@ -1,12 +1,12 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-04-09"
+  years: 2020
+lastupdated: "2020-04-13"
 
 keywords: knative, data encryption in knative, data storage for knative, bring your own keys for knative, BYOK for knative, key management for knative, key encryption for knative, personal data in knative, data deletion for knative, data in knative, data security in knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 
@@ -20,7 +20,6 @@ subcollection: functions
 {:tip: .tip}
 {:note: .note}
 {:important: .important}
-{:external: target="_blank" .external}
 {:deprecated: .deprecated}
 {:download: .download}
 {:gif: data-image-type='gif'}

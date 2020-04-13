@@ -2,11 +2,11 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-12"
+lastupdated: "2020-04-13"
 
 keywords: knative, getting started
 
-subcollection: functions
+subcollection: knative
 
 ---
 
@@ -30,9 +30,9 @@ subcollection: functions
 Coligo provides a platform to unify the deployment of functions, applications and pre-built containers to Kubernetes-based infrastructure. It provides a “one-stop-shop” experience for developers, enabling higher productivity and faster time to market. Coligo is built on open-source projects such as Kubernetes, Istio, Knative, and Tekton.
 {: shortdesc}
 
-Coligo is available in the console at [Coligo overview](https://dev.console.test.cloud.ibm.com/knative/overview). From this interface, you can [create your project](/docs/knative?topic=knative-manage-project) and then get started [deploying apps](/docs/functions?topic=functions-knative-deploy-app) and [running jobs](/docs/functions?topic=functions-kn-job-deploy).
+Coligo is available in the console at [Coligo overview](https://dev.console.test.cloud.ibm.com/knative/overview){: external}. From this interface, you can [create your project](/docs/knative?topic=knative-manage-project) and then get started [deploying apps](/docs/knative?topic=knative-knative-deploy-app) and [running jobs](/docs/knative?topic=knative-kn-job-deploy).
 
-Coligo also includes an [installable CLI plugin](/docs/functions?topic=functions-kn-install-cli).
+Coligo also includes an [installable CLI plugin](/docs/knative?topic=knative-kn-install-cli).
 
 
 ## Creating your first Coligo app
@@ -42,7 +42,7 @@ Create your first Coligo app by using the [`Hello World`](docker.io/ibmcom/kn-he
 {: shortdesc}
 
 1. Access the Coligo.
-2. Select a project from the list of available projects. You can also [create a new one](/docs/functions?topic=functions-manage-project).
+2. Select a project from the list of available projects. You can also [create a new one](/docs/knative?topic=knative-manage-project).
 3. From your project component page, select **Create component**.
 4. Select **Application** as your component type. 
 5. Enter a name and `docker.io/ibmcom/kn-helloworld` for container image. Click **Create**. 
@@ -56,4 +56,4 @@ Congratulations, you have deployed your first application to Coligo and tested i
 ## Next steps
 {: #kn_next}
 
-Learn more in [deploying apps](/docs/functions?topic=functions-knative-deploy-app).
+Learn more in [deploying apps](/docs/knative?topic=knative-knative-deploy-app).

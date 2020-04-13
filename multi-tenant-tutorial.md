@@ -2,11 +2,11 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-2-23"
+lastupdated: "2020-04-13"
 
 keywords: knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 
@@ -20,7 +20,6 @@ subcollection: functions
 {:tip: .tip}
 {:note: .note}
 {:important: .important}
-{:external: target="_blank" .external}
 {:deprecated: .deprecated}
 {:download: .download}
 {:gif: data-image-type='gif'}
@@ -32,7 +31,7 @@ With this tutorial, deploy a containerized application in a serverless fashion. 
 
 ** Before you start**
 
-- [Set up your coligo environment](/docs/functions?topic=functions-kn-install-cli)
+- [Set up your coligo environment](/docs/knative?topic=knative-kn-install-cli)
 - Create a docker image
 
 

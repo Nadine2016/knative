@@ -2,11 +2,11 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-10-21"
+lastupdated: "2020-04-13"
 
 keywords: knative
 
-subcollection: functions
+subcollection: knative
 
 ---
 
@@ -20,7 +20,6 @@ subcollection: functions
 {:tip: .tip}
 {:note: .note}
 {:important: .important}
-{:external: target="_blank" .external}
 {:deprecated: .deprecated}
 {:download: .download}
 {:gif: data-image-type='gif'}
@@ -32,7 +31,7 @@ The Coligo platform provides support for run-to-completion workloads. When using
 
 **Before you begin**
 
-- [Set up your coligo environment](/docs/functions?topic=functions-kn-install-cli)
+- [Set up your coligo environment](/docs/knative?topic=knative-kn-install-cli)
 - Target a project
 
 ## Create a job run
