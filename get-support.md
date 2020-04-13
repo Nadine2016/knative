@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-04-11"
+  years: 2020
+lastupdated: "2020-04-13"
 
 keywords: getting support, knative
 
@@ -25,7 +25,7 @@ subcollection: knative
 {:gif: data-image-type='gif'}
 
 # Get support
-{: #kn-get-support}
+{: #get-support}
 
 Get support for Knative service. 
 {: shortdesc}
