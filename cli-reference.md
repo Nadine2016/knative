@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-04-15"
 
 keywords: knative
 
@@ -46,7 +46,7 @@ Create a project.
 {: shortdec}
 
 ```
-ibmcloud coligo project create --name PROJECT_NAME --description DESCRIPTION
+ibmcloud coligo project create --name PROJECT_NAME  [--tag TAG]
 ```
 {: pre}
 
@@ -54,21 +54,21 @@ ibmcloud coligo project create --name PROJECT_NAME --description DESCRIPTION
 <dl>
 <dt>`-n`, `--name`</dt>
 <dd>The name of the project. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique across regions.</dd>
-<dt>`-d`, `--description`</dt>
-<dd>Description of the project. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique across regions.</dd>
+<dt>`-t`, `--tag`</dt>
+<dd>A label to assign to your resource.  This value is optional. The label must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique across regions. Specify one label per `--tag` flag.  To specify more than one label, use more than one `--tag` flag; for example, `--tag tagA --tag tagB`.</dd>
 </dl>
 
 **Example**
 
 ```
-ibmcloud coligo project create --name myproject --description myproject_description
+ibmcloud coligo project create --name myproject 
 ```
 {: pre}
 
 **Output**
 
 ```
-ok:
+Successfully created project myproject
 ```
 {: screen}
 
@@ -99,7 +99,18 @@ ibmcloud coligo project get --name myproject
 **Output**
 
 ```
-ok:
+Getting project 'myproject'...
+
+Name: myproject
+Status: active
+Tags: []
+Location: us-south
+Resource Group: Default
+Created: Tue, 14 Apr 2020 11:33:12 -0400
+Updated: Tue, 14 Apr 2020 11:33:27 -0400
+
+OK
+Command 'project get' performed successfully
 ```
 {: screen}
 
@@ -130,7 +141,8 @@ ibmcloud coligo project delete --name myproject
 **Output**
 
 ```
-ok:
+OK
+Deleted project myproject
 ```
 {: screen}
 
@@ -155,18 +167,31 @@ ibmcloud coligo project list
 **Output**
 
 ```
-ok: 
+| Name      | Status  | Tags | Location | Resource Group |
+| --------- | ------- | ---- | -------- | -------------- |
+| myproject | active  |      | us-south | default        |
+OK
+Command 'project list' performed successfully
 ```
 {: screen}
 
+## Target command
+{: #cli-target}
+
+Targets a Coligo project. Before using the target command, you must be in the context of a project. 
+{: shortdec}
+
+To see CLI help for the target command, run `ibmcloud coligo target`. If running on Windows operating system, you must run the command in a window enabled for administrator permissions using the `Run as Administrator` option.   
+{: tip}
+
 ### `ibmcloud coligo target`
-{: #cli-project-target}
+{: #cli-targetcmd}
 
 Target a project for context.
 {: shortdec}
 
 ```
-ibmcloud coligo target --name PROJECT_NAME
+ibmcloud coligo target --name PROJECT_NAME [--export KUBECONFIG]
 ```
 {: pre}
 
@@ -174,6 +199,8 @@ ibmcloud coligo target --name PROJECT_NAME
 <dl>
 <dt>`-n`, `--name`</dt>
 <dd>The name of the project. This value is required.</dd>
+<dt>`-e`, `--export`</dt>
+<dd>Exports and appends the project configuration to the Kubernetes configuration file (`$HOME/.kube/config`).  The default value is `false`. This value is optional.</dd>
 </dl>
 
 **Example**
@@ -186,7 +213,9 @@ ibmcloud coligo target --name myproject
 **Output**
 
 ```
-ok:
+OK
+Now targeting environment 'myproject' (b49ca89f-f48f-4c9d-ae2d-6da42fbad57b). Set the KUBECONFIG environment variable to use kubectl with your project:
+export KUBECONFIG=C:\.bluemix\plugins\coligo/myproject-b49ca89f-f48f-4c9d-ae2d-6da42fbad57b.yaml
 ```
 {: screen}
 
@@ -207,7 +236,7 @@ Create an application.
 {: shortdec}
 
 ```
-ibmcloud coligo application create --name APP_NAME --image IMAGE_REF [--registry-secret SECRET] [--cpu CPU] [--memory MEMORY] [--timeout TIMEOUT] [--concurrency REQUESTS] [--minscale MIN_NUM] [--maxscale MAX_NUM] [--project PROJECT_NAME]
+ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registry-secret SECRET] [--cpu CPU] [--memory MEMORY] [--timeout TIMEOUT] [--concurrency REQUESTS] [--minscale MIN_NUM] [--maxscale MAX_NUM] [--project PROJECT_NAME]
 ```
 {: pre}
 
@@ -245,7 +274,11 @@ ibmcloud coligo application create --name myapp --image agrawals18/helloworld
 **Output**
 
 ```
-ok: application myapp created
+Service 'myapp' created to latest revision 'myapp-zxxlr-1' is available at URL:
+http://myapp.b49ca89f-f48f.us-south.knative.test.appdomain.cloud
+
+OK
+Application myapp correctly created!
 ```
 {: screen}
 
@@ -752,7 +785,7 @@ ok:
 ## Secrets commands
 {: #cli-secrets}
 
-Create coligo secrets. 
+Create Coligo secrets. 
 {: shortdec}
 
 To see CLI help for the secret commands, run `ibmcloud coligo secret`. 

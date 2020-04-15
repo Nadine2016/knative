@@ -2,7 +2,7 @@
 {:topicgroup: .topicgroup}
 
 {: .toc subcollection="knative" category="compute" audience="compute" href="/docs/knative?topic=knative-getting-started" path="knative"}
-Knative service
+Coligo
 
     {: .navgroup id="learn"}
     getting-started.md
@@ -24,18 +24,18 @@ Knative service
     project.md 
         
     {: .topicgroup}
-    Running Knative services in the cloud
+    Running Coligo applications in the cloud
         prep.md
         deploy.md
         
         
     {: .topicgroup}
-    Running batch jobs in the cloud
+    Running jobs in the cloud
         build-job.md
         deploy-job.md
         
     {: .topicgroup}
-    Enhancing security for Knative
+    Enhancing security for Coligo
         iam.md
         architecture-workload-isolation.md
         service-connection.md

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-04-15"
 
 keywords: IAM access for _servicename_, permissions for _servicename_, identity and access management for _servicename_, roles for _servicename_, actions for _servicename_, assigning access for _servicename_
 
@@ -43,7 +43,7 @@ Want to learn more about IAM key concepts? Check out [the IAM concepts](/docs/ia
 
 ### How do I set IAM policies so that others can create a project in my account?
 
-In order to allow other users to manage Colgio properties, including creating properties, you must set the following access policies for those users.
+In order to allow other users to manage Coligo properties, including creating properties, you must set the following access policies for those users.
 
   * The user's **Platform role** must be set to Administrator. This policy applies to all resources of Coligo.
   * The user's **Service role**  must be set to Manager. This policy applies to all resources of Coligo.

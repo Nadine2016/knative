@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-04-15"
 
 keywords: knative
 
@@ -42,7 +42,15 @@ Install the latest version of the IBM Cloud CLI.
 
 You must create an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/){: external}.
 
-1. Download and install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli).
+1. Download and install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-getting-started).
+
+This installer installs the following files: 
+* IBM Cloud Functions plug-in
+* IBM Cloud Object Storage plug-in
+* IBM Cloud Container Registry plug-in
+* IBM Cloud Kubernetes Service plug-in
+For more information, see a complete list in the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-getting-started).
+
 
 2. Log in to the {{site.data.keyword.cloud_notm}} CLI.
 

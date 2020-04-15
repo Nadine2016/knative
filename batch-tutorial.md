@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-04-15"
 
 keywords: knative
 
@@ -27,11 +27,11 @@ subcollection: knative
 # Deploying jobs
 {: #kn-deploying-jobs}
 
-The Coligo platform provides support for run-to-completion workloads. When using the term batch, we talk about this support. Jobs are units of run-to-completion workloads Users define and submit jobs. A job runs one or more job containers according to their definition. A job is complete after all the job containers have completed,
+The Coligo platform provides support for run-to-completion workloads. When using the term batch, we talk about this support. Jobs are units of run-to-completion workloads Users define and submit jobs. A job runs one or more job containers according to their definition. A job is complete after all the job containers have completed.
 
 **Before you begin**
 
-- [Set up your coligo environment](/docs/knative?topic=knative-kn-install-cli)
+- [Set up your Coligo environment](/docs/knative?topic=knative-kn-install-cli)
 - Target a project
 
 ## Create a job run

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-04-15"
 
 keywords: knative
 
@@ -27,7 +27,7 @@ subcollection: knative
 # Planning your environment
 {: #kn-plan}
 
-When planning for coligo, there are many things to consider.
+When planning for Coligo, there are many things to consider.
 
 ## What is multi tenancy?
 Multi tenancy means that physical resources, such as CPU and memory, are shared across all virtual machines that are deployed to the same physical hardware. Projects are then used to group and isolate services and jobs. 
