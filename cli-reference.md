@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-15"
+lastupdated: "2020-04-17"
 
 keywords: knative
 
@@ -72,6 +72,37 @@ Successfully created project myproject
 ```
 {: screen}
 
+### `ibmcloud coligo project delete`
+{: #cli-project-delete}
+
+Delete a project.
+{: shortdec}
+
+```
+ibmcloud coligo project delete --name PROJECT_NAME
+```
+{: pre}
+
+**Command options**
+<dl>
+<dt>`-n`, `--name`</dt>
+<dd>The name of the project. This value is required.</dd>
+</dl>
+
+**Example**
+
+```
+ibmcloud coligo project delete --name myproject
+```
+{: pre}
+
+**Output**
+
+```
+Deleted project myproject
+```
+{: screen}
+
 ### `ibmcloud coligo project get`
 {: #cli-project-get}
 
@@ -109,40 +140,7 @@ Resource Group: Default
 Created: Tue, 14 Apr 2020 11:33:12 -0400
 Updated: Tue, 14 Apr 2020 11:33:27 -0400
 
-OK
 Command 'project get' performed successfully
-```
-{: screen}
-
-### `ibmcloud coligo project delete`
-{: #cli-project-delete}
-
-Delete a project.
-{: shortdec}
-
-```
-ibmcloud coligo project delete --name PROJECT_NAME
-```
-{: pre}
-
-**Command options**
-<dl>
-<dt>`-n`, `--name`</dt>
-<dd>The name of the project. This value is required.</dd>
-</dl>
-
-**Example**
-
-```
-ibmcloud coligo project delete --name myproject
-```
-{: pre}
-
-**Output**
-
-```
-OK
-Deleted project myproject
 ```
 {: screen}
 
@@ -167,10 +165,10 @@ ibmcloud coligo project list
 **Output**
 
 ```
-| Name      | Status  | Tags | Location | Resource Group |
-| --------- | ------- | ---- | -------- | -------------- |
-| myproject | active  |      | us-south | default        |
-OK
+Name                              Status         Tags   Location   Resource Group
+myproject                         active                us-south
+newproj                           active                us-south
+
 Command 'project list' performed successfully
 ```
 {: screen}
@@ -181,7 +179,7 @@ Command 'project list' performed successfully
 Targets a Coligo project. Before using the target command, you must be in the context of a project. 
 {: shortdec}
 
-To see CLI help for the target command, run `ibmcloud coligo target`. If running on Windows operating system, you must run the command in a window enabled for administrator permissions using the `Run as Administrator` option.   
+To see CLI help for the target command, run `ibmcloud coligo target`. If you are running on a Windows operating system, you must run the command in a window that is enabled for administrator permissions using the `Run as Administrator` option.   
 {: tip}
 
 ### `ibmcloud coligo target`
@@ -214,8 +212,8 @@ ibmcloud coligo target --name myproject
 
 ```
 OK
-Now targeting environment 'myproject' (b49ca89f-f48f-4c9d-ae2d-6da42fbad57b). Set the KUBECONFIG environment variable to use kubectl with your project:
-export KUBECONFIG=C:\.bluemix\plugins\coligo/myproject-b49ca89f-f48f-4c9d-ae2d-6da42fbad57b.yaml
+Now targeting environment 'myproject' (b49ca89f-g99q-4c9d-ae2d-6da42fbad57b). Set the KUBECONFIG environment variable to use kubectl with your project:
+export KUBECONFIG=C:\.bluemix\plugins\coligo/myproject-b49ca89f-g99q-4c9d-ae2d-6da42fbad57b.yaml
 ```
 {: screen}
 
@@ -275,90 +273,9 @@ ibmcloud coligo application create --name myapp --image agrawals18/helloworld
 
 ```
 Service 'myapp' created to latest revision 'myapp-zxxlr-1' is available at URL:
-http://myapp.b49ca89f-f48f.us-south.knative.test.appdomain.cloud
+http://myapp.b49ca89f-g99q.us-south.knative.test.appdomain.cloud
 
-OK
 Application myapp correctly created!
-```
-{: screen}
-
-### `ibmcloud coligo application get`
-{: #cli-application-get}
-
-Display the details of an application.
-{: shortdec}
-
-```
-ibmcloud coligo application get --name APP_NAME
-```
-{: pre}
-
-**Command options**
-<dl>
-<dt>`-n`, `--name`</dt>
-<dd>The name of the application. This value is required.</dd>
-</dl>
-
-**Example**
-
-```
-ibmcloud coligo application get --name myapp
-```
-{: pre}
-
-**Output**
-
-```
-ok:
-```
-{: screen}
-
-### `ibmcloud coligo application update`
-{: #cli-app-update}
-
-Update an application. Updating your application creates a revision. By default, when calls are made to the application, traffic is routed to the revision.
-{: shortdec}
-
-```
-ibmcloud coligo application update --name APP_NAME --image IMAGE_REF [--registry-secret SECRET] [--cpu CPU] [--memory MEMORY] [--timeout TIMEOUT] [--concurrency REQUESTS] [--minscale MIN_NUM] [--maxscale MAX_NUM] [--project PROJECT_NAME]
-```
-{: pre}
-
-**Command options**
-<dl>
-<dt>`-n`, `--name`</dt>
-<dd>The name of the application. This value is required.</dd>
-<dt>`-i`, `--image`</dt>
-<dd>The name of the image used for this application. This value is required. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</dd>
-<dt>`--rs`, `--registry-secret`</dt>
-<dd>The name of the secret for the image. This value is optional.</dd>
-<dt>`-c`, `--cpu`</dt>
-<dd>The amount of CPU set for the application. The default value is 1. This value is optional.</dd>
-<dt>`-m`, `--memory`</dt>
-<dd>The amount of memory set for the application. the default value is 64 M. This value is optional.</dd>
-<dt>`-t`, `--timeout`</dt>
-<dd>The amount of time that can pass before the application must succeed or fail. The default value is 360 seconds. This value is optional.</dd>
-<dt>`--cn`, `--concurrency`</dt>
-<dd>The number of requests that can be processed concurrently. The default value is 1. This value is optional.</dd>
-<dt>`--min`, `--minscale`</dt>
-<dd>The minimum number of instances that can be used for this application. The default value is 1. This value is optional.</dd>
-<dt>`--max`, `--maxscale`</dt>
-<dd>The maximum number of instances that can be used for this application. The default value is 1. This value is optional.</dd>
-<dt>`-p`, `--project`</dt>
-<dd>The name of the project to contain this application. If this value is not set, then the current project is used. This value is optional.</dd>
-</dl>
-
-**Example**
-
-```
-ibmcloud coligo application update --name myapp --image myimage
-```
-{: pre}
-
-**Output**
-
-```
-ok:
 ```
 {: screen}
 
@@ -389,9 +306,58 @@ ibmcloud coligo application delete --name myapp
 **Output**
 
 ```
-ok:
+Deleted application 'myapp'
 ```
 {: screen}
+
+### `ibmcloud coligo application get`
+{: #cli-application-get}
+
+Display the details of an application.
+{: shortdec}
+
+```
+ibmcloud coligo application get --name APP_NAME
+```
+{: pre}
+
+**Command options**
+<dl>
+<dt>`-n`, `--name`</dt>
+<dd>The name of the application. This value is required.</dd>
+</dl>
+
+**Example**
+
+```
+ibmcloud coligo application get --name myapp
+```
+{: pre}
+
+**Output**
+
+```
+Name:       myapp
+Namespace:  b49ca89f-g99q
+Age:        19h
+URL:        http://myapp.b49ca89f-g99q.us-south.knative.test.appdomain.cloud
+
+Revisions:
+  100%  @latest (myapp-zxxlr-1) [1] (19h)
+        Image:  agrawals18/helloworld (pinned to be18cb)
+
+Conditions:
+  OK TYPE                   AGE REASON
+  ++ Ready                  19h
+  ++ ConfigurationsReady    19h
+  ++ RoutesReady            19h
+
+Command 'application get' performed successfully
+```
+{: screen}
+
+
+
 
 ### `ibmcloud coligo application list`
 {: #cli-application-list}
@@ -414,7 +380,9 @@ ibmcloud coligo application list
 **Output**
 
 ```
-ok:
+NAME        URL                                                                    LATEST              AGE   CONDITIONS   READY   REASON
+myapp       http://myapp.b49ca89f-g99q.us-south.knative.test.appdomain.cloud       myapp-zxxlr-1       19h   3 OK / 3     True
+mytestibm   http://mytestibm.b49ca89f-g99q.us-south.knative.test.appdomain.cloud   mytestibm-qhmzn-1   20h   3 OK / 3     True
 ```
 {: screen}
 
@@ -436,7 +404,7 @@ Create a job definition.
 {: shortdec}
 
 ```
-ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF [--argument ARGUMENT] [--cpu CPU] [--memory MEMORY] [--env ENV] [--env-from-secret ENV_SECRET]
+ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argument ARGUMENT [--command COMMAND][--cpu CPU] [--memory MEMORY] [--env ENV] [--env-from-secret ENV_SECRET]
 ```
 {: pre}
 
@@ -445,15 +413,17 @@ ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF [--arg
 <dt>`-n`, `--name`</dt>
 <dd>The name of the job definition. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project.</dd>
 <dt>`-i`, `--image`</dt>
-<dd>The name of the image used for this application. This value is required. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</dd>
+<dd>The name of the image used for this job definition. This value is required. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</dd>
 <dt>`-a`, `--argument`</dt>
-<dd>Set any arguments for the job definition. This value is optional.</dd>
-<dt>`-c`, `--cpu`</dt>
-<dd>The amount of CPU set for the job definition. The default value is 1. This value is optional.</dd>
+<dd>Set any arguments for the job definition. This value is required. Specify one argument per `--argument` flag.  To specify more than one argument, use more than one `--argument` flag; for example, `--a argA --a argB`.</dd>
+<dt>`-e`, `--env`</dt>
+<dd>Set any environmental variables to pass to the job definition. Variables use a `KEY=VALUE` format. This value is optional.</dd>
+<dt>`-c`, `--command`</dt>
+<dd>Set any commands for the job definition. This value is optional.</dd>
+<dt>`--cpu`</dt>
+<dd>Specifies the number of CPUs to be assigned to the job definition. The default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
 <dd>The amount of memory set for the job definition. The default value is 64 M. This value is optional.</dd>
-<dt>`-e`, `--env`</dt>
-<dd>Set any values for environmental variables. This value is optional.</dd>
 </dl>
 
 **Example**
@@ -468,7 +438,7 @@ ibmcloud coligo jobdef create --image busybox --name hello --argument /bin/sh --
 **Output**
 
 ```
-ok:
+Created successfully Job Definition 'hello'
 ```
 {: screen}
 
@@ -499,48 +469,44 @@ ibmcloud coligo jobdef get --name myjobdef
 **Output**
 
 ```
-ok:
+Namespace:    b49ca89f-g99q
+Labels:       <none>
+Annotations:  <none>
+API Version:  coligo.cloud.ibm.com/v1alpha1
+Kind:         JobDefinition
+Metadata:
+  Creation Timestamp:  2020-04-16T15:21:41Z
+  Generation:          1
+  Resource Version:    69009760
+  Self Link:           /apis/coligo.cloud.ibm.com/v1alpha1/namespaces/b49ca89f-g99q/jobdefinitions/myjobdef-jobdef
+  UID:                 6ac2e78c-0883-4564-9158-4c7e08762a41
+Spec:
+  Containers:
+    Args:
+      /bin/sh
+      -c
+      echo Hello $JOB_INDEX. ENV1 is $ENV1, ENV2 is $ENV2, ENV3 is $ENV3
+    Env:
+      Name:   ENV1
+      Value:  env1 from jobdef
+      Name:   ENV2
+      Value:  env2 from jobdef
+      Name:   ENV3
+      Value:  env3 from jobdef
+    Image:    busybox
+    Name:     myjobdef
+    Resources:
+      Requests:
+        Cpu:     1
+        Memory:  128Mi
+Events:          <none>
+
+
+Command 'job definition get' performed successfully
 ```
 {: screen}
 
-### `ibmcloud coligo jobdef update`
-{: #cli-jobdef-update}
 
-Update a job definition.
-{: shortdec}
-
-```
-ibmcloud coligo jobdef update --name JOBDEFINITION_NAME [--cpu CPU] [--memory MEMORY] [--env ENV] [--argument ARGUMENT]
-```
-{: pre}
-
-**Command options**
-<dl>
-<dt>`-n`, `--name`</dt>
-<dd>The name of the job definition. This value is required.</dd>
-<dt>`-c`, `--cpu`</dt>
-<dd>The amount of CPU set for the job definition. The default value is 1. This value is optional.</dd>
-<dt>`-m`, `--memory`</dt>
-<dd>The amount of memory set for the job definition. The default value is 64 M. This value is optional.</dd>
-<dt>`-e`, `--env`</dt>
-<dd>Set any values for environmental variables. This value is optional.</dd>
-<dt>`-a`, `--argument value`</dt>
-<dd>Set any arguments for the job definition.</dd>
-</dl>
-
-**Example**
-
-```
-ibmcloud coligo jobdef update --name myjobdef
-```
-{: pre}
-
-**Output**
-
-```
-ok:
-```
-{: screen}
 
 ### `ibmcloud coligo jobdef delete`
 {: #cli-jobdef-delete}
@@ -569,7 +535,7 @@ ibmcloud coligo jobdef delete --name myjobdef
 **Output**
 
 ```
-ok:
+Deleted JobDefinition 'myjobdef'
 ```
 {: screen}
 
@@ -617,7 +583,7 @@ Run a job based on a job definition.
 {: shortdec}
 
 ```
-ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image IMAGE_REF] [--cpu CPU] [--memory MEMORY] [--env ENV] [--argument ARGUMENT] [--arraysize ARRAY] [--retrylimit RETRY]
+ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image IMAGE_REF] [--cpu CPU] [--memory MEMORY] [--env ENV] [--argument ARGUMENT] [--command COMMAND] [--arraysize ARRAY] [--retrylimit RETRY]
 ```
 {: pre}
 
@@ -630,19 +596,19 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 <dt>`--as`, `--arraysize`</dt>
 <dd>Indicates how may pods can be used to run the container specified by the job definition. The default value is 1. This value is optional.</dd>
 <dt>`-r`, `--retrylimit`</dt>
-<dd>Specifies the retry limit for the pod. The default value is 3. This value is optional.</dd>
+<dd>Specifies the number of times to retry the job.  The default value is 3. This value is optional.</dd>
 <dt>`-e`, `--env`</dt>
-<dd>Indicates any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables passed in the job definition. This value is optional.</dd>
+<dt>`-i`, `--image`</dt>
+<dd>The name of the image used for this job. This value overrides any image passed in the job definition.This value is optional. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</dd>
+<dd>Indicates any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables passed in the job definition. This value is optional. </dd>
 <dt>`-a`, `--argument`</dt>
-<dd>Indicates any arguments to pass to the image. You can specify multiple arguments by using a comma-separated list. This value overrides any arguments passed in the job definition. This value is optional.</dd>
-<dt>`-c`, `--cpu`</dt>
+<dd>Indicates any arguments to pass to the image. You can specify multiple arguments by using a comma-separated list. This value overrides any arguments passed in the job definition. This value is optional.</dd>  
+<dt>`-c`, `--command`</dt>
+<dd>Set any commands for the job. This value overrides any commands passed in the job definition. This value is optional.</dd>
+<dt>`--cpu`</dt>
 <dd>Specifies the number of CPUs to assign to the container running the image. This value overrides any `--cpu` value assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
-<dd>Specifies the amount of memory to assign to the container running the image. This value overrides any `--memory` value assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 64 M. This value is optional.</dd>
-<dt>`-as`, `--arraysize`</dt>
-<dd>Indicates how may pods can be used to run the container specified by the job definition. The default value is 1. This value is optional.</dd>
-<dt>`-r`, `--retrylimit`</dt>
-<dd>Specifies the number of time to retry the job. The default value is 3. This value is optional.</dd>
+<dd>Specifies the amount of memory to assign to the container running the image. This value overrides any `--memory` value assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 64M. This value is optional.</dd>
 </dl>
 
 **Example**
@@ -810,12 +776,6 @@ ibmcloud coligo secret create --name SECRETNAME  --from-literal NAME=VALUE | --f
 <dd>Include this flag to create a generic secret from a file. You must provide the path to the file as a value. If you do not use this flag, you must use the `--from-literal` flag.</dd>
 <dt>`-l`, `--from-literal`</dt>
 <dd>Include this flag to create a generic secret from a value pair. The format must be `NAME=VALUE`.  If you do not use this flag, you must use the `--from-file` flag.</dd>
-<dt></dt>
-<dd></dd>
-<dt></dt>
-<dd></dd>
-<dt></dt>
-<dd></dd>
 </dl>
 
 **Example**
@@ -856,7 +816,7 @@ ibmcloud coligo secret create --name SECRET_NAME --from-registry URL --username 
 <dt>`--name`</dt>
 <dd>The name of the secret. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project.</dd>
 <dt>`-r`, `--from-registry`</dt>
-<dd><Provide the URL of the image registry that contains the secret. This value is required.</dd>
+<dd>Provide the URL of the image registry that contains the secret. This value is required.</dd>
 <dt>`-u`, `--username`</dt>
 <dd>Provide the username for the secret in the registry. This value is required.</dd>
 <dt>`-p`, `--password`</dt>
@@ -873,7 +833,7 @@ ibmcloud coligo secret create --name image.com --from-registry us.icr.io --usern
 **Output**
 
 ```
-ok:
+Image Secret correctly created
 ```
 {: screen}
 
