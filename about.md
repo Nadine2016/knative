@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-14"
+lastupdated: "2020-04-20"
 
 keywords: about, knative
 
@@ -45,24 +45,22 @@ When you create a Coligo service, your app is automatically deployed as a Kubern
 ### How can I roll out a new version of my app?
 When you update your Knative service, a new version of your serverless app is created. This version is assigned the same public and private hostnames as your previous version. By default, all incoming network traffic is routed to the latest version of your app. However, you can also specify the percentage of incoming network traffic that you want to route to a specific app version so that you can do A-B testing. You can split incoming network traffic between two app versions at a time, the current version of your app and the new version that you want to roll over to. 
 
-
-
 [Knative](https://github.com/knative/docs){: external} is an open source platform that was developed by IBM, Google, Pivotal, Red Hat, Cisco, and others. The goal is to extend the capabilities of Kubernetes to help you create modern, source-centric containerized, and serverless apps on top of your Kubernetes cluster. 
 {: shortdesc}
 
-## About {{site.data.keyword.openwhisk_short}} with Knative
+## About Coligo
 
-### How does {{site.data.keyword.openwhisk_short}} with Knative work?
+### How does Coligo work?
 Knative comes with two key components, or _primitives_, that help you to deploy and manage your serverless apps in your Kubernetes cluster:
 
 - **Serving:** The `Serving` primitive helps to deploy serverless apps as Knative services and to automatically scale them, even down to zero instances. To expose your serverless and containerized workloads, Knative uses Istio. When you install the managed Knative add-on, the managed Istio add-on is automatically installed as well. By using the traffic management and intelligent routing capabilities of Istio, you can control what traffic is routed to a specific version of your service, which makes it easy for a developer to test and roll out a new app version or do A-B testing.
 - **Eventing:** With the `Eventing` primitive, you can create triggers or event streams that other services can subscribe to. For example, you might want to kick off a new build of your app every time code is pushed to your GitHub master repo. Or you want to run a serverless app only if the temperature drops below freezing point. For example, the `Eventing` primitive can be integrated into your CI/CD pipeline to automate the build and deployment of apps in case a specific event occurs.
 
-## {{site.data.keyword.openwhisk_short}} terminology
+## Coligo terminology
 
 <dl>
-  <dt>Application</dt>
-    <dd>An **application** is containerized code that is called through an HTTP request. Build your applications in any language, using your favorite libraries, dependencies and tools. When not in use, your application autoscales to zero. Applications are organized by projects.</dd>
+  <dt>Application component</dt>
+    <dd>An **application** component is containerized code that is called through an HTTP request. Build your applications in any language, using your favorite libraries, dependencies and tools. When not in use, your application autoscales to zero. Applications are organized by projects.</dd>
   <dt>Component</dt>
     <dd>**Components** are the building blocks of a project and are created using a container image.  Components include applications and job definitions. </dd>
   <dt>Job definition</dt>
