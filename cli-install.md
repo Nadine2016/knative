@@ -40,13 +40,15 @@ Install the latest version of the IBM Cloud CLI.
 
 You must create an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/){: external}.
 
-1. Download and install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-getting-started). This installation includes the following files: 
-* IBM Cloud Functions plug-in
-* IBM Cloud Object Storage plug-in
-* IBM Cloud Container Registry plug-in
-* IBM Cloud Kubernetes Service plug-in
+1. Download and install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-getting-started). 
 
-For more information, see [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-getting-started).
+  This installation includes the following files: 
+    * IBM Cloud Functions plug-in
+    * IBM Cloud Object Storage plug-in
+    * IBM Cloud Container Registry plug-in
+    * IBM Cloud Kubernetes Service plug-in
+
+  For more information, see [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/reference/ibmcloud?topic=cloud-cli-getting-started).
 
 2. Log in to the {{site.data.keyword.cloud_notm}} CLI.
 
@@ -71,35 +73,35 @@ For more information, see [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/refer
 
 5. You must specify a resource group. To get a list of your resource groups, run the following command.
 
-  ```
-  ibmcloud resource groups
-  ```
-  {: pre}
+    ```
+    ibmcloud resource groups
+    ```
+    {: pre}
 
-  **Example output**
+    **Example output**
 
-  ```
-  Retrieving all resource groups under account <account_name> as email@ibm.com...
-  OK
-  Name      ID                                 Default Group   State   
-  default   a8a12accd63b437bbd6d58fb8b462ca7   true            ACTIVE
-  test      a8a12abbbd63b437cca6d58fb8b462ca7   false           ACTIVE
-  ```
-  {: screen}
+    ```
+    Retrieving all resource groups under account <account_name> as email@ibm.com...
+    OK
+    Name      ID                                 Default Group   State   
+    default   a8a12accd63b437bbd6d58fb8b462ca7   true            ACTIVE
+    test      a8a12abbbd63b437cca6d58fb8b462ca7   false           ACTIVE
+    ```
+    {: screen}
 
 6. Target a resource group by running the following command.
 
-  ```
-  ibmcloud target -g <resource_group>
-  ```
-  {: pre}
+    ```
+    ibmcloud target -g <resource_group>
+    ```
+    {: pre}
 
-  **Example output**
+    **Example output**
 
-  ```
-  Targeted resource group default
-  ```
-  {: screen}
+    ```
+    Targeted resource group default
+    ```
+    {: screen}
 
 ## Installing Knative 
 {: #knative-install}
@@ -109,8 +111,8 @@ Install the latest version of the Knative command line interface, `kn`.
 
 1. Download and install the [Knative CLI]](https://github.com/knative/client/blob/master/docs/README.md){: external}. 
 
-Be sure to add the `kn` binary to your system's PATH environment variable. 
-{: tip}
+  Be sure to add the `kn` binary to your system's PATH environment variable. 
+  {: tip}
 
 2. Run the following command to confirm `kn` is installed:
 
@@ -122,15 +124,15 @@ Be sure to add the `kn` binary to your system's PATH environment variable.
   **Example output**
 
   ```
-Version:      v20200501-88805dc
-Build Date:   2020-05-01 02:05:19
-Git Revision: 88805dc
-Supported APIs:
-* Serving
-  - serving.knative.dev/v1 (knative-serving v0.13.2)
-* Eventing
-  - sources.eventing.knative.dev/v1 (knative-eventing v0.13.6)
-  - eventing.knative.dev/v1 (knative-eventing v0.13.6)
+    Version:      v20200501-88805dc
+    Build Date:   2020-05-01 02:05:19
+    Git Revision: 88805dc
+    Supported APIs:
+    * Serving
+      - serving.knative.dev/v1 (knative-serving v0.13.2)
+    * Eventing
+      - sources.eventing.knative.dev/v1 (knative-eventing v0.13.6)
+      - eventing.knative.dev/v1 (knative-eventing v0.13.6)
   ```
   {: screen}
 
@@ -146,8 +148,8 @@ When you installed the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/referenc
 
 1. Download and install the [kubectl CLI]](https://kubernetes.io/docs/tasks/tools/install-kubectl/){: external}. 
 
-Be sure to add the `kubectl` binary to your system's PATH environment variable. 
-{: tip}
+  Be sure to add the `kubectl` binary to your system's PATH environment variable. 
+  {: tip}
 
 2. Run the following command to verify `kubectl` is installed:
 
