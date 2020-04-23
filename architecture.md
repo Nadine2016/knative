@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-04-23"
 
 keywords: knative
 
@@ -27,5 +27,5 @@ subcollection: knative
 # Service architecture
 {: #kn-architecture}
 
-This will talk about the knative service architecture and also needs to list all the open source projects that are included with knative service.
+This topic talks about the knative service architecture and also needs to list all the open source projects that are included with knative service.
 

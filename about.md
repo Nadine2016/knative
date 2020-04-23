@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-20"
+lastupdated: "2020-04-23"
 
 keywords: about, knative
 
@@ -27,7 +27,7 @@ subcollection: knative
 # About Coligo
 {: #kn-about}
 
-## What is Coligo and why do I want use it? 
+## What is Coligo and why do I want to use it? 
 {: #kn-what}
 
 Coligo is an open source platform that was developed by IBM. The goal is to extend the capabilities of Kubernetes to help you create modern, source-centric containerized, and serverless apps on top of your Kubernetes cluster. The platform is designed to address the needs of developers who today must decide what type of app they want to run in the cloud: 12-factor apps, containers, or functions. Each type of app requires an open source or proprietary solution that is tailored to these apps: Cloud Foundry for 12-factor apps, Kubernetes for containers, and OpenWhisk and others for functions. In the past, developers had to decide what approach they wanted to follow, which led to inflexibility and complexity when different types of apps had to be combined.
@@ -53,20 +53,20 @@ When you update your Knative service, a new version of your serverless app is cr
 ### How does Coligo work?
 Knative comes with two key components, or _primitives_, that help you to deploy and manage your serverless apps in your Kubernetes cluster:
 
-- **Serving:** The `Serving` primitive helps to deploy serverless apps as Knative services and to automatically scale them, even down to zero instances. To expose your serverless and containerized workloads, Knative uses Istio. When you install the managed Knative add-on, the managed Istio add-on is automatically installed as well. By using the traffic management and intelligent routing capabilities of Istio, you can control what traffic is routed to a specific version of your service, which makes it easy for a developer to test and roll out a new app version or do A-B testing.
-- **Eventing:** With the `Eventing` primitive, you can create triggers or event streams that other services can subscribe to. For example, you might want to kick off a new build of your app every time code is pushed to your GitHub master repo. Or you want to run a serverless app only if the temperature drops below freezing point. For example, the `Eventing` primitive can be integrated into your CI/CD pipeline to automate the build and deployment of apps in case a specific event occurs.
+- **Serving:** The `Serving` primitive helps to deploy serverless apps as Knative services and to automatically scale them, even down to zero instances. To expose your serverless and containerized workloads, Knative uses Istio. When you install the managed Knative add-on, the managed Istio add-on is automatically installed as well. By using the traffic management and intelligent routing capabilities of Istio, you can control what traffic is routed to a specific version of your service. These capabilities make it easy for a developer to test and roll out a new app version or do A-B testing.
+- **Eventing:** With the `Eventing` primitive, you can create triggers or Event Streams that other services can subscribe to. For example, you might want to start a new build of your app every time code is pushed to your GitHub master repo. Or you want to run a serverless app only if the temperature drops below freezing point. For example, the `Eventing` primitive can be integrated into your CI/CD pipeline to automate the build and deployment of apps in case a specific event occurs.
 
 ## Coligo terminology
 
 <dl>
   <dt>Application component</dt>
-    <dd>An **application** component is containerized code that is called through an HTTP request. Build your applications in any language, using your favorite libraries, dependencies and tools. When not in use, your application autoscales to zero. Applications are organized by projects.</dd>
+    <dd>An **application** component is containerized code that is called through an HTTP request. Build your applications in any language, by using your favorite libraries, dependencies, and tools. When not in use, your application autoscales to zero. Applications are organized by projects.</dd>
   <dt>Component</dt>
     <dd>**Components** are the building blocks of a project and are created using a container image.  Components include applications and job definitions. </dd>
   <dt>Job definition</dt>
-    <dd>A **job definition** defines the static workload configuration which can be used by or referenced by one or more job runs.  For example, for reuse, you can create JobDefinition resources that serve as a template and can be referenced from JobRuns. Once your job definition defines the workload configuration, you can create multiple job runs that refer to this job definition, optionally overwriting some of the properties specified in the JobDefinition. </dd>
+    <dd>A **job definition** defines the static workload configuration, which can be used by or referenced by one or more job runs.  For example, for reuse, you can create JobDefinition resources that serve as a template and can be referenced from JobRuns. After your job definition is created, you can create multiple job runs that refer to this job definition, optionally overwriting some of the properties specified in the JobDefinition. </dd>
   <dt>Job run</dt>
-    <dd>A **job run** is the action of running a Coligo job.  Running a job requires that a job definition exist for the job. </dd> 
+    <dd>A **job run** is the action of running a Coligo job.  A job definition is must exist before a job can be run. </dd> 
   <dt>Project</dt>
     <dd>**Projects** are used to group and organize components, such as applications or jobs. You can also assign access policies to a project.</dd> 
   <dt>Revision</dt>

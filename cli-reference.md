@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-17"
+lastupdated: "2020-04-23"
 
 keywords: knative
 
@@ -249,7 +249,7 @@ ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registr
 <dt>`-c`, `--cpu`</dt>
 <dd>The amount of CPU set for the application. The default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
-<dd>The amount of memory set for the application. the default value is 64 M. This value is optional.</dd>
+<dd>The amount of memory set for the application. The default value is 64 M. This value is optional.</dd>
 <dt>`-t`, `--timeout`</dt>
 <dd>The amount of time that can pass before the application must succeed or fail. The default value is 360 seconds. This value is optional.</dd>
 <dt>`--cn`, `--concurrency`</dt>
@@ -590,7 +590,7 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 **Command options**
 <dl>
 <dt>`-n`, `--name`</dt>
-<dd>The name of the job to be run. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project.</dd>
+<dd>The name of the job to be run. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project. </dd>
 <dt>`--jd`, `--jobdef`</dt>
 <dd>Identifies the job definition that contains the description of the job to be run. This value is required.</dd>
 <dt>`--as`, `--arraysize`</dt>
@@ -599,21 +599,21 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 <dd>Specifies the number of times to retry the job.  The default value is 3. This value is optional.</dd>
 <dt>`-e`, `--env`</dt>
 <dt>`-i`, `--image`</dt>
-<dd>The name of the image used for this job. This value overrides any image passed in the job definition.This value is optional. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</dd>
-<dd>Indicates any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables passed in the job definition. This value is optional. </dd>
+<dd>The name of the image used for this job. This value overrides any image that is passed in the job definition. This value is optional. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</dd>
+<dd>Indicates any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables that are passed in the job definition. This value is optional. </dd>
 <dt>`-a`, `--argument`</dt>
-<dd>Indicates any arguments to pass to the image. You can specify multiple arguments by using a comma-separated list. This value overrides any arguments passed in the job definition. This value is optional.</dd>  
+<dd>Indicates any arguments to pass to the image. You can specify multiple arguments by using a comma-separated list. This value overrides any arguments that are passed in the job definition. This value is optional.</dd>  
 <dt>`-c`, `--command`</dt>
-<dd>Set any commands for the job. This value overrides any commands passed in the job definition. This value is optional.</dd>
+<dd>Set any commands for the job. This value overrides any commands that are passed in the job definition. This value is optional.</dd>
 <dt>`--cpu`</dt>
-<dd>Specifies the number of CPUs to assign to the container running the image. This value overrides any `--cpu` value assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 1. This value is optional.</dd>
+<dd>Specifies the number of CPUs to assign to the container that is running the image. This value overrides any `--cpu` value that is assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
-<dd>Specifies the amount of memory to assign to the container running the image. This value overrides any `--memory` value assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 64M. This value is optional.</dd>
+<dd>Specifies the amount of memory to assign to the container that is running the image. This value overrides any `--memory` value that is assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 64 M. This value is optional.</dd>
 </dl>
 
 **Example**
 
-The following example creates three new pods to run the container image specified in the `hello` JobDefinition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
+The following example creates three new pods to run the container image specified in the `hello` JobDefinition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128 MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
 
 ```
 ibmcloud coligo job run --name hello --jobdef hello --arraysize 5 --retryLimit 2 --memory 128M --cpu 1
@@ -780,14 +780,14 @@ ibmcloud coligo secret create --name SECRETNAME  --from-literal NAME=VALUE | --f
 
 **Example**
 
-- The following example creates a secret named `mySecret` with a username and a password.
+- The following example creates a secret that is named `mySecret` with a username and a password.
 
   ```
   ibmcloud coligo secret create --name mySecret --from-literal username=devuser --from-literal password='S!B\*d$zDsb'
   ```
   {: pre}
 
-- This example creates a secret named `generic-secret` with values from a file.
+- This example creates a secret that is named `generic-secret` with values from a file.
 ```
 ibmcloud coligo secret create --name mySecret --from-file SECRET_KEY=FILENAME
 ```
@@ -803,7 +803,7 @@ ok:
 ### `ibmcloud coligo secret create` (Image pull)
 {: #cli-secret-create-imgpull}
 
-Create a image pull secret. Use image pull to access a container registry that stores the secrets.
+Create an image pull secret. Use image pull to access a container registry that stores the secrets.
 {: shortdec}
 
 ```

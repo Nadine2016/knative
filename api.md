@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-14"
+lastupdated: "2020-04-23"
 
 keywords: knative, api reference
 
@@ -55,7 +55,7 @@ Since this step only needs to be accomplished once, you can also use the CLI ins
 
 **CLI**
 
-1. Login into IBM Cloud and target a region, account, and resource group:
+1. Log in into IBM Cloud and target a region, account, and resource group:
    
    ```
    ibmcloud login target -r REGION -c ACCOUNT_ID -g RESOURCE_GROUP
@@ -124,7 +124,7 @@ Use the [`get kubeconfig for the specified project`](https://cloud.ibm.com/apido
 ## Retrieving your Kubernetes configuration with the CLI
 {: #api-cli}
 
-1. Login into IBM Cloud and target a region, account, and resource group:
+1. Log in into IBM Cloud and target a region, account, and resource group:
    
    ```
    ibmcloud login target -r REGION -c ACCOUNT_ID -g RESOURCE_GROUP
@@ -138,7 +138,7 @@ Use the [`get kubeconfig for the specified project`](https://cloud.ibm.com/apido
    ```
    {: pre}
    
-For more information about using Kubernetes API and `kubectl`, see these topics:
+For more information about using Kubernetes API and `kubectl`, see the following topics:
 
 - [Kubernetes REST API](https://kubernetes.io/docs/reference/using-api/api-overview/){: external}
 - [Kubernetes API concepts](https://kubernetes.io/docs/reference/using-api/api-concepts/){: external}
@@ -157,7 +157,7 @@ The following sections list the custom resource definition methods to use with C
 | coligo.cloud.ibm.com | v1alpha1 | JobDefinition |
 | coligo.cloud.ibm.com | v1alpha1 | JobRun |
 
-After you have retrieved the Kubernetes configuration, you have two methods to view Batch CRD details:
+After retrieving the Kubernetes configuration, you can view Batch CRD details using the following methods:
 
 1. Use `kubectl explain --api-version='coligo.cloud.ibm.com/v1alpha1' <Kind>`.
 2. [Download Swagger / OpenAPI specification of CRDs](https://kubernetes.io/docs/concepts/overview/kubernetes-api/){: external}.
@@ -171,6 +171,6 @@ After you have retrieved the Kubernetes configuration, you have two methods to v
 | serving.knative.dev | v1 | Route |
 | serving.knative.dev | v1 | Service |
 
-For more information about these CRDS, see [Knative Serving API Specification](https://knative.dev/docs/serving/spec/knative-api-specification-1.0/){: external}
+For more information about these CRDS, see [Knative Serving API Specification](https://knative.dev/docs/serving/spec/knative-api-specification-1.0/){: external}.
 
 
