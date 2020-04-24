@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-04-24"
 
 keywords: knative
 
@@ -35,6 +35,6 @@ This is mostly controlled by namespace- look at reordering in topic lower in nav
 
 In order to perform operations with the functions namespaces, you must have the right Access Policy applied to you as a user by the Account Owner or by someone with Admin access to the IBM Cloud Account in question. NOTE - The steps defined below can be done only by the Account Owner or someone with Admin access to the Cloud Account. For more information, see Understanding IAM and IAM Best practices.
 
-If you wish to access existing Functions namespace for creating kn services as describe in the guide, please do the following: Visit IAM Access to provide the right access to the concerned user.
+If you want to access existing Functions namespace for creating kn services as describe in the guide, please do the following: Visit IAM Access to provide the right access to the concerned user.
 If the user already exists in the list, select the option to Assign Access.
 

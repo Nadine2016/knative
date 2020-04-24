@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-04-24"
 
 keywords: knative, isolation for knative, service endpoints for knative, private network for knative, network isolation in knative, non-public routes for knative, private connection for knative
 
@@ -50,7 +50,7 @@ _Review the following example: https://cloud.ibm.com/docs/compare-comply?topic=w
 
 _High level steps typically covered are: Add a private network endpoint, view your endpoint URL, and modifying your apps to use the new endpoint_
 
-## Disabling public service endpoints for for Coligo
+## Disabling public service endpoints for Coligo
 {: #endpoint-disable}
 
 _This section will not apply to all services. It does apply to compute services, databases, and Cloud Object Storage at this time._

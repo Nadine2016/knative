@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-04-24"
 
 keywords: knative
 
@@ -38,9 +38,9 @@ The following table lists the limits for Applications.
 
 | Category  |   Default   |   Maximum  |  Minimum  |
 | --------- | ----------- | ---------- | --------- |
-| CPU       |         0.1 |          8 |       .01 |
+| CPU       |         0.1 |          8 |      0.01 |
 | Max scale |          10 |        250 |         0 |
-| Memory    |          1G |        32G |      128M |
+| Memory    |         1 G |       32 G |     128 M |
 | Min scale |           0 |        250 |         0 |
 | Parallel  |          10 |       1000 |         0 |
 | Timeout   | 300 seconds | 600 seconds|         0 |

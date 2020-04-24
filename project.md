@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-04-24"
 
 keywords: knative, project
 
@@ -84,7 +84,7 @@ You can update the name or description of the project from the **Projects Settin
 
 1. Install the [Coligo CLI](/docs/knative?topic=knative-kn-install-cli). Target the resource group that you want to use for the project. 
 
-2. Create an project with the [`project create`](/docs/knative?topic=knative-kn-cli#cli-project-create) command. Optional: Include a description for your project by using the `-d` or `--description` flag. If your description is longer than one word, it must be in quotations.
+2. Create a project with the [`project create`](/docs/knative?topic=knative-kn-cli#cli-project-create) command. Optional: Include a description for your project by using the `-d` or `--description` flag. If your description is longer than one word, it must be in quotations.
 
   ```
   ibmcloud coligo project --name PROJECT_NAME [--description PROJ_DESC]

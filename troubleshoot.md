@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-04-24"
 
 keywords: knative
 
@@ -55,7 +55,7 @@ For more information, see [Understanding IAM](https://cloud.ibm.com/docs/iam?top
 3.  Review the Access Summary information and modify if needed.  
 4.  When ready, click `Invite` to assign the specified access to the user. (?? Invite for new users?  Assign for existing??) 
 
-### Assigning a user permissions to create Projects
+### Assigning permissions to create Projects to a user
 
 To create Projects, a user must have an Administrative role in the Project.  
 1. Determine if the user exists in IAM Access. Go to the [Manage Access Users](https://cloud.ibm.com/iam/users){: external} page and search for the user. 

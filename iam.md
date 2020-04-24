@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-15"
+lastupdated: "2020-04-24"
 
 keywords: IAM access for _servicename_, permissions for _servicename_, identity and access management for _servicename_, roles for _servicename_, actions for _servicename_, assigning access for _servicename_
 
@@ -34,7 +34,7 @@ Coligo uses both the Platform and Service management roles. You can set policies
 ### How do I set IAM policies so that others can work with my project?
 {: #iam_project_policies}
 
-In order for others to work with entities in your project, you must to set the appropriate [IAM policies in the console](https://cloud.ibm.com/iam/overview){: external} or the [IAM CLI](#cli-pol-set). 
+In order for others to work with entities in your project, you must set the appropriate [IAM policies in the console](https://cloud.ibm.com/iam/overview){: external} or the [IAM CLI](#cli-pol-set). 
 
 The minimum Platform level access is Viewer. The minimum Service level access is Reader. For more information about Platform and Service level access roles, see [Platform management roles](#iam_platform_roles) and [Service-specific roles](#service_specific_roles).
 
@@ -59,7 +59,7 @@ You can see which access policies have been set for you in the [{{site.data.keyw
 ## Assigning access roles
 {: #iam_access_roles}
 
-Policies enable access to be granted at different levels. Some of the options include the following: 
+Policies enable access to be granted at different levels. Some of the options include the following levels of access: 
 
 * Access across all instances of the service in your account
 * Access to an individual service instance in your account
@@ -74,7 +74,7 @@ The following table details actions that are mapped to platform management roles
 
 | Platform management role | Description of actions | 
 |--------------------------|------------------------|
-| Viewer                   | Description            |
+| Viewer                   | View dashboard            |
 | Editor                   | View dashboard            |
 | Operator                 | View dashboard            | 
 | Administrator            | View dashboard            |
@@ -87,16 +87,16 @@ The following table details actions that are mapped to service access roles. Ser
 
 | Service access role | Description of actions | 
 |---------------------|------------------------|
-| Reader              | Read tenant and tenant entities, but cannnot modify            | 
+| Reader              | Read tenant and tenant entities, but cannot modify            | 
 | Writer              | Create, read, update, and delete tenant entities; read tenant            |
 | Manager             | Create, read, update, and delete tenant entities; read tenant            | 
 {: caption="Table 2. IAM service access roles and actions" caption-side="top"}
 
 
-For information about assigning user roles in the console, see [Managing access to resources](/docs/iam?topic=iam-iammanidaccser#iammanidaccser).
+For more information about assigning user roles in the console, see [Managing access to resources](/docs/iam?topic=iam-iammanidaccser#iammanidaccser).
 
 ### Setting access policies for a user with the CLI
-You can set an access policies for a specific users by using the following command. In this example `name@example.com` is assigned the Viewer role for Coligo. This means that users with the Viewer role can access all of your Coligo properties.
+You can set access policies for a specific user by using the following command. In this example `name@example.com` is assigned the Viewer role for Coligo. By assigning the Viewer role to a user, this action enables the user with this role to access all of your Coligo properties.
 {: #cli-pol-set}
 
 ```

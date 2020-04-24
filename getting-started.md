@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-04-24"
 
 keywords: knative, getting started
 
@@ -27,12 +27,12 @@ subcollection: knative
 # Getting started with Coligo 
 {: #getting-started}
 
-Coligo provides a platform to unify the deployment of functions, applications and pre-built containers to Kubernetes-based infrastructure. It provides a “one-stop-shop” experience for developers, enabling higher productivity and faster time to market. Coligo is built on open-source projects such as Kubernetes, Istio, Knative, and Tekton.
+Coligo provides a platform to unify the deployment of functions, applications, and pre-built containers to Kubernetes-based infrastructure. It provides a “one-stop-shop” experience for developers, enabling higher productivity and faster time to market. Coligo is built on open source projects such as Kubernetes, Istio, Knative, and Tekton.
 {: shortdesc}
 
-Coligo is available in the console at [Coligo overview](https://dev.console.test.cloud.ibm.com/knative/overview){: external}. From this interface, you can [create your project](/docs/knative?topic=knative-manage-project) and then get started [deploying apps](/docs/knative?topic=knative-knative-deploy-app) and [running jobs](/docs/knative?topic=knative-kn-job-deploy).
+Coligo is available in the console at [Coligo overview](https://dev.console.test.cloud.ibm.com/knative/overview){: external}. From this interface, you can [create your project](/docs/knative?topic=knative-manage-project) and then begin [deploying apps](/docs/knative?topic=knative-knative-deploy-app) and [running jobs](/docs/knative?topic=knative-kn-job-deploy).
 
-Coligo also includes an [installable CLI plugin](/docs/knative?topic=knative-kn-install-cli).
+Coligo also includes an [installable CLI plug-in](/docs/knative?topic=knative-kn-install-cli).
 
 
 ## Creating your first Coligo app
