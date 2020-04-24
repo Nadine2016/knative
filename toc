@@ -51,7 +51,11 @@ Coligo
         cli-reference.md
         [Knative CLI Reference](https://github.com/knative/client/blob/master/docs/cmd/kn.md){: new_window}
         [Kubernetes CLI Reference](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli){: new_window}
-    api.md
+    
+    {: .topicgroup}
+    API reference
+        api.md
+        [Coligo API](https://test.cloud.ibm.com/apidocs/knative){: new_window}
     limits.md
     regions.md
     release-notes.md
