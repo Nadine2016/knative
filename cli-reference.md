@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-23"
+lastupdated: "2020-04-24"
 
 keywords: knative
 
@@ -415,7 +415,7 @@ ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argu
 <dt>`-i`, `--image`</dt>
 <dd>The name of the image used for this job definition. This value is required. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</dd>
 <dt>`-a`, `--argument`</dt>
-<dd>Set any arguments for the job definition. This value is required. Specify one argument per `--argument` flag.  To specify more than one argument, use more than one `--argument` flag; for example, `--a argA --a argB`.</dd>
+<dd>Set any arguments for the job definition. This value is required. Specify one argument per `--argument` flag.  To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`.</dd>
 <dt>`-e`, `--env`</dt>
 <dd>Set any environmental variables to pass to the job definition. Variables use a `KEY=VALUE` format. This value is optional.</dd>
 <dt>`-c`, `--command`</dt>
@@ -602,7 +602,7 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 <dd>The name of the image used for this job. This value overrides any image that is passed in the job definition. This value is optional. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</dd>
 <dd>Indicates any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables that are passed in the job definition. This value is optional. </dd>
 <dt>`-a`, `--argument`</dt>
-<dd>Indicates any arguments to pass to the image. You can specify multiple arguments by using a comma-separated list. This value overrides any arguments that are passed in the job definition. This value is optional.</dd>  
+<dd>Sets any arguments for the container. To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`. This value overrides any arguments passed in the job definition. This value is optional.</dd>  
 <dt>`-c`, `--command`</dt>
 <dd>Set any commands for the job. This value overrides any commands that are passed in the job definition. This value is optional.</dd>
 <dt>`--cpu`</dt>
