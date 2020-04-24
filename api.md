@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-23"
+lastupdated: "2020-04-24"
 
 keywords: knative, api reference
 
@@ -42,16 +42,12 @@ To retrieve your Kubernetes configuration with REST API, follow these steps:
 ### Authenticate with IBM Cloud IAM
 {: #api-iam}
 
-Before you begin, you must have an API key for your IAM ID. 
-
-Use the [IAM Identity Services API method](https://cloud.ibm.com/apidocs/iam-identity-token-api#create-an-iam-access-token-for-a-user-or-service-i){: external}.
+[Create your {{site.data.keyword.cloud_notm}} IAM access token](/docs/iam?topic=iam-iamtoken_from_apikey){: external} by making a POST request to `https://iam.cloud.ibm.com/identity/token`.
 
 ### Determine the GUID of your project
 {: #api-guid}
 
-Determine the GUID of your Coligo project by quering the IBM Cloud Catalog and IBM Cloud Resource Controller. As this GUID does not change, you need to do this step only once. If you already know your Coligo project GUID, you can skip this step.
-
-Since this step only needs to be accomplished once, you can also use the CLI instead of REST API.
+Determine the GUID of your Coligo project by quering the IBM Cloud Catalog and IBM Cloud Resource Controller. As this GUID does not change, you need to do this step only one time. If you already know your Coligo project GUID, you can skip this step.
 
 **CLI**
 
@@ -138,8 +134,9 @@ Use the [`get kubeconfig for the specified project`](https://cloud.ibm.com/apido
    ```
    {: pre}
    
-For more information about using Kubernetes API and `kubectl`, see the following topics:
+For more information about using Coligo APIs, Kubernetes API, and `kubectl`, see the following topics:
 
+- [Coligo API](https://cloud.ibm.com/apidocs/knative){: external}
 - [Kubernetes REST API](https://kubernetes.io/docs/reference/using-api/api-overview/){: external}
 - [Kubernetes API concepts](https://kubernetes.io/docs/reference/using-api/api-concepts/){: external}
 - [API client libraries](https://kubernetes.io/docs/reference/#api-client-libraries){: external}
@@ -172,5 +169,3 @@ After retrieving the Kubernetes configuration, you can view Batch CRD details us
 | serving.knative.dev | v1 | Service |
 
 For more information about these CRDS, see [Knative Serving API Specification](https://knative.dev/docs/serving/spec/knative-api-specification-1.0/){: external}.
-
-
