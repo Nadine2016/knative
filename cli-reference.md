@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-24"
+lastupdated: "2020-04-27"
 
 keywords: knative
 
@@ -61,7 +61,7 @@ ibmcloud coligo project create --name PROJECT_NAME  [--tag TAG]
 **Example**
 
 ```
-ibmcloud coligo project create --name myproject 
+ibmcloud coligo project create --name myproject  
 ```
 {: pre}
 

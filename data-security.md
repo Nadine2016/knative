@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-24"
+lastupdated: "2020-04-27"
 
 keywords: knative, data encryption in knative, data storage for knative, bring your own keys for knative, BYOK for knative, key management for knative, key encryption for knative, personal data in knative, data deletion for knative, data in knative, data security in knative
 
@@ -36,6 +36,7 @@ Coligo provides a platform to unify the deployment of functions, applications an
 While Coligo does not store personal or sensitive data, when running Coligo, the data that is stored by Coligo includes *pointers* to container images where you will run the images as Coligo applications or batch jobs.  Coligo does not store the container image data. Instead, it uses the pointer that you provide to where your container image repository resides, which might be a public repository like DockerHub or a private IBM Container Registry. Therefore, encryption of your data in your container images is implemented and managed as part of your container image repository. 
 
 Some data, like DockerHub credentials, batch job templates and IBM container registry APIKey are stored as part of your namespace in Coligo, within an underlying Kubernetes secret map (within your Kubernetes etcd data). For more information, see [Securing information in Kubernetes](/docs/containers?topic=containers-encryption). 
+ 
 
 ## Deleting your data in Coligo
 {: #data-delete}
