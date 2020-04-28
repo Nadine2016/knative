@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-23"
+lastupdated: "2020-04-28"
 
 keywords: about, knative
 
@@ -58,18 +58,50 @@ Knative comes with two key components, or _primitives_, that help you to deploy 
 
 ## Coligo terminology
 
-<dl>
-  <dt>Application component</dt>
-    <dd>An **application** component is containerized code that is called through an HTTP request. Build your applications in any language, by using your favorite libraries, dependencies, and tools. When not in use, your application autoscales to zero. Applications are organized by projects.</dd>
-  <dt>Component</dt>
-    <dd>**Components** are the building blocks of a project and are created using a container image.  Components include applications and job definitions. </dd>
-  <dt>Job definition</dt>
-    <dd>A **job definition** defines the static workload configuration, which can be used by or referenced by one or more job runs.  For example, for reuse, you can create JobDefinition resources that serve as a template and can be referenced from JobRuns. After your job definition is created, you can create multiple job runs that refer to this job definition, optionally overwriting some of the properties specified in the JobDefinition. </dd>
-  <dt>Job run</dt>
-    <dd>A **job run** is the action of running a Coligo job.  A job definition is must exist before a job can be run. </dd> 
-  <dt>Project</dt>
-    <dd>**Projects** are used to group and organize components, such as applications or jobs. You can also assign access policies to a project.</dd> 
-  <dt>Revision</dt>
-    <dd>A **Revision** is a job that has been modified or changed. For example, you might modify environment variables.</dd> 
-<dl>
+### Application
+
+An *Application* runs your code to serve HTTP requests. The Application has a private URL for incoming requests. The number of running instances of an Application are automatically scaled up or down (to zero) based on incoming workload. 
+
+An Application contains one or more *revisions* (revision entities). A revision represents an immutable version of the configuration properties of the Application. Each update of an application  configuration property creates a new revision of the Application.
+
+### Components
+
+*Components* are the building blocks of a project and are created using a container image.  Components include Applications and Job definitions.
+
+### Job definition
+
+A *Job definition* is a template that is used to run Jobs, and the template contains workload configuration information. After creating a Job definition, one or more *Jobs* can be submitted based on the Job definition, optionally overwriting values of the Job definition.
+
+To work with Job definitions, you can:
+- Create a Job definition
+- List Job definitions
+- Update a Job definition
+- Delete a Job definition
+- Submit and run a Job based on a Job definition from the console
+
+### Job 
+
+A *Job* runs your code to complete a task. A Job can run a large number of instances enabling work on large volumes of input data in parallel.
+
+A Job is submitted based on a Job definition. After a Job definition is created, which contains the workload configuration, you can then run one or more Jobs that refer to the Job definition, optionally overwriting values of the Job definition.
+ 
+Other than being a template for the Job configuration, there is no functional connection between a Job and the Job definition that is used for the Job submission. 
+
+To work with Jobs, you can: 
+- Submit (or run) a Job 
+- List a Job
+- Delete Job
+
+### Project
+A Project is a container for components, such as Applications and Job definitions. Projects enable you to manage resources and provide access to components in the Project.
+
+A Project:
+- Provides a unique namespace for entity names
+- Groups entities and allows operations to work on them at once
+- Helps manage access to project resources (inbound access)
+- Helps manage access to backing services (outbound access)
+- Has an automatically generated certificate for TLS
+- Is based on a Kubernetes namespace
+
+
 
