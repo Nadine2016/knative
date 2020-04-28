@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-23"
+lastupdated: "2020-04-28"
 
 keywords: knative
 
@@ -24,13 +24,13 @@ subcollection: knative
 {:download: .download}
 {:gif: data-image-type='gif'}
 
-# Installing, updating, and deleting the Coligo CLI
+# Setting up the Coligo CLI
 {: #kn-install-cli}
 
 Install, update, and delete the required CLIs and set up your environment to use Coligo.
 {: shortdesc}
 
-## Setting up the {{site.data.keyword.cloud_notm}} CLI
+## Installing the {{site.data.keyword.cloud_notm}} CLI
 {: #cli-setup}
 
 Install the latest version of the IBM Cloud CLI.
@@ -136,7 +136,7 @@ Install the latest version of the Knative command line interface, `kn`.
   ```
   {: screen}
 
-## Installing Kubectl 
+## Installing `kubectl` 
 {: #kube-install}
 
 Install the latest version of the Kubernetes command line interface, `kubectl`.
@@ -205,7 +205,6 @@ Complete the following steps to install the Coligo CLI plug-in.
 4. Optionally, install [`jq`](https://stedolan.github.io/jq){: external} to process JSON in the command line. This package enables you to view and parse JSON responses in the command line.
 
 For more information about Coligo commands, see the [`ibmcloud coligo` commands](/docs/knative?topic=knative-kn-cli).
-
 
 ## Updating the Coligo CLI
 {: #kn-update-cli}
