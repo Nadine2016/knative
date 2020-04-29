@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-24"
+lastupdated: "2020-04-29"
 
 keywords: knative, project
 
@@ -48,8 +48,11 @@ ibmcloud coligo project list
 **Example output**
 
 ```
-name          type            id                                    description
+Name            ID                                    Status         Tags   Location   Resource Group
+myproject       42642513-8805-4da8-8dbf-bc4f409g9089   active               us-south   Default
+new_proj        d294c0a3-30d8-49bc-b070-1921692f41d4   active               us-south   Default
 
+Command 'project list' performed successfully
 ```
 {: screen}
 
@@ -64,6 +67,24 @@ You can also run the [`project get`](/docs/knative?topic=knative-kn-cli#cli-proj
 ibmcloud coligo project get --name PROJECT_NAME
 ```
 {: pre}
+
+**Example output**
+
+```
+Getting project 'myproject'...
+
+Name: myproject
+ID: 42642513-8805-4da8-8dbf-bc4f409g9089
+Status: active
+Tags: []
+Location: us-south
+Resource Group: Default
+Created: Tue, 28 Apr 2020 09:27:22 -0400
+Updated: Tue, 28 Apr 2020 09:27:57 -0400
+
+Command 'project get' performed successfully
+```
+{: screen}
 
 ## Create a project
 You can create a project through the console or with the CLI.
@@ -108,7 +129,16 @@ You can update the name or description of the project from the **Projects Settin
   Example output:
 
   ```
-  Details of project TBD
+  Getting project 'myProject'...
+
+  Name: myProject
+  ID: 42642513-8805-4da8-8dbf-bc4f409g7456
+  Status: active
+  Tags: []
+  Location: us-south
+  Resource Group: Default
+  Created: Tue, 28 Apr 2020 09:27:22 -0400
+  Updated: Tue, 28 Apr 2020 09:27:57 -0400
   ```
   {: screen}
 
@@ -134,6 +164,17 @@ To target a project with the CLI, use the [`project target`](/docs/knative?topic
 ibmcloud coligo project target --name PROJECT_NAME
 ```
 {: pre}
+
+Example output:
+
+```
+Now targeting environment 'myProject' (42642513-8805-4da8-8dbf-bc4f409g7456). Set the KUBECONFIG environment variable to use kubectl with your project:
+export KUBECONFIG=/users/myusername/.bluemix/plugins/coligo/myproject-42642513-8805-4da8-8dbf-bc4f409g9089.yaml
+```
+{: screen}
+
+  Notice that the Coligo system provides the export command for you to run to target the project to your Kubernetes cluster. The provided command is tailored to your operating system and user information.  Run the provided command.  Alternatively, you can specify the `--export` option on the `target` command to export and automatically append the project configuration to the Kubernetes configuration file (`$HOME/.kube/config`). 
+  {: tip}
 
 ## Delete a project
 When you no longer need a project, you can delete it. Deleting a project deletes all of the components that it contains. You can use the console or the CLI.

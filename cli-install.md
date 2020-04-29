@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-28"
+lastupdated: "2020-04-29"
 
 keywords: knative
 
@@ -117,7 +117,7 @@ Install the latest version of the Knative command line interface, `kn`.
 2. Run the following command to confirm `kn` is installed:
 
   ```
-  ibmcloud kn version
+  kn version
   ```
   {: pre}
 
@@ -154,7 +154,7 @@ When you installed the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/referenc
 2. Run the following command to verify `kubectl` is installed:
 
   ```
-  ibmcloud kubectl version --short
+  kubectl version --short
   ```
   {: pre}
 

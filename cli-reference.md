@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-27"
+lastupdated: "2020-04-29"
 
 keywords: knative
 
@@ -33,7 +33,7 @@ Run these commands to manage the entities that make up Coligo.
 ## Project commands
 {: #cli-project}
 
-Create, display details, and delete projects. 
+A project is a container for components, such as applications and job definitions. Projects enable you to manage resources and provide access to components in the project. Use project commands to create, display details, and delete projects.
 {: shortdec}
 
 To see CLI help for the project command, run `ibmcloud coligo project`.
@@ -133,12 +133,13 @@ ibmcloud coligo project get --name myproject
 Getting project 'myproject'...
 
 Name: myproject
+ID: 42642513-8805-4da8-8dbf-bc4f409g9089
 Status: active
 Tags: []
 Location: us-south
 Resource Group: Default
-Created: Tue, 14 Apr 2020 11:33:12 -0400
-Updated: Tue, 14 Apr 2020 11:33:27 -0400
+Created: Tue, 28 Apr 2020 09:27:22 -0400
+Updated: Tue, 28 Apr 2020 09:27:57 -0400
 
 Command 'project get' performed successfully
 ```
@@ -165,9 +166,9 @@ ibmcloud coligo project list
 **Output**
 
 ```
-Name                              Status         Tags   Location   Resource Group
-myproject                         active                us-south
-newproj                           active                us-south
+Name            ID                                    Status         Tags   Location   Resource Group
+myproject       42642513-8805-4da8-8dbf-bc4f409g9089   active               us-south   Default
+new_proj        d294c0a3-30d8-49bc-b070-1921692f41d4   active               us-south   Default
 
 Command 'project list' performed successfully
 ```
@@ -176,10 +177,10 @@ Command 'project list' performed successfully
 ## Target command
 {: #cli-target}
 
-Targets a Coligo project. Before using the target command, you must be in the context of a project. 
+Targets a Coligo project. Before using the target command, you must have a project created. By targeting a project, the commands that you run are run within the specified project.  
 {: shortdec}
 
-To see CLI help for the target command, run `ibmcloud coligo target`. If you are running on a Windows operating system, you must run the command in a window that is enabled for administrator permissions using the `Run as Administrator` option.   
+To see CLI help for the target command, run `ibmcloud coligo target`. 
 {: tip}
 
 ### `ibmcloud coligo target`
@@ -189,7 +190,7 @@ Target a project for context.
 {: shortdec}
 
 ```
-ibmcloud coligo target --name PROJECT_NAME [--export KUBECONFIG]
+ibmcloud coligo target --name PROJECT_NAME [--export KUBECONFIG] [--project-api PROJECTAPI]
 ```
 {: pre}
 
@@ -198,7 +199,9 @@ ibmcloud coligo target --name PROJECT_NAME [--export KUBECONFIG]
 <dt>`-n`, `--name`</dt>
 <dd>The name of the project. This value is required.</dd>
 <dt>`-e`, `--export`</dt>
-<dd>Exports and appends the project configuration to the Kubernetes configuration file (`$HOME/.kube/config`).  The default value is `false`. This value is optional.</dd>
+<dd>Exports and automatically appends the project configuration to the Kubernetes configuration file (`$HOME/.kube/config`).  The default value is `false`. This value is optional.</dd>
+<dt>`-p`, `--project-api`</dt>
+<dd>Specifies an alternate URL to use for project queries. This value is optional.</dd>
 </dl>
 
 **Example**
@@ -211,16 +214,15 @@ ibmcloud coligo target --name myproject
 **Output**
 
 ```
-OK
-Now targeting environment 'myproject' (b49ca89f-g99q-4c9d-ae2d-6da42fbad57b). Set the KUBECONFIG environment variable to use kubectl with your project:
-export KUBECONFIG=C:\.bluemix\plugins\coligo/myproject-b49ca89f-g99q-4c9d-ae2d-6da42fbad57b.yaml
+Now targeting environment 'myproject' (42642513-8805-4da8-8dbf-bc4f409g9089). Set the KUBECONFIG environment variable to use kubectl with your project:
+export KUBECONFIG=/users/myusername/.bluemix/plugins/coligo/myproject-42642513-8805-4da8-8dbf-bc4f409g9089.yaml
 ```
 {: screen}
 
 ## Application commands
 {: #cli-application}
 
-Create, display details, update, and delete applications. Before using application commands, you must be in the context of a project. 
+Before using application commands, you must be targeting a [project](#cli-project).  An application runs your code to serve HTTP requests. The application has a private URL for incoming requests. Use application commands to create, display details, and update, and delete applications. 
 {: shortdec}
 
  
@@ -243,41 +245,44 @@ ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registr
 <dt>`-n`, `--name`</dt>
 <dd>The name of the application. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project./dd>
 <dt>`-i`, `--image`</dt>
-<dd>The name of the image used for this application. This value is required. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</dd>
+<dd>The name of the image used for this application. This value is required. [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
 <dt>`--rs`, `--registry-secret`</dt>
 <dd>The name of the secret for the image. This value is optional.</dd>
 <dt>`-c`, `--cpu`</dt>
-<dd>The amount of CPU set for the application. The default value is 1. This value is optional.</dd>
+<dd>The amount of CPU set for the instance of the application. The default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
-<dd>The amount of memory set for the application. The default value is 64 M. This value is optional.</dd>
+<dd>The amount of memory set for the instance of the application. The default value is 64 M. This value is optional.</dd>
 <dt>`-t`, `--timeout`</dt>
 <dd>The amount of time that can pass before the application must succeed or fail. The default value is 360 seconds. This value is optional.</dd>
 <dt>`--cn`, `--concurrency`</dt>
-<dd>The number of requests that can be processed concurrently. The default value is 1. This value is optional.</dd>
+<dd>The number of requests that can be processed concurrently per instance. The default value is 1. This value is optional.</dd>
 <dt>`--min`, `--minscale`</dt>
 <dd>The minimum number of instances that can be used for this application. The default value is 1. This value is optional.</dd>
 <dt>`--max`, `--maxscale`</dt>
 <dd>The maximum number of instances that can be used for this application. The default value is 1. This value is optional.</dd>
 <dt>`-p`, `--project`</dt>
 <dd>The name of the project to contain this application. If this value is not set, then the current project is used. This value is optional.</dd>
+<dt>`-q`, `--quiet`</dt>
+<dd>Specify this option to reduce the output of the command. The default value is `false`. This value is optional.</dd>
 </dl>
 
 **Example**
 
 ```
-ibmcloud coligo application create --name myapp --image agrawals18/helloworld 
+ibmcloud coligo application create --name myapp --image ibmcom/helloworld 
 ```
 {: pre}
 
 **Output**
 
 ```
-Service 'myapp' created to latest revision 'myapp-zxxlr-1' is available at URL:
-http://myapp.b49ca89f-g99q.us-south.knative.test.appdomain.cloud
-
-Application myapp correctly created!
+Creating Application 'myapp'...
+Successfully created application 'myapp' created. Run `ibmcloud coligo application get -n 'myapp'` to check the application status.
 ```
 {: screen}
+
+When you run `ibmcloud coligo application get -n 'myapp'` to check the application status, the URL for your application is displayed.  
+{: tip}
 
 ### `ibmcloud coligo application delete`
 {: #cli-application-delete}
@@ -344,7 +349,7 @@ URL:        http://myapp.b49ca89f-g99q.us-south.knative.test.appdomain.cloud
 
 Revisions:
   100%  @latest (myapp-zxxlr-1) [1] (19h)
-        Image:  agrawals18/helloworld (pinned to be18cb)
+        Image:  ibmcom/helloworld (pinned to be18cb)
 
 Conditions:
   OK TYPE                   AGE REASON
@@ -382,16 +387,17 @@ ibmcloud coligo application list
 ```
 NAME        URL                                                                    LATEST              AGE   CONDITIONS   READY   REASON
 myapp       http://myapp.b49ca89f-g99q.us-south.knative.test.appdomain.cloud       myapp-zxxlr-1       19h   3 OK / 3     True
-mytestibm   http://mytestibm.b49ca89f-g99q.us-south.knative.test.appdomain.cloud   mytestibm-qhmzn-1   20h   3 OK / 3     True
+mytestapp   http://mytestapp.42734592-8355.us-south.knative.test.appdomain.cloud   mytestapp-qhmzn-1   20h   3 OK / 3     True
 ```
 {: screen}
 
 
 
 ## Job definition commands
-{: #cli-job-def}
+{: #cli-jobdef}
 
-Create, display details, and delete job definition.  Before using job definition commands, you must be in the context of a project. 
+Before using job definition commands, you must be targeting a [project](#cli-project). A job definition is a template that contains workload configuration information that is used to run [jobs](#cli-job-runcmd). After creating a job definition, one or more jobs can be submitted based on the job definition, optionally overwriting values of the job definition. Use job definition commands to create, display details, update, and delete applications. 
+
 {: shortdec}
 
 To see CLI help for the job definition command, run `ibmcloud coligo jobdef`.
@@ -413,7 +419,7 @@ ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argu
 <dt>`-n`, `--name`</dt>
 <dd>The name of the job definition. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project.</dd>
 <dt>`-i`, `--image`</dt>
-<dd>The name of the image used for this job definition. This value is required. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</dd>
+<dd>The name of the image used for this job definition. This value is required. [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
 <dt>`-a`, `--argument`</dt>
 <dd>Set any arguments for the job definition. This value is required. Specify one argument per `--argument` flag.  To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`.</dd>
 <dt>`-e`, `--env`</dt>
@@ -469,6 +475,7 @@ ibmcloud coligo jobdef get --name myjobdef
 **Output**
 
 ```
+Name:         myjobdef
 Namespace:    b49ca89f-g99q
 Labels:       <none>
 Annotations:  <none>
@@ -478,7 +485,7 @@ Metadata:
   Creation Timestamp:  2020-04-16T15:21:41Z
   Generation:          1
   Resource Version:    69009760
-  Self Link:           /apis/coligo.cloud.ibm.com/v1alpha1/namespaces/b49ca89f-g99q/jobdefinitions/myjobdef-jobdef
+  Self Link:           /apis/coligo.cloud.ibm.com/v1alpha1/namespaces/b49ca89f-g99q/jobdefinitions/myjobdef
   UID:                 6ac2e78c-0883-4564-9158-4c7e08762a41
 Spec:
   Containers:
@@ -500,7 +507,6 @@ Spec:
         Cpu:     1
         Memory:  128Mi
 Events:          <none>
-
 
 Command 'job definition get' performed successfully
 ```
@@ -567,13 +573,13 @@ test            69m
 ```
 {: screen}
 
-## Job run commands
+## Job commands
 {: #cli-job-runcmd}
 
-Create, display details, and delete run jobs. 
+A job runs your code to complete a task. Before using job commands, you must be targeting a [project](#cli-project) and have a [job definition](#cli-jobdef) created. Jobs are submitted based on a job definition. After a job definition is created, you can run one or more jobs that refer to the job definition, optionally overwriting values of the jJob definition. Use job commands to create, display details, and delete jobs. 
 {: shortdec}
 
-To see CLI help for the job run commands, run `ibmcloud coligo job`. 
+To see CLI help for the job commands, run `ibmcloud coligo job`. 
 {: tip}
 
 ### `ibmcloud coligo job run`
@@ -593,13 +599,9 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 <dd>The name of the job to be run. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project. </dd>
 <dt>`--jd`, `--jobdef`</dt>
 <dd>Identifies the job definition that contains the description of the job to be run. This value is required.</dd>
-<dt>`--as`, `--arraysize`</dt>
-<dd>Indicates how may pods can be used to run the container specified by the job definition. The default value is 1. This value is optional.</dd>
-<dt>`-r`, `--retrylimit`</dt>
-<dd>Specifies the number of times to retry the job.  The default value is 3. This value is optional.</dd>
-<dt>`-e`, `--env`</dt>
 <dt>`-i`, `--image`</dt>
-<dd>The name of the image used for this job. This value overrides any image that is passed in the job definition. This value is optional. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</dd>
+<dd>The name of the image used for this job. This value is required. [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. This value overrides any `--image` value that is assigned in the job definition.</dd>
+<dt>`-e`, `--env`</dt>
 <dd>Indicates any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables that are passed in the job definition. This value is optional. </dd>
 <dt>`-a`, `--argument`</dt>
 <dd>Sets any arguments for the container. To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`. This value overrides any arguments passed in the job definition. This value is optional.</dd>  
@@ -609,6 +611,10 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 <dd>Specifies the number of CPUs to assign to the container that is running the image. This value overrides any `--cpu` value that is assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
 <dd>Specifies the amount of memory to assign to the container that is running the image. This value overrides any `--memory` value that is assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 64 M. This value is optional.</dd>
+<dt>`--as`, `--arraysize`</dt>
+<dd>Specifies the number of pods used to run the container specified by the job definition. The default value is 1. This value is optional.</dd>
+<dt>`-r`, `--retrylimit`</dt>
+<dd>Specifies the number of times to retry the job.  The default value is 3. This value is optional.</dd>
 </dl>
 
 **Example**
@@ -616,7 +622,7 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 The following example creates three new pods to run the container image specified in the `hello` JobDefinition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128 MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
 
 ```
-ibmcloud coligo job run --name hello --jobdef hello --arraysize 5 --retryLimit 2 --memory 128M --cpu 1
+ibmcloud coligo job run --name hello --jobdef hello --arraysize 5 --retrylimit 2 --memory 128M --cpu 1
 ```
 {: pre}
 
