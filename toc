@@ -37,12 +37,11 @@ Coligo
     {: .topicgroup}
     Enhancing security for Coligo
         iam.md
-        architecture-workload-isolation.md
-        service-connection.md
+        
         data-security.md
-        at.md
     
-    high-availability.md
+    
+    {: .navgroup-end}
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
