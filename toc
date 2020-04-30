@@ -19,21 +19,16 @@ Project Coligo
     {: .navgroup-end}
     
     {: .navgroup id="howto"}
-    
     cli-install.md
     project.md 
     deploy.md
     build-job.md
-    
-   
         
     {: .topicgroup}
     Enhancing security for Project Coligo
         iam.md
         
         data-security.md
-    
-    
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
