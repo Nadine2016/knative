@@ -30,9 +30,10 @@ subcollection: knative
 Project Coligo (or "Coligo") provides a platform to unify the deployment of functions, applications, and pre-built containers to a Kubernetes-based infrastructure. It provides a unified experience for developers, enabling higher productivity and faster time to market. Coligo is built on open source projects such as Kubernetes, Istio, Knative, and Tekton.
 {: shortdesc}
 
-Coligo is available in the console at [Coligo overview](https://dev.console.test.cloud.ibm.com/knative/overview){: external}. From this interface, you can [create your project](/docs/knative?topic=knative-manage-project) and then begin [deploying apps](/docs/knative?topic=knative-knative-deploy-app) and [running jobs](/docs/knative?topic=knative-kn-job-deploy).
+Coligo is available in the console at [Coligo overview](https://cloud.ibm.com/knative/overview){: external}. From this interface, you can [create your project](/docs/knative?topic=knative-manage-project) and then begin [deploying apps](/docs/knative?topic=knative-knative-deploy-app) and [running jobs](/docs/knative?topic=knative-kn-job-deploy).
 
 Coligo also includes an [installable CLI plug-in](/docs/knative?topic=knative-kn-install-cli).
+
 
 
 ## Creating your first Coligo app
@@ -41,25 +42,33 @@ Coligo also includes an [installable CLI plug-in](/docs/knative?topic=knative-kn
 Create your first Coligo app by using the [`Hello World`](docker.io/ibmcom/kn-helloworld) image in Docker Hub. When you send a request to your sample app, the app reads the environment variable `TARGET` and prints `"Hello ${TARGET}!"`. If this environment variable is empty, `"Hello World!"` is returned.
 {: shortdesc}
 
-1. Access the Coligo.
-2. Select a project from the list of available projects. You can also [create a new one](/docs/knative?topic=knative-manage-project).
-3. From your project component page, select **Create component**.
-4. Select **Application** as your component type. 
-5. Enter a name and `docker.io/ibmcom/kn-helloworld` for container image. Click **Create**. 
-6. After the application status changes to **Ready**, you can try out your application by clicking **Send Request** and viewing the results in the **Requests** window.  
-7. Now that our application is running, let's create a revision by adding an environmental variable.
-   1. Click **Env. Variables**.
-   2. Click **Add Environmental Variables**.
+1. Access Project Coligo.
+2. Select a project from the list of available projects. You can also [create a new one](/docs/knative?topic=knative-manage-project#create-a-project). 
+3. After your project is created and the project is in `Active` status, you can create the Coligo application. Click the name of your project to open your project component page.
+4. From the Components page for your project, click **Application** to open the create Application page.
+5. Enter a name for the application and specify `ibmcom/helloworld` for container image. For this example, you do not need to modify the default values for **Runtime settings** or **Environment variables**.
+6. Click **Deploy**. 
+7. After the application status changes to **Ready**, you can test the application by clicking **Test application**. To see the running application, click **Application URL**.  
+8. Now that our application is running, let's create a revision by adding an environment variable.
+   1. Click **Env. variables**.
+   2. Click **Add environmental Variable**.
    3. Enter `TARGET` for name and `Stranger` for value. 
-   4. Click **Save** and run the application again. `Hello Stranger` is displayed.
-   5. You can see the revisions for the application by clicking **Revisions and Traffic** from navigation. 
+   4. Click **Save and deploy** to run the application revision. 
+   5. After the application status changes to **Ready**, you can test the application by clicking **Test application**. To see the running application, click **Application URL**. `Hello Stranger` is displayed.
+   6. You can see the revisions for the application by clicking **Revisions and Traffic** from the navigation. 
 
-Congratulations, you have deployed your first application to Coligo and tested it out. You then created a revision by adding some environmental variables and testing out that revision.
+Congratulations, you have deployed your first application to Coligo and tested it out. You then created a revision by adding an environment variable and ran that revision. 
 
 ## Running your first Coligo job
 {: #kn-first-job}
 
-Create your first Coligo job by using the [Coligo CLI](/docs/knative?topic=knative-kn-install-cli). To run a job, you must first create a job definition. Then, run the job with the parameters provided by the definition. In this example, the job definition uses the container image `busybox` and runs the command `/bin/sh -c` `echo Hello $JOB_INDEX. ENV1 is $ENV1, ENV2 is $ENV2, ENV3 is $ENV3.` When this job runs, the output prints "Hello" followed by the value of the `$JOB_INDEX` and three environment parameters that are defined in `env`.
+Create your first Coligo job by using the [Coligo CLI](/docs/knative?topic=knative-install-cli).
+
+To run a job, you must first create a job definition. Then, run the job with the parameters provided by the definition. In this example, the job definition uses the container image `busybox` and runs the command `/bin/sh -c` `echo Hello $JOB_INDEX. ENV1 is $ENV1, ENV2 is $ENV2, ENV3 is $ENV3.` When this job runs, the output prints "Hello" followed by the value of the `$JOB_INDEX` and three environment parameters that are defined in `env`.
+
+**Before you begin**
+ - Install the [Coligo CLI](/docs/knative?topic=knative-install-cli)
+ - [Create](/docs/knative?topic=knative-manage-project#create-a-project) and [target](/docs/knative?topic=knative-manage-project#target-a-project)  a project.  
 
 1. Create the job definition with the `coligo jobdef create` command.
 

@@ -48,16 +48,14 @@ You must create an [{{site.data.keyword.cloud_notm}} account on TEST](https://te
    ```
    {: pre}
 
-
 3. Install knative CLI `kn`
 
-    * Download the kn from the [source](https://storage.googleapis.com/knative-nightly/client/latest/kn-darwin-amd64) for Mac
-    * Copy it to your PATH with `mv ~/Downloads/kn-darwin* /usr/local/bin/kn`
-    * Make it executable with `chmod +x /usr/local/bin/kn`
+    1. Download the kn from the [source](https://storage.googleapis.com/knative-nightly/client/latest/kn-darwin-amd64) for Mac
+    2. Copy it to your PATH with `mv ~/Downloads/kn-darwin* /usr/local/bin/kn`
+    3. Make it executable with `chmod +x /usr/local/bin/kn`
 
-    Follow instructions at [release page](https://github.com/knative/client/blob/master/docs/README.md#installing-kn) for specific environments.
+    For specific environments, follow instructions at [release page](https://github.com/knative/client/blob/master/docs/README.md#installing-kn).
     
-
 4. Log into Test IBM Cloud
 
    ```
@@ -67,9 +65,9 @@ You must create an [{{site.data.keyword.cloud_notm}} account on TEST](https://te
 
 5. If you have more than one account, select one from the list. 
 
-6.  Select `us-south` as the target region.
+6. Select `us-south` as the target region.
 
-7.  List your resource groups and select one to target
+7. List your resource groups and select one to target.
 
    ```
    ibmcloud resource groups
@@ -83,7 +81,7 @@ You must create an [{{site.data.keyword.cloud_notm}} account on TEST](https://te
    ```
    {: pre}        
 
-You can now proceed to [Managing projects](/docs/knative?topic=knative-knative-manage-project)!
+You can now proceed to [Managing projects](/docs/knative?topic=knative-manage-project)!
 
 ## Where can I get help?
 

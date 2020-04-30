@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-29"
+lastupdated: "2020-04-30"
 
 keywords: knative
 
@@ -277,7 +277,8 @@ ibmcloud coligo application create --name myapp --image ibmcom/helloworld
 
 ```
 Creating Application 'myapp'...
-Successfully created application 'myapp' created. Run `ibmcloud coligo application get -n 'myapp'` to check the application status.
+Successfully created application 'myapp' created. 
+Run `ibmcloud coligo application get -n 'myapp'` to check the application status.
 ```
 {: screen}
 
@@ -419,7 +420,7 @@ ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argu
 <dt>`-n`, `--name`</dt>
 <dd>The name of the job definition. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project.</dd>
 <dt>`-i`, `--image`</dt>
-<dd>The name of the image used for this job definition. This value is required. [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
+<dd>The name of the image used for this job definition. This value is required. For images in [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
 <dt>`-a`, `--argument`</dt>
 <dd>Set any arguments for the job definition. This value is required. Specify one argument per `--argument` flag.  To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`.</dd>
 <dt>`-e`, `--env`</dt>
