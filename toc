@@ -2,7 +2,7 @@
 {:topicgroup: .topicgroup}
 
 {: .toc subcollection="knative" category="compute" audience="compute" href="/docs/knative?topic=knative-getting-started" path="knative"}
-Coligo
+Project Coligo
 
     {: .navgroup id="learn"}
     getting-started.md
@@ -19,29 +19,21 @@ Coligo
     {: .navgroup-end}
     
     {: .navgroup id="howto"}
-    planning.md
+    
     cli-install.md
     project.md 
+    deploy.md
+    build-job.md
+    
+   
         
     {: .topicgroup}
-    Running Coligo applications in the cloud
-        prep.md
-        deploy.md
-        
-        
-    {: .topicgroup}
-    Running jobs in the cloud
-        build-job.md
-        deploy-job.md
-        
-    {: .topicgroup}
-    Enhancing security for Coligo
+    Enhancing security for Project Coligo
         iam.md
         
         data-security.md
     
     
-    {: .navgroup-end}
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
