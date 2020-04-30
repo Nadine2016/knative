@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-29"
+lastupdated: "2020-04-30"
 
 keywords: knative
 
@@ -33,7 +33,7 @@ An *Application* runs your code to serve HTTP requests. An Application has a pri
 {: #knative-deploy-app}
 
 Deploy your app with Coligo.
-{: #shortdesc} 
+{: shortdesc}
 
 **Before you begin**
 
@@ -45,9 +45,9 @@ Deploy your app with Coligo.
 {: #deploy-app-console}
 
 The following steps describe how to deploy an application using the Coligo console.
-{: #shortdesc} 
+{: shortdesc}
 
-1. Access the Coligo.
+1. Access Coligo.
 2. Select a project from the list of available projects. You can also [create a new one](/docs/knative?topic=knative-manage-project).
 3. From the Projects page, click the name of your project to open the project component page. 
 4. From your project component page, select **Create component**.
@@ -62,7 +62,7 @@ You have created and deployed an application to Coligo and tested it out using t
 {: #deploy-app-cli}
 
 Deploy your application from the CLI with the `coligo application create` command. 
-{: #shortdesc}
+{: shortdesc}
 
 ```
 ibmcloud coligo application create --name NAME --image IMAGE
@@ -139,7 +139,7 @@ requests per instance" times "the maximum number of instances":
 {: #access-service}
 
 After your service deploys, you can access it through a private URL.
-{: #shortdesc}
+{: shortdesc}
 
 From the console, your application URL is available from the components page and on the application details page.
 
@@ -154,13 +154,13 @@ ibmcloud coligo application get --name NAME
 {: #update-app}
 
 An Application contains one or more *revisions*. A revision represents an immutable version of the configuration properties of the Application. Each update of an application configuration property creates a new revision of the Application.
-{: #shortdesc} 
+{: shortdesc} 
 
 To create a revision of the application, modify the application. 
 
 For exanple, update the application that you created in [Deploying an application from console](#deploy-app-console) to add an environmental variable.
 
-1. Click **Env. Variables**.
+1. From the Click **Env. Variables**.
 2. Click **Add Environmental Variables** and enter `TARGET` for name and `Stranger` for value.
 3. Click **Save** to save your change.
 4. Run the application again. `Hello Stranger` is displayed in the **Requests** window.

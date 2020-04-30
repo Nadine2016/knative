@@ -29,7 +29,7 @@ subcollection: knative
 {: #manage-project}
 
 Learn how to create and target projects. 
-{: #shortdesc} 
+{: shortdesc} 
 
 ## What is a project?
 With Coligo, you can create Identity and Access (IAM) managed projects to group components, such as applications or jobs. Then, you can create IAM access policies for the projects. For an overview of IAM, see [Managing user access](/docs/knative?topic=knative-knative-iam). Projects incur no costs, but instead serve as folders for your applications and jobs.
@@ -87,13 +87,15 @@ Command 'project get' performed successfully
 {: screen}
 
 ## Create a project
+{: #create-a-project}
 You can create a project through the console or with the CLI.
-{: #shortdesc} 
+{: shortdesc} 
 
 Please wait for several minutes after creating your project before you proceed to the next step as it will take some time for your project to provision.
 {: important}
 
 ### Create a project through the console
+{: #create-project-console}
 
 1. From the [Coligo console](https://cloud.ibm.com/coligo){: external} project menu, select **Create Project**.
 2. Enter a display name for the namespace and a short description, such as the actions or packages that you plan to create in this namespace.
@@ -105,6 +107,7 @@ To view the service instance for the project resource, go to your [{{site.data.k
 You can update the name or description of the project from the **Projects Settings** page in the Coligo console.
 
 ### Create a project with the CLI
+{: #create-project-cli}
 
 1. Install the [Coligo CLI](/docs/knative?topic=knative-kn-install-cli). Target the resource group that you want to use for the project. 
 
@@ -153,14 +156,19 @@ You can update the name or description of the project from the **Projects Settin
   {: pre}
 
 ## Target a project
+{: #target-a-project}
+
 After you create a project, target it for use with Coligo. You can use the console or the CLI.
-{: #shortdesc} 
+{: shortdesc} 
 
-### Target a project through the console
+### Target a project from the console
+{: #target-project-console}
 
-From the [Coligo console](https://cloud.ibm.com/coligo){: external} project menu, select target project.
+To target a project from the [Coligo console](https://cloud.ibm.com/coligo){: external} project menu, select a project from the list.
 
 ### Target a project with the CLI
+{: #target-project-cli}
+
 To target a project with the CLI, use the [`project target`](/docs/knative?topic=knative-kn-cli#cli-project-target) command. 
 
 ```
@@ -176,18 +184,23 @@ export KUBECONFIG=/users/myusername/.bluemix/plugins/coligo/myproject-42642513-8
 ```
 {: screen}
 
-  Notice that the Coligo system provides the export command for you to run to target the project to your Kubernetes cluster. The provided command is tailored to your operating system and user information.  Run the provided command.  Alternatively, you can specify the `--export` option on the `target` command to export and automatically append the project configuration to the Kubernetes configuration file (`$HOME/.kube/config`). 
-  {: tip}
+Notice that the Coligo system provides the `export` command to set the `KUBECONFIG` environmental variable for you. This command is tailored to your operating system and user information.  Run this command to use `kubectl` with your project. Alternatively, you can specify the `--export` option on the `target` command to export and automatically append the project configuration to the Kubernetes configuration file (`$HOME/.kube/config`). 
+{: tip}
 
 ## Delete a project
+{: #delete-project}
+
 When you no longer need a project, you can delete it. Deleting a project deletes all of the components that it contains. You can use the console or the CLI.
 {: #shortdesc} 
 
 ### Delete a project through the console
+{: #delete-project-console}
 
 From the [Coligo console](https://cloud.ibm.com/coligo){: external} project menu, select delete project.
 
 ### Delete a project through the CLI
+{: #delete-project-cli}
+
 To delete a project with the CLI, use the [`project delete`](/docs/knative?topic=knative-kn-cli#cli-project-delete) command. 
 
 ```
