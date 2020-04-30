@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-29"
+lastupdated: "2020-04-30"
 
 keywords: knative, project
 
@@ -89,6 +89,9 @@ Command 'project get' performed successfully
 ## Create a project
 You can create a project through the console or with the CLI.
 {: #shortdesc} 
+
+Please wait for several minutes after creating your project before you proceed to the next step as it will take some time for your project to provision.
+{: important}
 
 ### Create a project through the console
 
