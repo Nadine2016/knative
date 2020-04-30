@@ -22,7 +22,7 @@ Project Coligo
     cli-install.md
     project.md 
     deploy.md
-    build-job.md
+    deploy-job.md
         
     {: .topicgroup}
     Enhancing security for Project Coligo
