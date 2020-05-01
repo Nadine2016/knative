@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-30"
+lastupdated: "2020-05-01"
 
 keywords: knative, getting started
 
@@ -51,10 +51,10 @@ Create your first Coligo app by using the [`Hello World`](docker.io/ibmcom/kn-he
 7. After the application status changes to **Ready**, you can test the application by clicking **Test application**. To see the running application, click **Application URL**.  
 8. Now that our application is running, let's create a revision by adding an environment variable.
    1. Click **Env. variables**.
-   2. Click **Add environmental Variable**.
+   2. Click **Add environmental variable**.
    3. Enter `TARGET` for name and `Stranger` for value. 
    4. Click **Save and deploy** to run the application revision. 
-   5. After the application status changes to **Ready**, you can test the application by clicking **Test application**. To see the running application, click **Application URL**. `Hello Stranger` is displayed.
+   5. After the application status changes to **Ready**, you can test the application revision by clicking **Test application**. To see the running application, click **Application URL**. `Hello Stranger` is displayed.
    6. You can see the revisions for the application by clicking **Revisions and Traffic** from the navigation. 
 
 Congratulations, you have deployed your first application to Coligo and tested it out. You then created a revision by adding an environment variable and ran that revision. 
