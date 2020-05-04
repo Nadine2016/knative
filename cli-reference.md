@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-30"
+lastupdated: "2020-05-04"
 
 keywords: knative
 
@@ -363,7 +363,7 @@ Command 'application get' performed successfully
 {: screen}
 
 
-
+-->
 
 ### `ibmcloud coligo application list`
 {: #cli-application-list}
@@ -426,7 +426,7 @@ ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argu
 <dt>`-e`, `--env`</dt>
 <dd>Set any environmental variables to pass to the job definition. Variables use a `KEY=VALUE` format. This value is optional.</dd>
 <dt>`-c`, `--command`</dt>
-<dd>Set any commands for the job definition. This value is optional.</dd>
+<dd>Set a command. This value is optional.</dd>
 <dt>`--cpu`</dt>
 <dd>Specifies the number of CPUs to be assigned to the job definition. The default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
@@ -607,7 +607,7 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 <dt>`-a`, `--argument`</dt>
 <dd>Sets any arguments for the container. To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`. This value overrides any arguments passed in the job definition. This value is optional.</dd>  
 <dt>`-c`, `--command`</dt>
-<dd>Set any commands for the job. This value overrides any commands that are passed in the job definition. This value is optional.</dd>
+<dd>Set a command. This value overrides any commands that are passed in the job definition. This value is optional.</dd>
 <dt>`--cpu`</dt>
 <dd>Specifies the number of CPUs to assign to the container that is running the image. This value overrides any `--cpu` value that is assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
@@ -620,10 +620,10 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 
 **Example**
 
-The following example creates three new pods to run the container image specified in the `hello` JobDefinition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128 MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
+The following example creates three new pods to run the container image specified in the `hello` job definition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128 MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
 
 ```
-ibmcloud coligo job run --name hello --jobdef hello --arraysize 5 --retrylimit 2 --memory 128M --cpu 1
+ibmcloud coligo job run --name hellojob --jobdef hello --arraysize 5 --retrylimit 2 --memory 128M --cpu 1
 ```
 {: pre}
 

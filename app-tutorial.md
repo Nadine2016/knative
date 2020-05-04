@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-01"
+lastupdated: "2020-05-04"
 
 keywords: knative
 
@@ -27,17 +27,20 @@ subcollection: knative
 # Deploying application workloads
 {: #knative-deploy-app-tutorial}
 
-With this tutorial, deploy a containerized application in a serverless fashion. The application pod scales to zero when not in use.
+With this tutorial, deploy a containerized application in a serverless fashion using the Coligo CLI. The application scales to zero when not in use.
 
 ** Before you start**
 
 - [Set up your Coligo environment](/docs/knative?topic=knative-kn-install-cli)
-- Create a docker image
 
 
-## Step 1 - Assemble and deploy a knative service
+## Create a Docker image
 
-1. Create a `hellworld` API server in Go.
+This tutorial uses a sample Docker image file is available at [ibmcom/helloworld}(https://cloud.docker.com/repository/docker/ibmcom/helloworld). However, you can easily adapt it to an image of your own. 
+
+If you have a container image that you want to use, you can replace the image reference in the next step with your docker repository, image name, and version.
+
+For example, create a `helloworld` application in Go.
 
    ```
    cat helloworld.go
@@ -74,51 +77,77 @@ With this tutorial, deploy a containerized application in a serverless fashion. 
    ```
    {: pre}
 
-For this tutorial, the docker image file has been created for you and is available at [agrawals18/helloworld}(https://cloud.docker.com/repository/docker/agrawals18/helloworld)
 
-If you have a sample container image that you want to use, you can replace the image reference in the next step with your docker repository, image name, and version. If you want to build the image your own with docker, see [How to run steps 4 to 6 with your own image](#optional-run-steps-1-to-4-with-your-own-image)
 
-2.  Deploy a new knative service using `kn cli`.
+## Create and deploy an application
+
+1.  Create your application. Just provide a name of the image used for this application and a name for your application. We are using the `ibmcom/helloworld` image reference. 
 
     ```
-    kn service create helloworld --image agrawals18/helloworld --requests-cpu 50m --requests-memory 128Mi --limits-cpu 2000m --limits-memory 4Gi
-
+    ibmcloud coligo application create --image ibmcom/helloworld --name helloworld
     ```
     {: pre}
 
    **Sample output**
 
    ```
-   Service 'helloworld' successfully created in namespace `86f22937-67fe-42cb-b405-8dbacccb1edf`.
-   Waiting for service 'helloworld' to become ready ... OK
-
-   Service URL:
-   http://helloworld-86f22937-67fe-42cb-b405-8dbacccb1edf.functions.test.appdomain.cloud
+      Creating Application 'helloworld'...
+      Successfully created application 'helloworld' created. Run `ibmcloud coligo application get -n 'helloworld'` to check the application status.
    ```
    {: screen}
 
-## Step 2 - Call the service API
+2.  Run the `application get` command to display details about the application, which includes the URL for the `helloworld` application. 
 
-1. Get the public endpoint of the service with `kn`
+    ```
+    ibmcloud coligo application get -n helloworld
+    ```
+    {: pre}
+
+   **Sample output**
 
    ```
-   kn service list
+   Getting application 'helloworld'...
+   Name: helloworld
+   Namespace: 42642513-8805
+   Age: 25m18s
+   URL: http://helloworld.42642513-8805.us-south.knative.test.appdomain.cloud
+   Console URL: https://test.cloud.ibm.com/knative/project/us-south/42642513-8805-4da8-8dbf-ae4f409f8054/application/helloworld/configuration
+
+   Revisions:
+      100%  @latest (helloworld-plnxt-1) [1] (25m15s)
+        Image:  ibmcom/helloworld (pinned to b898f1)
+
+   Conditions:
+      OK   Type                  Age      Reason
+      ++   ConfigurationsReady   25m1s
+      ++   Ready                 24m51s
+      ++   RoutesReady           24m51s
+      OK
+      Command 'application get' performed successfully
+   ```
+   {: screen}
+
+3. Obtain the URL of the application from running the `application get` command as described in the previous step.  Additionally, you can run the `application list` command to get the application URL.  
+
+   ```
+   ibmcloud coligo application list
    ```
    {: pre}
 
    **Sample output**
 
    ```
-   Name         Domain                                                                                 Annotations         Conditions   Age
-   helloworld  http://helloworld-86f22937-67fe-42cb-b405-8dbacccb1edf.functions.test.appdomain.cloud     -             3 OK / 3    23s
-
+   Listing all applications...
+   Name        URL                                                                    Latest              Age     Conditions  Ready   Reason
+   helloworld  http://helloworld.42642513-8805.us-south.knative.test.appdomain.cloud  helloworld-plnxt-1  19m26s  3 OK / 3    True
+   Command 'application list' performed successfully
    ```
    {: screen}
 
-2. Copy the domain URL and call the API with `curl`.
+4. Copy the domain URL from the previous output and call the application with `curl`.
 
    ```
-   curl http://helloworld-86f22937-67fe-42cb-b405-8dbacccb1edf.functions.test.appdomain.cloud
+   curl http://helloworld.42642513-8805.us-south.knative.test.appdomain.cloud
    ```
    {: pre}
    
@@ -129,82 +158,16 @@ If you have a sample container image that you want to use, you can replace the i
    ```
    {: screen}
    
-Congratulations, you have successfully deployed and invoked your first service on knative!
+Congratulations, you have successfully deployed and invoked your first Coligo application!
 
-## Step 3 - Update your service
 
-1. Update your newly created Knative service with `kn` by providing a memory limit.
 
-   ```
-   kn service update helloworld --requests-memory 256Mi
-   ```
-   {: pre}
-   
-   **Sample output**
+### Application scaling (scale-to-zero and scale-from-zero)
+
+1. Call the application. 
 
    ```
-   Waiting for service 'helloworld' to become ready ... OK
-   Service 'helloworld' updated in namespace '86f22767-67fe-42ab-b405-8dbadccb1gdf'.
-   ```
-   {: screen}
-
-2. List all revisions to find the new revision. 
-
-   ```
-   kn revision list
-   ```
-   {: pre}
-   
-   **Sample output**
-
-   ```
-   NAME                SERVICE       AGE   CONDITIONS   READY   REASON
-   helloworld-5jt2f    helloworld    95s   3 OK / 4     True
-   helloworld-x5hns    helloworld    25m   3 OK / 4     True
-
-   ```
-   {: screen}
-
-   From the output, you can see that there are two revisions of the `helloworld` service.
-
-3. By default, new calls to the service are routed to the new revision. You can verify this action by listing the routes.
-
-   ```
-   kn route list
-   ```
-   {: pre}
-   
-   **Sample output**
-
-   ```
-   NAME          URL                                                                                      AGE   CONDITIONS   TRAFFIC
-   helloworld    http://helloworld-86f22937-67fe-42cb-b405-8dbacccb1edf.functions.test.appdomain.cloud    26m   3 OK / 3     100% -> helloworld-5jt2f
-
-   ```
-   {: screen}
-
-   As shown in the sample output, under TRAFFIC `100% -> helloworld-5jt2f` where `helloworld-5jt2f` is the new revision name.
-
-4. You can find All the above resources can be listed, described, and deleted using `kn`
-
-   ```
-   kn service/revision/route delete <service name>/<revision name>/<route name>
-   ```
-   {: pre}
-   
-   **Sample output**
-
-   ```
-   Service/ Revision/ Route <service name>/<revision name>/<route name> successfully deleted in namespace '86f22937-67fe-42cb-b405-8dbacccb1edf'.
-   ```
-   {: screen}
-
-### Step 4 - Scale-to-zero and Scale-from-zero
-
-1. Call the service API:
-
-   ```
-   curl helloworld1.86f22937-67fe-42cb-b405-8dbacccb1edf.functions.test.appdomain.cloud
+   curl http://helloworld.42642513-8805.us-south.knative.test.appdomain.cloud
    ```
    {: pre}
    
@@ -226,13 +189,13 @@ Congratulations, you have successfully deployed and invoked your first service o
 
    ```
    NAME                                            READY   STATUS    RESTARTS   AGE
-   helloworld1-pj7tb-deployment-5579757bcd-xt4ds   2/2     Running   0          72s
+   helloworld-ysqxw-2-deployment-bdc8975dd-mqn4g   2/2     Running   0          72s
    ```
    {: screen}
    
    Wait a few minutes...
 
-3. List pods again and notice that knative has scaled the pod to zero. 
+3. List pods again and notice that the application has scaled the pod to zero. 
 
    ```
    kubectl get pods
@@ -246,10 +209,10 @@ Congratulations, you have successfully deployed and invoked your first service o
    ```
    {: screen}
 
-4. Call the service API again to scale from zero:
+4. Call the application again to scale from zero:
 
    ```
-   curl helloworld1.86f22937-67fe-42cb-b405-8dbacccb1edf.functions.test.appdomain.cloud
+   curl http://helloworld.42642513-8805.us-south.knative.test.appdomain.cloud
    ```
    {: pre}
    
@@ -266,6 +229,5 @@ Voilà!
 You have deployed an arbitrary containerized application in a serverless fashion. 
 In a serverless fashion this means, that you:
 
-1. Don't need to think about scaling, the environment **scale-from zero** to however many instances you need.
-2. Don't need to pay for resources that are not used, i.e. the environment **scales-to zero** if no requests come in.
-
+1. Don't need to think about scaling, the environment **scales-from zero** to however many instances you need.
+2. Don't need to pay for resources that are not used. The environment automatically **scales-to zero** if no requests come in.
