@@ -1,6 +1,6 @@
 # Project Coligo documentation
 
-## Source files for customer-facing documentation
+Source files for Project Coligo documentation
 
 
 
