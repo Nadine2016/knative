@@ -17,6 +17,7 @@ Project Coligo
     {: .topicgroup}
     Tutorial
         [Coligo tutorial](https://test.cloud.ibm.com/docs/tutorials?topic=solution-tutorials-coligo){: new_window}
+        app-tutorial.md
     {: .navgroup-end}
     
     {: .navgroup id="howto"}
