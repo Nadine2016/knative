@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-01"
+lastupdated: "2020-05-04"
 
 keywords: knative, getting started
 
@@ -24,11 +24,14 @@ subcollection: knative
 {:download: .download}
 {:gif: data-image-type='gif'}
 
-# Getting started with Project Coligo 
+# Getting started with Project Coligo (Experimental)
 {: #getting-started}
 
 Project Coligo (or "Coligo") provides a platform to unify the deployment of functions, applications, and pre-built containers to a Kubernetes-based infrastructure. It provides a unified experience for developers, enabling higher productivity and faster time to market. Coligo is built on open source projects such as Kubernetes, Istio, Knative, and Tekton.
 {: shortdesc}
+
+Project Coligo is experimental. Experimental runtimes and services might be unstable or change frequently. Be aware of [experimental limitations](/docs/knative?topic=knative-kn-limits#kn-limits_experimental).
+{: important}
 
 Coligo is available in the console at [Coligo overview](https://cloud.ibm.com/knative/overview){: external}. From this interface, you can [create your project](/docs/knative?topic=knative-manage-project) and then begin [deploying apps](/docs/knative?topic=knative-knative-deploy-app) and [running jobs](/docs/knative?topic=knative-kn-job-deploy).
 

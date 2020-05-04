@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-05-04"
 
 keywords: knative
 
@@ -27,4 +27,4 @@ subcollection: knative
 # Regions
 {: #kn-regions}
 
-Knative is supported in the following regions. TBD. 
+Coligo is supported in the `us-south` region.
