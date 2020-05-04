@@ -53,7 +53,7 @@ ibmcloud coligo project create --name PROJECT_NAME  [--tag TAG]
 **Command options**
 <dl>
 <dt>`-n`, `--name`</dt>
-<dd>The name of the project. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique across regions.</dd>
+<dd>The name of the project. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.
 <dt>`-t`, `--tag`</dt>
 <dd>A label to assign to your resource.  This value is optional. The label must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique across regions. Specify one label per `--tag` flag.  To specify more than one label, use more than one `--tag` flag; for example, `--tag tagA --tag tagB`.</dd>
 </dl>
@@ -243,7 +243,7 @@ ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registr
 **Command options**
 <dl>
 <dt>`-n`, `--name`</dt>
-<dd>The name of the application. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project./dd>
+<dd>The name of the application. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.
 <dt>`-i`, `--image`</dt>
 <dd>The name of the image used for this application. This value is required. [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
 <dt>`--rs`, `--registry-secret`</dt>
@@ -418,7 +418,7 @@ ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argu
 **Command options**
 <dl>
 <dt>`-n`, `--name`</dt>
-<dd>The name of the job definition. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project.</dd>
+<dd>The name of the job definition. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.
 <dt>`-i`, `--image`</dt>
 <dd>The name of the image used for this job definition. This value is required. For images in [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
 <dt>`-a`, `--argument`</dt>
@@ -597,7 +597,7 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 **Command options**
 <dl>
 <dt>`-n`, `--name`</dt>
-<dd>The name of the job to be run. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project. </dd>
+<dd>The name of the job to be run. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.
 <dt>`--jd`, `--jobdef`</dt>
 <dd>Identifies the job definition that contains the description of the job to be run. This value is required.</dd>
 <dt>`-i`, `--image`</dt>
@@ -859,7 +859,7 @@ ibmcloud coligo secret create --name SECRETNAME  --from-literal NAME=VALUE | --f
 **Command options**
 <dl>
 <dt>`--name`</dt>
-<dd>The name of the secret. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project.</dd>
+<dd>The name of the secret. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.</dd>
 <dt>`-f`, `--from-file value`</dt>
 <dd>Include this flag to create a generic secret from a file. You must provide the path to the file as a value. If you do not use this flag, you must use the `--from-literal` flag.</dd>
 <dt>`-l`, `--from-literal`</dt>
@@ -868,23 +868,35 @@ ibmcloud coligo secret create --name SECRETNAME  --from-literal NAME=VALUE | --f
 
 **Example**
 
-- The following example creates a secret that is named `mySecret` with a username and a password.
+- The following example creates a secret that is named `mysecret-fromliteral` with a username and password value pair.
 
   ```
-  ibmcloud coligo secret create --name mySecret --from-literal username=devuser --from-literal password='S!B\*d$zDsb'
+  ibmcloud coligo secret create --name mysecret-fromliteral --from-literal username=devuser --from-literal password='S!B\*d$zDsb'
   ```
   {: pre}
 
-- This example creates a secret that is named `generic-secret` with values from a file.
+  **Output**
+
 ```
-ibmcloud coligo secret create --name mySecret --from-file SECRET_KEY=FILENAME
+Creating Generic Secret...
+secret/mysecret-fromliteral created
+Generic Secret created successfully
+```
+{: screen}
+
+- The following example creates a secret that is named `mysecret-fromfile` with values from a file.
+```
+ibmcloud coligo secret create --name mysecret-fromfile  --from-file ./username.txt --from-file ./password.txt
 ```
 {: pre}
 
 **Output**
 
 ```
-ok:
+Creating Generic Secret...
+secret/mysecret-fromfile created
+
+Generic Secret created successfully
 ```
 {: screen}
 
@@ -902,7 +914,7 @@ ibmcloud coligo secret create --name SECRET_NAME --from-registry URL --username 
 **Command options**
 <dl>
 <dt>`--name`</dt>
-<dd>The name of the secret. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project.</dd>
+<dd>The name of the secret. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.</dd>
 <dt>`-r`, `--from-registry`</dt>
 <dd>Provide the URL of the image registry that contains the secret. This value is required.</dd>
 <dt>`-u`, `--username`</dt>
@@ -914,93 +926,18 @@ ibmcloud coligo secret create --name SECRET_NAME --from-registry URL --username 
 **Example**
 
 ```
-ibmcloud coligo secret create --name image.com --from-registry us.icr.io --username mykey --password 39c-fa445-9773ac48a92
+ibmcloud coligo secret create --name mysecret-fromimage --from-registry us.icr.io --username myusername --password 39c-fa445-9773ac48a92
 ```
 {: pre}
 
 **Output**
 
 ```
-Image Secret correctly created
+Creating Image Secret...
+secret/mysecret-fromimage created
+
+Image Secret created successfully
 ```
 {: screen}
 
-### `ibmcloud coligo secret get`
-{: #cli-secret-get}
 
-Display details of a secret.
-{: shortdec}
-
-```
-ibmcloud coligo secret get SECRET_NAME
-```
-{: pre}
-
-**Command options**
-<dl>
-<dt>`--name`</dt>
-<dd>The name of the secret. This value is required.</dt>
-</dl>
-
-**Example**
-
-```
-ibmcloud coligo secret get mysecret
-```
-{: pre}
-
-**Output**
-
-```
-ok:
-```
-{: screen}
-
-### `ibmcloud coligo secret delete`
-{: #cli-secret-delete}
-
-Delete a secret.
-{: shortdec}
-
-```
-ibmcloud coligo secret delete --name SECRETNAME
-```
-{: pre}
-
-**Command options**
-<dl>
-<dt>`--name`</dt>
-<dd>The name of the secret. This value is required.</dt>
-</dl>
-
-**Example**
-
-```
-ibmcloud coligo secret delete mysecret
-```
-{: pre}
-
-### `ibmcloud coligo secret list`
-{: #cli-secret-list}
-
-List secrets.
-{: shortdec}
-
-```
-ibmcloud coligo secret list
-```
-{: pre}
-
-**Example**
-
-```
-ibmcloud coligo secret list
-```
-{: pre}
-
-**Output**
-
-```
-ok:
-```
-{: screen}
