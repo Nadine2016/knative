@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-17"
+lastupdated: "2020-05-04"
 
 keywords: getting support, knative, knative help, knative support, knative troubleshooting, knative errors, knative slack
 
@@ -35,4 +35,3 @@ If you have problems or questions when you use Coligo, you can get help by joini
 
 * Get help from the open source community by searching for information on the internet or by asking questions in forums and on websites that support these tools.
 * You can also contact IBM Support by opening a case. To learn about opening an IBM support case, or about support levels and case severities, see [Contacting support](/docs/get-support?topic=get-support-getting-customer-support#getting-customer-support). 
-
