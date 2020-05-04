@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-29"
+lastupdated: "2020-05-04"
 
 keywords: knative
 
@@ -170,6 +170,8 @@ When you installed the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli/referenc
 {: #kn-install-cli-plugin}
 
 Now that you have installed {{site.data.keyword.cloud_notm}} CLI, `kn`, and `kubectl`, you are ready to install Coligo.  Coligo uses `kubectl` to interact with your Kubernetes clusters and uses `kn` to manage your knative applications and jobs on those clusters. 
+
+
 
 Complete the following steps to install the Coligo CLI plug-in.
 

@@ -411,7 +411,7 @@ Create a job definition.
 {: shortdec}
 
 ```
-ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argument ARGUMENT [--command COMMAND][--cpu CPU] [--memory MEMORY] [--env ENV] [--env-from-secret ENV_SECRET]
+ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argument ARGUMENT [--command COMMAND][--cpu CPU] [--memory MEMORY] [--env ENV]
 ```
 {: pre}
 
@@ -567,10 +567,10 @@ ibmcloud coligo jobdef list
 **Output**
 
 ```
-NAME            AGE
-app-test-panz   37m
-panzutotest     56m
-test            69m
+NAME        AGE
+hello       5d14h
+hello2      5d14h
+myjobdef    5d15h
 ```
 {: screen}
 
@@ -623,14 +623,16 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 The following example creates three new pods to run the container image specified in the `hello` job definition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128 MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
 
 ```
-ibmcloud coligo job run --name hellojob --jobdef hello --arraysize 5 --retrylimit 2 --memory 128M --cpu 1
+ibmcloud coligo job run --name myjobrun --jobdef myjobdef --arraysize 5 --retrylimit 2 --memory 128M --cpu 1
 ```
 {: pre}
 
 **Output**
 
 ```
-ok:
+Creating Job 'myjobrun'...
+OK
+Successfully created Job 'myjobrun'
 ```
 {: screen}
 
@@ -656,10 +658,13 @@ ibmcloud coligo job list
 
 ```
 NAME             AGE
-panzjob-hjvpz    64m
-panzjob2-drzxp   64m
+hellojob-sjf2t   2d17h
+myjobrun-gvq57   2m18s
 ```
 {: screen}
+
+The name of the job listed indicates the name of the job and the current revision of the job.  
+{: tip}
 
 ### `ibmcloud coligo job get`
 {: #cli-job-get}
@@ -681,14 +686,84 @@ ibmcloud coligo job get --name JOBRUN_NAME
 **Example**
 
 ```
-ibmcloud coligo job get --name myjobrun
+ibmcloud coligo job get --name hellojob
 ```
 {: pre}
 
 **Output**
 
 ```
-ok:
+Getting Job 'myjobrun'...
+Name:         myjobrun-gvq57
+Namespace:    42642513-8805
+Labels:       coligo.cloud.ibm.com/job-definition=myjobdef
+              jobrun=myjobrun
+Annotations:  coligo.cloud.ibm.com/pod-expectations: 5
+API Version:  coligo.cloud.ibm.com/v1alpha1
+Kind:         JobRun
+Metadata:
+  Creation Timestamp:  2020-05-04T17:41:37Z
+  Generate Name:       myjobrun-
+  Generation:          1
+  Resource Version:    87729212
+  Self Link:           /apis/coligo.cloud.ibm.com/v1alpha1/namespaces/42642513-8805/jobruns/myjobrun-gvq57
+  UID:                 25de99f4-b4a3-4ad6-a226-06aa5cdf297c
+Spec:
+  Array Size:          5
+  Job Definition Ref:  myjobdef
+  Job Definition Spec:
+    Containers:
+      Image:  busybox
+      Name:   myjobdef
+      Resources:
+        Requests:
+          Cpu:         1
+          Memory:      128Mi
+  Max Execution Time:  7200
+  Retry Limit:         2
+Status:
+  Completion Time:  2020-05-04T17:41:42Z
+  Conditions:
+    Last Probe Time:       2020-05-04T17:41:37Z
+    Last Transition Time:  2020-05-04T17:41:37Z
+    Status:                True
+    Type:                  Pending
+    Last Probe Time:       2020-05-04T17:41:40Z
+    Last Transition Time:  2020-05-04T17:41:40Z
+    Status:                True
+    Type:                  Running
+    Last Probe Time:       2020-05-04T17:41:42Z
+    Last Transition Time:  2020-05-04T17:41:42Z
+    Status:                True
+    Type:                  Complete
+  Effective Job Definition Spec:
+    Containers:
+      Args:
+        /bin/sh
+        -c
+        echo Hello . ENV1 is , ENV2 is , ENV3 is
+      Env:
+        Name:   ENV1
+        Value:  env1 from jobdef
+        Name:   ENV2
+        Value:  env2 from jobdef
+        Name:   ENV3
+        Value:  env3 from jobdef
+      Image:    busybox
+      Name:     myjobdef
+      Resources:
+        Requests:
+          Cpu:     1
+          Memory:  128Mi
+  Start Time:      2020-05-04T17:41:37Z
+  Succeeded:       5
+Events:
+  Type    Reason     Age                   From                  Message
+  ----    ------     ----                  ----                  -------
+  Normal  Updated    3m57s (x9 over 4m1s)  batch-job-controller  Updated JobRun "myjobrun-gvq57"
+  Normal  Completed  3m57s                 batch-job-controller  JobRun completed successfully
+
+Command 'job get' performed successfully
 ```
 {: screen}
 
@@ -721,7 +796,11 @@ ibmcloud coligo job logs --name myjobrun
 **Output**
 
 ```
-ok:
+Logging Job 'myjobrun' on Pod 0...
+
+Hello . ENV1 is , ENV2 is , ENV3 is
+
+Command 'job logs' performed successfully
 ```
 {: screen}
 
@@ -751,7 +830,9 @@ ibmcloud coligo job delete --name myjobrun
 **Output**
 
 ```
-ok:
+Deleting Job 'myjobrun'...
+
+Deleted Job 'myjobrun'
 ```
 {: screen}
 
