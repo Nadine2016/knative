@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-04"
+lastupdated: "2020-05-05"
 
 keywords: knative
 
@@ -37,6 +37,8 @@ During the experimental release of Project Coligo, be aware of the following lim
 
 - One project per location
 - Three projects per account
+
+Be aware that experimental releases are not intended for production and any projects, apps, or jobs that you create during experimental will not carry over to other releases.
 
 ## Application limits
 {: #kn-limits_application}
