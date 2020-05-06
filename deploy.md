@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-30"
+lastupdated: "2020-05-06"
 
 keywords: knative
 
@@ -185,7 +185,7 @@ After your application has deployed, find the logs.
 {: shortdesc}
 
 Logs for application from the console are available from the application window by clicking **View logs**.
-You can view logs from the CLI by using the 'coligo application logs' command. 
+You can view logs from the CLI by using the `coligo application logs` command. 
 
 ```
 ibmcloud coligo application logs --name NAME --pod PODINDEX

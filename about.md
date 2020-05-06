@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-04"
+lastupdated: "2020-05-06"
 
 keywords: about, knative
 
@@ -46,11 +46,11 @@ When you update your application, a new version, or revision, of your app is cre
 
 An *Application* runs your code to serve HTTP requests. The Application has a private URL for incoming requests. The number of running instances of an Application are automatically scaled up or down (to zero) based on incoming workload. 
 
-An Application contains one or more *revisions* (revision entities). A revision represents an immutable version of the configuration properties of the Application. Each update of an application  configuration property creates a new revision of the Application.
+An Application contains one or more *revisions* (revision entities). A revision of your app represents an immutable version of the configuration properties of the Application. Each update of an application  configuration property creates a new revision of the Application.
 
 ### Components
 
-*Components* are the building blocks of a project and are created using a container image.  Components include Applications and Job definitions.
+*Components* are the building blocks of a Project and are created using a container image.  Components include Applications and Job definitions.
 
 ### Job definition
 
@@ -61,7 +61,7 @@ To work with Job definitions, you can:
 - List Job definitions
 - Update a Job definition
 - Delete a Job definition
-- Submit and run a Job based on a Job definition from the console
+- Submit and run a Job based on a Job definition from the console or the CLI
 
 ### Job 
 
