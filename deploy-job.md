@@ -39,9 +39,7 @@ Job definitions are templates that are used to define common job types and varia
 ### Creating a job definition from the console
 {: #create-job-def-ui}
 
-**Before you begin**:
-
- - [Create a project](/docs/knative?topic=knative-manage-project).  
+Before you begin:  [Create a project](/docs/knative?topic=knative-manage-project).  
 
 1. After your project is in **Active** status, click the name of your project on the Projects page.
 2. From the Components page, click **Job definition** to create the job definition.
@@ -114,7 +112,7 @@ After you create your job definitions, you can use that definition to describe t
 ### Running a job from the console
 {: #run-job-ui}
 
-Before you begin, [target a project](/docs/knative?topic=knative-manage-project)
+Before you begin, [create a job definition](#create-job-def-ui).
 
 1. From the Projects page, click on your desired project to open the Components page.  
 2. From the Components page, click on the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#create-job-def).
@@ -127,8 +125,8 @@ Before you begin, [target a project](/docs/knative?topic=knative-manage-project)
 
 **Before you begin**
 
-* [Target a project](/docs/knative?topic=knative-manage-project)
 * Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
+* [Create a job definition](#create-job-def-cli).
 
 To run a job with the CLI, use the `ibmcloud coligo job run` command. The following example creates three new pods to run the container image specified in the `testjobdef` job definition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
 

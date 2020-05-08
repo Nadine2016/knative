@@ -28,7 +28,7 @@ subcollection: knative
 # Managing projects
 {: #manage-project}
 
-Learn how to create and target projects. 
+Learn how to create and work with projects. 
 {: shortdesc} 
 
 ## What is a project?

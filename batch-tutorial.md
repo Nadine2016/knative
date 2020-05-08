@@ -35,8 +35,8 @@ A job runs one or more job containers according to the job definition, which con
 
 **Before you begin**
 
-- Coligo is available in the console at [Coligo overview](https://cloud.ibm.com/knative/overview){: external}. 
-- If you use the CLI, [set up your Coligo environment](/docs/knative?topic=knative-kn-install-cli).
+* Coligo is available in the console at [Coligo overview](https://cloud.ibm.com/knative/overview){: external}. 
+* If you use the CLI, [set up your Coligo environment](/docs/knative?topic=knative-kn-install-cli).
 
 
 ## Step 1. Create a job definition
@@ -48,9 +48,7 @@ Job definitions are templates that define common job types and variables. When y
 ### Creating a job definition from the console
 {: #batch-jobdef-ui}
 
-**Before you begin**:
-
-* [Create a project](/docs/knative?topic=knative-manage-project).
+Before you begin: [Create a project](/docs/knative?topic=knative-manage-project).
 
 1. After your project is in **Active** status, click the name of your project on the Projects page. 
 2. From the Components page, click **Job definition** to create the job definition. 
@@ -60,19 +58,20 @@ Job definitions are templates that define common job types and variables. When y
 ### Creating a job definition with the CLI
 {: #batch-jobdef-cli}
 
-**Before you begin**:
+Before you begin:
 
 * [Create and work with a project](/docs/knative?topic=knative-manage-project)
 * Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
 
 To create a job definition with the CLI, run the `ibmcloud coligo jobdef create` command. This command requires a name and an image and also allows other optional arguments.
 
- The following example creates a job definition named `testjobdef` that uses the container image `ibmcom/testjob` and assigns 128 MB as memory and 1 CPU to the container.
+The following example creates a job definition named `testjobdef` that uses the container image `ibmcom/testjob` and assigns 128 MB as memory and 1 CPU to the container.
 
 ```
 ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef --memory 128M --cpu 1
 ```
 {: pre}
+
 
 <table>
    <caption>jobdef create components</caption>
@@ -117,13 +116,14 @@ ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef --memory 
 ## Step 2. Run a job
 {: #batch-runjob}
 
-After you create your job definition, you can use that job definition to describe the parameters for your job.  Run your job from the console or with the CLI. When you run your job, you can override some parameters that are defined by the job definition.
+After you create your job definition, the job definition is used to describe the parameters for your job.  Run your job from the console or with the CLI. When you run your job, you can override some parameters that are defined by the job definition.
 {: shortdesc}
 
 ### Running a job from the console
 {: #batch-runjob-ui}
 
-Before you begin, [create a job definition from the console](#batch-jobdef-ui).
+Before you begin: [create a job definition from the console](#batch-jobdef-ui).
+
 
 1. Navigate to your job definition page. For example:
    1. From the Projects page, click on your desired project to open the Components page.  
@@ -135,9 +135,7 @@ Before you begin, [create a job definition from the console](#batch-jobdef-ui).
 ### Running a job with the CLI
 {: #batch-runjob-cli}
 
-**Before you begin**
-
-Before you begin, [create a job definition with the CLI](#batch-jobdef-cli).
+Before you begin: [create a job definition with the CLI](#batch-jobdef-cli).
 
 To run a job with the CLI, use the `ibmcloud coligo job run` command. 
 
@@ -147,6 +145,7 @@ The following example creates three new pods to run the container image specifie
 ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --retrylimit 2 --memory 128M --cpu 1
 ```
 {: pre}
+
 
 <table>
    <caption>job run components</caption>
@@ -288,7 +287,7 @@ Command 'job get' performed successfully
 ## Step 4.  View job results 
 {: #batch-viewjobresult}
 
-After your job has completed, find the logs.
+After your job has completed, view the logs for information on your completed job.
 {: shortdesc}
 
 ### Viewing job results from the console
@@ -368,4 +367,4 @@ Command 'job logs' performed successfully
 
 Congratulations! You have created a job definition, run a job, and viewed details and results of the job.
 
-For more information, see [deploying a job](/docs/knative?topic=knative-job-deploy)
+For more information, see [deploying a job](/docs/knative?topic=knative-job-deploy).
