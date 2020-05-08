@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-04"
+lastupdated: "2020-05-08"
 
 keywords: knative
 
@@ -177,7 +177,8 @@ Command 'project list' performed successfully
 ## Target command
 {: #cli-target}
 
-Targets a Coligo project. Before using the target command, you must have a project created. By targeting a project, the commands that you run are run within the specified project.  
+To work with a Coligo project, target the project. Before using the target command, you must have a project created. By targeting a project, the commands that you run are run within the specified project.  
+
 {: shortdec}
 
 To see CLI help for the target command, run `ibmcloud coligo target`. 
@@ -426,7 +427,7 @@ ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argu
 <dt>`-e`, `--env`</dt>
 <dd>Set any environmental variables to pass to the job definition. Variables use a `KEY=VALUE` format. This value is optional.</dd>
 <dt>`-c`, `--command`</dt>
-<dd>Set a command. This value is optional.</dd>
+<dd>Set a command for the job definition. This value is optional.</dd>
 <dt>`--cpu`</dt>
 <dd>Specifies the number of CPUs to be assigned to the job definition. The default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
@@ -603,7 +604,7 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 <dt>`-i`, `--image`</dt>
 <dd>The name of the image used for this job. This value is required. [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. This value overrides any `--image` value that is assigned in the job definition.</dd>
 <dt>`-e`, `--env`</dt>
-<dd>Indicates any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables that are passed in the job definition. This value is optional. </dd>
+<dd>Specifies any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables that are passed in the job definition. This value is optional. </dd>
 <dt>`-a`, `--argument`</dt>
 <dd>Sets any arguments for the container. To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`. This value overrides any arguments passed in the job definition. This value is optional.</dd>  
 <dt>`-c`, `--command`</dt>

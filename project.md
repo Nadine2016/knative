@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-30"
+lastupdated: "2020-05-08"
 
 keywords: knative, project
 
@@ -155,37 +155,41 @@ You can update the name or description of the project from the **Projects Settin
   ```
   {: pre}
 
-## Target a project
+## Work with a project
 {: #target-a-project}
 
-After you create a project, target it for use with Coligo. You can use the console or the CLI.
+After you create a project, you can work with the project with Coligo. You can use the console or the CLI.
 {: shortdesc} 
 
-### Target a project from the console
+### Work with a project from the console
 {: #target-project-console}
 
-To target a project from the [Coligo console](https://cloud.ibm.com/coligo){: external} project menu, select a project from the list.
+To work with a project from the [Coligo console](https://cloud.ibm.com/coligo){: external} project menu, click on the name of the project from the list.
 
-### Target a project with the CLI
+From the context of the selected project, you can work with [kn-service]} components, such as job definitions [job definitions](/docs/knative?topic=knative-kn-job-deploy) or applications [applications](/docs/knative?topic=knative-application-workloads).
+
+### Work with a project with the CLI
 {: #target-project-cli}
 
-To target a project with the CLI, use the [`project target`](/docs/knative?topic=knative-kn-cli#cli-project-target) command. 
+To work with a project with the CLI, you must target the project with the CLI. Use the  [`project target`](/docs/knative?topic=knative-kn-cli#cli-project-target) command to target the project that you want to work with.  
 
 ```
-ibmcloud coligo project target --name PROJECT_NAME
+ibmcloud coligo target --name PROJECT_NAME
 ```
 {: pre}
 
 Example output:
 
 ```
-Now targeting environment 'myProject' (42642513-8805-4da8-8dbf-bc4f409g7456). Set the KUBECONFIG environment variable to use kubectl with your project:
+Now targeting environment 'myproject' (42642513-8805-4da8-8dbf-bc4f409g7456). Set the KUBECONFIG environment variable to use kubectl with your project:
 export KUBECONFIG=/users/myusername/.bluemix/plugins/coligo/myproject-42642513-8805-4da8-8dbf-bc4f409g9089.yaml
 ```
 {: screen}
 
 Notice that the Coligo system provides the `export` command to set the `KUBECONFIG` environmental variable for you. This command is tailored to your operating system and user information.  Run this command to use `kubectl` with your project. Alternatively, you can specify the `--export` option on the `target` command to export and automatically append the project configuration to the Kubernetes configuration file (`$HOME/.kube/config`). 
 {: tip}
+
+From the context of the targeted project, you can work with [kn-service]} components, such as job definitions [job definitions](/docs/knative?topic=knative-kn-job-deploy) or applications [applications](/docs/knative?topic=knative-application-workloads).
 
 ## Delete a project
 {: #delete-project}

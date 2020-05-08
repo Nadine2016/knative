@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-29"
+lastupdated: "2020-05-08"
 
 keywords: knative
 
@@ -27,13 +27,13 @@ subcollection: knative
 # Deploying a job
 {: #kn-job-deploy}
 
-Learn how to deploy jobs in Coligo.  Jobs in Coligo are meant to run to completion. They are not intended to provide lasting endpoints to access like a [Coligo application] does.
+Learn how to deploy jobs in Coligo. Jobs in Coligo are meant to run to completion as batch or standalone executables. They are not intended to provide lasting endpoints to access like a [Coligo application] does.
 {: shortdesc}
 
 ## Create a job definition
 {: #create-job-def}
 
-Job definitions are templates that you can use to define common job types and variables. When you deploy a job, you can override many of the variables you set in the template. You can create job definitions from the console or with the CLI.
+Job definitions are templates that are used to define common job types and variables. When you deploy a job, you can override many of the variables you set in the template. You can create job definitions from the console or with the CLI.
 {: shortdesc}
 
 ### Creating a job definition from the console
@@ -41,24 +41,27 @@ Job definitions are templates that you can use to define common job types and va
 
 **Before you begin**:
 
-* [Target a project](/docs/knative?topic=knative-manage-project).
+ - [Create a project](/docs/knative?topic=knative-manage-project).  
 
-1. After targeting your project, select it from the console.
-2. Select Job definition. If you already have components in your project, click Create component and then Job definition.
-3. Select a project to contain this job definition, a name, container image, and runtime settings. Click **Create**. 
+1. After your project is in **Active** status, click the name of your project on the Projects page.
+2. From the Components page, click **Job definition** to create the job definition.
+3. From the Create job definition page, provide a name for your job definition name and a container image.  You can also modify default runtime settings. 
+4. Click **Create**. 
 
 ### Creating a job definition with the CLI
 {: #create-job-def-cli}
 
 **Before you begin**:
 
-* [Target a project](/docs/knative?topic=knative-manage-project)
+* [Create and target a project](/docs/knative?topic=knative-manage-project)
 * Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
 
-To create a job definition with the CLI, run the `ibmcloud coligo jobdef create` command. This command requires a name and an image and also allows other optional arguments. The following example creates a job definition named `hello` that uses the container image `ibmcom/helloworld-job` and assigns 128 MB as memory and 1 CPU to the container.
+To create a job definition with the CLI, run the `ibmcloud coligo jobdef create` command. This command requires a name and an image and also allows other optional arguments. 
+
+The following example creates a job definition named `testjobdef` that uses the container image `ibmcom/testjob` and assigns 128 MB as memory and 1 CPU to the container.
 
 ```
-ibmcloud coligo jobdef create --image ibmcom/helloworld-job --name hello --memory 128M --cpu 1
+ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef --memory 128M --cpu 1
 ```
 {: pre}
 
@@ -74,24 +77,23 @@ ibmcloud coligo jobdef create --image ibmcom/helloworld-job --name hello --memor
    </tr>
    <tr>
    <td><code>--image</code></td>
-   <td>The name of the image used for this job. This value overrides any image that is passed in the job definition. This value is optional. The format for the image must be REGISTRY/NAMESPACE/REPOSITORY or REGISTRY/NAMESPACE/REPOSITORY:TAG.
-Indicates any environmental variables to pass to the image. Variables use a KEY=VALUE format. This value overrides any environmental variables that are passed in the job definition. This value is optional.</td>
+   <td>The name of the image used for this job definition. This value is required. For images in [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</td>
    </tr>
    <tr>
    <td><code>--name</code></td>
-   <td>The name of the job definition. This value is required. The name must be unique within the project.</td>
+   <td>The name of the job definition. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.</td>
    </tr>
    <tr>
    <td><code>--argument</code></td>
-   <td>Set any arguments for the job definition. This value is optional. Specify one argument per `--argument` flag. To specify more than one argument, use more than one `--argument` flag; for example, `-argument argA -argument argB`.</td>
+   <td>Set any arguments for the job definition. This value is required. Specify one argument per `--argument` flag.  To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`.</td>
    </tr>
    <tr>
    <td><code>--env</code></td>
-   <td>Set any environmental variables to pass to the job definition. Variables use a KEY=VALUE format. This value is optional.</td>
+   <td>Set any environmental variables to pass to the job definition. Variables use a `KEY=VALUE` format. This value is optional.</td>
    </tr>
    <tr>
    <td><code>--command</code></td>
-   <td>Set any commands for the job definition. This value is optional.</td>
+   <td>Set a command for the job definition. This value is optional.</td>
    </tr>
    <tr>
    <td><code>--memory</code></td>
@@ -106,7 +108,7 @@ Indicates any environmental variables to pass to the image. Variables use a KEY=
 ## Running a job
 {: #run-job}
 
-After you create your job definitions, you can use that definition to describe the parameters for your job. You can override any parameters that are defined by the job definition. You can run your job from the console or with the CLI.
+After you create your job definitions, you can use that definition to describe the parameters for your job. You can override some parameters that are defined by the job definition. You can run your job from the console or with the CLI.
 {: shortdesc}
 
 ### Running a job from the console
@@ -114,10 +116,11 @@ After you create your job definitions, you can use that definition to describe t
 
 Before you begin, [target a project](/docs/knative?topic=knative-manage-project)
 
-1. Select your targeted project from the console.
-2. Select a job definition. If you do not have any jobs defined, [create a job definition](#create-job-def).
-3. Specify any environmental variables or runtime changes for this specific job. These values override the values defined by the job definition. Then, click **Run job**.
-4. Set any additional settings and then click **Run**.
+1. From the Projects page, click on your desired project to open the Components page.  
+2. From the Components page, click on the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#create-job-def).
+3. From your job definition page, click **Submit Job** to run a job based on the selected job definition configuration. 
+4. From the Submit job page, review and optionally change configuration values such as array size, CPU, memory, number of job retries and job timeout. **Array size** specifies the number of instances or containers to run your job. 
+5. Click **Submit job** to run your job. The system displays the status of the instances of your job.
 
 ### Running a job with the CLI
 {: #run-job-cli}
@@ -127,10 +130,10 @@ Before you begin, [target a project](/docs/knative?topic=knative-manage-project)
 * [Target a project](/docs/knative?topic=knative-manage-project)
 * Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
 
-To run a job with the CLI, use the `ibmcloud coligo job run` command. The following example creates three new pods to run the container image specified in the `hello` job definition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
+To run a job with the CLI, use the `ibmcloud coligo job run` command. The following example creates three new pods to run the container image specified in the `testjobdef` job definition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
 
 ```
-ibmcloud coligo job run --name hello --jobdef hello --arraysize 5 --retryLimit 2 --memory 128M --cpu 1
+ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --retrylimit 2 --memory 128M --cpu 1
 ```
 {: pre}
 
@@ -146,12 +149,15 @@ ibmcloud coligo job run --name hello --jobdef hello --arraysize 5 --retryLimit 2
    </tr>
    <tr>
    <td><code>--name</code></td>
-   <td>The name of the job to be run. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project.</td>
+   <td>The name of the job to be run. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.</td>
+   </tr>
+   <tr>
+   <td><code>--jobdef</code></td>
+   <td>Identifies the job definition that contains the description of the job to be run. This value is required.</td>
    </tr>
    <tr>
    <td><code>--image</code></td>
-   <td>The name of the image used for this job. This value overrides any image that is passed in the job definition. This value is optional. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.
-Indicates any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables that are passed in the job definition. This value is optional.</td>
+   <td>The name of the image used for this job. This value is required. [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. This value overrides any `--image` value that is assigned in the job definition.</td>
    </tr>
    <tr>
    <td><code>--cpu</code></td>
@@ -179,7 +185,7 @@ Indicates any environmental variables to pass to the image. Variables use a `KEY
    </tr>
    <tr>
    <td><code>--env</code></td>
-   <td>Set any environmental variables to pass to the job definition. Variables use a `KEY=VALUE` format. This value is optional.</td>
+   <td>Specifies any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables that are passed in the job definition. This value is optional.</td>
    </tr>
    </tbody></table>
 

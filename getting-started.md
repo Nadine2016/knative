@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-06"
+lastupdated: "2020-05-08"
 
 keywords: knative, getting started
 
@@ -103,6 +103,6 @@ You can view details about the job by running `ibmcloud coligo job list` to get 
 
 Learn more about:
 
-- [Managing projects](/docs/knative?topic=knative-knative-manage-project)
-- [Deploying application workloads](/docs/knative?topic=knative-knative-deploy-app)
-- [Running a job](/docs/knative?topic=knative-knative-deploy-app)
+- [Managing projects](/docs/knative?topic=knative-manage-project)
+- [Deploying application workloads](/docs/knative?topic=knative-application-workloads)
+- [Deploying a job](/docs/knative?topic=knative-kn-job-deploy)

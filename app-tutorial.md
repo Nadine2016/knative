@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-04"
+lastupdated: "2020-05-08"
 
 keywords: knative
 
@@ -36,9 +36,9 @@ With this tutorial, deploy a containerized application in a serverless fashion u
 
 ## Create a Docker image
 
-This tutorial uses a sample Docker image file is available at [ibmcom/helloworld}(https://cloud.docker.com/repository/docker/ibmcom/helloworld). However, you can easily adapt it to an image of your own. 
+This tutorial uses a sample Docker image file is available at [ibmcom/helloworld](https://cloud.docker.com/repository/docker/ibmcom/helloworld). However, you can easily adapt it to an image of your own. 
 
-If you have a container image that you want to use, you can replace the image reference in the next step with your docker repository, image name, and version.
+If you have a container image that you want to use, you can replace the image reference in the next step with your Docker repository, image name, and version.
 
 For example, create a `helloworld` application in Go.
 
@@ -162,7 +162,7 @@ Congratulations, you have successfully deployed and invoked your first Coligo ap
 
 
 
-### Application scaling (scale-to-zero and scale-from-zero)
+## Application scaling (scale-to-zero and scale-from-zero)
 
 1. Call the application. 
 
@@ -225,7 +225,7 @@ Congratulations, you have successfully deployed and invoked your first Coligo ap
 
 Voilà!
 
-### What have you seen?
+## What have you seen?
 You have deployed an arbitrary containerized application in a serverless fashion. 
 In a serverless fashion this means, that you:
 
