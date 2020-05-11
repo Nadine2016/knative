@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-08"
+lastupdated: "2020-05-11"
 
 keywords: knative, project
 
@@ -85,6 +85,11 @@ Updated: Tue, 28 Apr 2020 09:27:57 -0400
 Command 'project get' performed successfully
 ```
 {: screen}
+
+
+### How can I set policies so others can work with my project? 
+
+See information about [managing user access](/docs/knative?topic=knative-knative-knative-iam) to learn about setting IAM policies so others can work with your Coligo project. 
 
 ## Create a project
 {: #create-a-project}
