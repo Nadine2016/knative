@@ -233,12 +233,3 @@ ibmcloud coligo job logs --name NAME --pod PODINDEX
 ```
 {: pre}
 
-## Improving the performance of your job
-{: #improve-job-performance}
-
-You can take one or more of the following actions to improve the performance of your job. 
-{: shortdesc}
-
-1. Assign more memory.
-2. Allow your job to scale up.
-3. Increase your array size.

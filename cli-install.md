@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-04"
+lastupdated: "2020-05-12"
 
 keywords: knative
 
@@ -24,10 +24,10 @@ subcollection: knative
 {:download: .download}
 {:gif: data-image-type='gif'}
 
-# Setting up the Coligo CLI
+# Setting up the CLI
 {: #kn-install-cli}
 
-Install, update, and delete the required CLIs and set up your environment to use Coligo.
+Install, update, and delete the required CLIs and set up your environment to use Project Coligo.
 {: shortdesc}
 
 ## Installing the {{site.data.keyword.cloud_notm}} CLI
@@ -178,11 +178,11 @@ Complete the following steps to install the Coligo CLI plug-in.
 1. Install the Coligo plug-in.
 
   ```
-  ibmcloud plugin install PLUGINNAME
+  ibmcloud plugin install Coligo
   ```
   {: pre}
 
-2. Verify that the plug-in is installed.
+2. Use the `ibmcloud plugin show Coligo` command to verify that the plug-in is installed.
 
   ```
   ibmcloud plugin list
@@ -192,8 +192,10 @@ Complete the following steps to install the Coligo CLI plug-in.
   **Example Output**
 
   ```
-  Plugin Name          Version
-  PLUGINNAME
+  Plugin Name                              coligo/coligo-cli
+  Plugin Version                           0.1.503
+  Plugin SDK Version                       0.3.0
+  Minimal IBM Cloud CLI version required   0.13.1
   ```
   {: screen}
 

@@ -52,7 +52,7 @@ The following steps describe how to deploy an application by using the Coligo co
 3. From the Projects page, click the name of your project to open the project component page. 
 4. From your project component page, select **Create component**.
 5. Select **Application** as your component type. 
-6. Enter a name for your application and enter the location for your container image.  For example, enter `ibmcom/helloworld` for container image. Click **Create**. 
+6. Enter a name for your application and enter the location for your container image.  For example, enter `ibmcom/helloworld` for container image. Click **Deploy**. 
   When you use this example, your sample application uses the `ibmcom/helloworld` image, reads the environment variable `TARGET`, and prints `"Hello ${TARGET}!"`. If this environment variable is empty, `"Hello World!"` is returned.
 7. After the application status changes to **Ready**, you can run your application by clicking **Send Request** and viewing the results in the **Requests** window.
 
@@ -164,11 +164,10 @@ For example, update the application that you created in [Deploying an applicatio
    * Locate the Projects page. 
    * Click the name of your project to open the project component page.
    * Click the name of your application to open the application page.
- 
 2. Click **Env. Variables**.
 3. Click **Add Environmental Variables** and enter `TARGET` for name and `Stranger` for value.
 4. Click **Save** to save your change.
-5. Run the application again. `Hello Stranger` is displayed in the **Requests** window.
+5. When the revision is deployed and ready, run the application again. `Hello Stranger` is displayed in the **Requests** window.
 
 ## Application status
 {: #app-status}
@@ -190,17 +189,11 @@ After your application has deployed, find the logs.
 {: shortdesc}
 
 Logs for application from the console are available from the application window by clicking **View logs**.
+
 You can view logs from the CLI by using the `coligo application logs` command. 
 
 ```
 ibmcloud coligo application logs --name NAME --pod PODINDEX
 ```
 {: pre}
-
-## Improving your application performance
-{: #app-performance}
-
-1. Assign more memory
-2. Allow your application to scale up
-3. Increase your concurrency
 

@@ -34,8 +34,8 @@ The Coligo platform provides support for running batch *jobs*. Batch jobs are st
 A job runs one or more job containers according to the job definition, which contains the workload configuration. After a job definition is created, you can then run one or more jobs that refer to the job definition, optionally overwriting values of the job definition. A job is complete after all the job containers have completed.
 
 Before you begin:
-* Coligo is available in the console at [Coligo overview](https://cloud.ibm.com/knative/overview){: external}. 
-* If you use the CLI, [set up your Coligo environment](/docs/knative?topic=knative-kn-install-cli).
+* If you want to use the Coligo console, go to [Coligo overview](https://cloud.ibm.com/knative/overview){: external}. 
+* If you want to use the CLI, [set up your Coligo environment](/docs/knative?topic=knative-kn-install-cli).
 
 
 ## Step 1. Create a job definition
@@ -47,7 +47,7 @@ Job definitions are templates that define common job types and variables. When y
 ### Creating a job definition from the console
 {: #batch-jobdef-ui}
 
-Before you begin: [Create a project](/docs/knative?topic=knative-manage-project).
+Before you begin, [create a project](/docs/knative?topic=knative-manage-project).
 
 1. After your project is in **Active** status, click the name of your project on the Projects page. 
 2. From the Components page, click **Job definition** to create the job definition. 
@@ -120,7 +120,7 @@ After you create your job definition, the job definition is used to describe the
 ### Running a job from the console
 {: #batch-runjob-ui}
 
-Before you begin: [create a job definition from the console](#batch-jobdef-ui).
+Before you begin, [create a job definition from the console](#batch-jobdef-ui).
 
 
 1. Navigate to your job definition page. For example:
@@ -133,7 +133,7 @@ Before you begin: [create a job definition from the console](#batch-jobdef-ui).
 ### Running a job with the CLI
 {: #batch-runjob-cli}
 
-Before you begin: [create a job definition with the CLI](#batch-jobdef-cli).
+Before you begin, [create a job definition with the CLI](#batch-jobdef-cli).
 
 To run a job with the CLI, use the `ibmcloud coligo job run` command. 
 
