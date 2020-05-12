@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-08"
+lastupdated: "2020-05-12"
 
 keywords: knative
 
@@ -33,8 +33,7 @@ The Coligo platform provides support for running batch *jobs*. Batch jobs are st
 
 A job runs one or more job containers according to the job definition, which contains the workload configuration. After a job definition is created, you can then run one or more jobs that refer to the job definition, optionally overwriting values of the job definition. A job is complete after all the job containers have completed.
 
-**Before you begin**
-
+Before you begin:
 * Coligo is available in the console at [Coligo overview](https://cloud.ibm.com/knative/overview){: external}. 
 * If you use the CLI, [set up your Coligo environment](/docs/knative?topic=knative-kn-install-cli).
 
@@ -59,7 +58,6 @@ Before you begin: [Create a project](/docs/knative?topic=knative-manage-project)
 {: #batch-jobdef-cli}
 
 Before you begin:
-
 * [Create and work with a project](/docs/knative?topic=knative-manage-project)
 * Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
 
@@ -208,7 +206,7 @@ Find details about your job from the console or with the CLI.
 ### Accessing job details from the console
 {: #batch-accessjobdetails-ui}
 
-View job details in the console by clicking on the name of your job in the Jobs pane on your job definition page. View status of your instances, configuration details, and environmental variables that your job run used.
+View job details in the console by clicking on the name of your job in the Jobs pane on your job definition page. Job details include status of your instances, configuration details, and environmental variables of your job. 
 
 ### Accessing job details with the CLI
 {: #batch-accessjobdetails-cli}
@@ -367,4 +365,4 @@ Command 'job logs' performed successfully
 
 Congratulations! You have created a job definition, run a job, and viewed details and results of the job.
 
-For more information, see [deploying a job](/docs/knative?topic=knative-job-deploy).
+For more information, see [deploying a job](/docs/knative?topic=knative-kn-job-deploy).

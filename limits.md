@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-05"
+lastupdated: "2020-05-12"
 
 keywords: knative
 
@@ -59,6 +59,8 @@ The following table lists the limits for Applications.
 
 ## Job limits
 {: #kn-limits_job}
+
+Job definitions, as templates for jobs, reflect the same limits as jobs. 
 
 The following table lists the limits for jobs. 
 

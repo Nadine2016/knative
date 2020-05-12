@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-08"
+lastupdated: "2020-05-12"
 
 keywords: knative
 
@@ -24,10 +24,10 @@ subcollection: knative
 {:download: .download}
 {:gif: data-image-type='gif'}
 
-# Coligo CLI
+# Project Coligo CLI
 {: #kn-cli}
 
-Run these commands to manage the entities that make up Coligo.
+Run these commands to manage the entities that make up Project Coligo (or "Coligo").
 {: shortdec}
 
 ## Project commands
@@ -69,6 +69,34 @@ ibmcloud coligo project create --name myproject
 
 ```
 Successfully created project myproject
+```
+{: screen}
+
+### `ibmcloud coligo project current`
+{: #cli-project-current}
+
+Display the details of the project that is currently targeted. 
+{: shortdec}
+
+```
+ibmcloud coligo project current
+```
+{: pre}
+
+**Example**
+
+```
+ibmcloud coligo project current  
+```
+{: pre}
+
+**Output**
+
+```
+Getting current project...
+Region:         myproject
+Region:         us-south
+export KUBECONFIG=/user/myusername/.bluemix/plugins/coligo/myproject-42642513-8805-4da8-8dbf-ae4f409f8054.yaml
 ```
 {: screen}
 
@@ -216,7 +244,7 @@ ibmcloud coligo target --name myproject
 
 ```
 Now targeting environment 'myproject' (42642513-8805-4da8-8dbf-bc4f409g9089). Set the KUBECONFIG environment variable to use kubectl with your project:
-export KUBECONFIG=/users/myusername/.bluemix/plugins/coligo/myproject-42642513-8805-4da8-8dbf-bc4f409g9089.yaml
+export KUBECONFIG=/user/myusername/.bluemix/plugins/coligo/myproject-42642513-8805-4da8-8dbf-bc4f409g9089.yaml
 ```
 {: screen}
 

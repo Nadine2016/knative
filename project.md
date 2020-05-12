@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-11"
+lastupdated: "2020-05-12"
 
 keywords: knative, project
 
@@ -176,7 +176,7 @@ From the context of the selected project, you can work with [kn-service]} compon
 ### Work with a project with the CLI
 {: #target-project-cli}
 
-To work with a project with the CLI, you must target the project with the CLI. Use the  [`project target`](/docs/knative?topic=knative-kn-cli#cli-project-target) command to target the project that you want to work with.  
+To work with a project with the CLI, you must target the project with the CLI. Use the  [`target`](/docs/knative?topic=knative-kn-cli#cli-target) command to target the project that you want to work with.  
 
 ```
 ibmcloud coligo target --name PROJECT_NAME

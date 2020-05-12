@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-06"
+lastupdated: "2020-05-12"
 
 keywords: knative
 
@@ -44,7 +44,7 @@ Deploy your app with Coligo.
 ### Deploying an application from console
 {: #deploy-app-console}
 
-The following steps describe how to deploy an application using the Coligo console.
+The following steps describe how to deploy an application by using the Coligo console.
 {: shortdesc}
 
 1. Access Coligo.
@@ -52,8 +52,8 @@ The following steps describe how to deploy an application using the Coligo conso
 3. From the Projects page, click the name of your project to open the project component page. 
 4. From your project component page, select **Create component**.
 5. Select **Application** as your component type. 
-6. Enter a name for your application and enter the location for your container image.  For example, enter `ibmcom/kn-helloworld` for container image. Click **Create**. 
-  When you use this example, your sample application uses the `ibmcom/kn-helloworld` image, reads the environment variable `TARGET` and prints `"Hello ${TARGET}!"`. If this environment variable is empty, `"Hello World!"` is returned.
+6. Enter a name for your application and enter the location for your container image.  For example, enter `ibmcom/helloworld` for container image. Click **Create**. 
+  When you use this example, your sample application uses the `ibmcom/helloworld` image, reads the environment variable `TARGET`, and prints `"Hello ${TARGET}!"`. If this environment variable is empty, `"Hello World!"` is returned.
 7. After the application status changes to **Ready**, you can run your application by clicking **Send Request** and viewing the results in the **Requests** window.
 
 You have created and deployed an application to Coligo and tested it out using the console.
@@ -158,12 +158,17 @@ An Application contains one or more *revisions*. A revision represents an immuta
 
 To create a revision of the application, modify the application. 
 
-For exanple, update the application that you created in [Deploying an application from console](#deploy-app-console) to add an environmental variable.
+For example, update the application that you created in [Deploying an application from console](#deploy-app-console) to add an environmental variable.
 
-1. From the Click **Env. Variables**.
-2. Click **Add Environmental Variables** and enter `TARGET` for name and `Stranger` for value.
-3. Click **Save** to save your change.
-4. Run the application again. `Hello Stranger` is displayed in the **Requests** window.
+1. Navigate to your application page. One way to navigate to your application page is to: 
+   * Locate the Projects page. 
+   * Click the name of your project to open the project component page.
+   * Click the name of your application to open the application page.
+ 
+2. Click **Env. Variables**.
+3. Click **Add Environmental Variables** and enter `TARGET` for name and `Stranger` for value.
+4. Click **Save** to save your change.
+5. Run the application again. `Hello Stranger` is displayed in the **Requests** window.
 
 ## Application status
 {: #app-status}

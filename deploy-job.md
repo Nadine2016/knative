@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-08"
+lastupdated: "2020-05-12"
 
 keywords: knative
 
@@ -115,7 +115,7 @@ After you create your job definitions, you can use that definition to describe t
 Before you begin, [create a job definition](#create-job-def-ui).
 
 1. From the Projects page, click on your desired project to open the Components page.  
-2. From the Components page, click on the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#create-job-def).
+2. From the Components page, click on the name of the job definition that you want to run your job. If you do not have any job definitions that are defined, [create a job definition](#create-job-def).
 3. From your job definition page, click **Submit Job** to run a job based on the selected job definition configuration. 
 4. From the Submit job page, review and optionally change configuration values such as array size, CPU, memory, number of job retries and job timeout. **Array size** specifies the number of instances or containers to run your job. 
 5. Click **Submit job** to run your job. The system displays the status of the instances of your job.
@@ -128,7 +128,7 @@ Before you begin, [create a job definition](#create-job-def-ui).
 * Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
 * [Create a job definition](#create-job-def-cli).
 
-To run a job with the CLI, use the `ibmcloud coligo job run` command. The following example creates three new pods to run the container image specified in the `testjobdef` job definition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
+To run a job with the CLI, use the `ibmcloud coligo job run` command. The following example creates three new pods to run the container image specified in the `testjobdef` job definition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128 MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
 
 ```
 ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --retrylimit 2 --memory 128M --cpu 1
@@ -175,7 +175,7 @@ ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --re
    </tr>
    <tr>
    <td><code>--argument</code></td>
-   <td>Sets any arguments for the container. To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`. This value overrides any arguments passed in the job definition. This value is optional.</td>
+   <td>Sets any arguments for the container. To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`. This value overrides any arguments that are passed in the job definition. This value is optional.</td>
    </tr>
    <tr>
    <td><code>--command</code></td>
@@ -193,7 +193,7 @@ ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --re
 Find details about your job from the console or with the CLI.
 {: shortdesc}
 
-View job details in the console by selecting a job. View status of your instances, configuration details, and environmental variables that your job run used.
+View job details in the console by clicking on the name of your job in the Jobs pane on your job definition page. Job details include status of your instances, configuration details, and environmental variables of your job. 
 
 To view job details with the CLI, use the `ibmcloud coligo job get` command.  For example, `ibmcloud coligo job get --name hello`.
 
@@ -204,7 +204,7 @@ The following table shows the possible status that your job might have.
 
 | Status | Description |
 | ------ | ------------|
-| Pending | The Job has been accepted by the system, but one or more of the Container images has not been created. This includes time before being scheduled as well as time spent downloading images over the network, which could take a while. |
+| Pending | The Job has been accepted by the system, but one or more of the Container images has not been created. This status includes time before being scheduled as well as time spent downloading images over the network, which might take a while. |
 | Running | The Job instances have been created. At least one instance is still running, or is in the process of starting or restarting. |
 | Succeeded | All Job instances have terminated in success, and will not be restarted. |
 | Failed | All Job instances have terminated, and at least one instance has terminated in failure. That is, the instance either exited with non-zero status or was terminated by the system.
@@ -216,7 +216,7 @@ The following table shows the possible status that your job might have.
 After your job has completed, find the results.
 {: shortdesc}
 
-Job results are available in the console from the Job Run page. The Job Run page launches automatically when you submit a job, but you can also find it from the Job Submitted page.
+Job results are available in the console from the Job Run page. The Job Run page launches automatically when you submit a job. You can also click the name of your job from the Jobs pane on the Job definition page to get the results of your job. 
 
 ## Viewing job logs
 {: #view-job-logs}
@@ -236,9 +236,9 @@ ibmcloud coligo job logs --name NAME --pod PODINDEX
 ## Improving the performance of your job
 {: #improve-job-performance}
 
-There are several things that you can do to improve the performance of your job. 
+You can take one or more of the following actions to improve the performance of your job. 
 {: shortdesc}
 
-1. Assign more memory
-2. Allow your job to scale up
-3. Increase your array size
+1. Assign more memory.
+2. Allow your job to scale up.
+3. Increase your array size.

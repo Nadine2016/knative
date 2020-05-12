@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-06"
+lastupdated: "2020-05-12"
 
 keywords: about, knative
 
@@ -24,13 +24,13 @@ subcollection: knative
 {:download: .download}
 {:gif: data-image-type='gif'}
 
-# About Coligo
+# About Project Coligo
 {: #kn-about}
 
-## What is Coligo and why do I want to use it? 
+## What is Project Coligo and why do I want to use it? 
 {: #kn-what}
 
-Coligo was developed by IBM with the goal of helping you create modern, source-centric containerized, and serverless apps on top of your Kubernetes cluster. The platform is designed to address the needs of developers who today must decide what type of app they want to run in the cloud: 12-factor apps, containers, or functions. Each type of app requires an open source or proprietary solution that is tailored to these apps: Cloud Foundry for 12-factor apps, Kubernetes for containers, and OpenWhisk and others for functions. In the past, developers had to decide what approach they wanted to follow, which led to inflexibility and complexity when different types of apps had to be combined.
+Project Coligo (or "Coligo")  was developed by IBM with the goal of helping you create modern, source-centric containerized, and serverless apps on top of your Kubernetes cluster. The platform is designed to address the needs of developers who today must decide what type of app they want to run in the cloud: 12-factor apps, containers, or functions. Each type of app requires an open source or proprietary solution that is tailored to these apps: Cloud Foundry for 12-factor apps, Kubernetes for containers, and OpenWhisk and others for functions. In the past, developers had to decide what approach they wanted to follow, which led to inflexibility and complexity when different types of apps had to be combined.
 
 Coligo uses a consistent approach across programming languages and frameworks to abstract the operational burden of building, deploying, and managing workloads in Kubernetes so that developers can focus on what matters most to them: the source code. By integrating with Istio, Coligo ensures that your serverless and containerized workloads can be easily exposed on the internet, monitored, and controlled, and that your data is encrypted during transit.
 
@@ -50,11 +50,11 @@ An Application contains one or more *revisions* (revision entities). A revision 
 
 ### Components
 
-*Components* are the building blocks of a Project and are created using a container image.  Components include Applications and Job definitions.
+*Components* are the building blocks of a Project. Components include Applications and Job definitions.
 
 ### Job definition
 
-A *Job definition* is a template that is used to run Jobs, and the template contains workload configuration information. After creating a Job definition, one or more *Jobs* can be submitted based on the Job definition, optionally overwriting values of the Job definition.
+A *Job definition* is a template that is used to run Jobs, and the template contains workload configuration information. After a Job definition is created, one or more *Jobs* can be submitted based on the Job definition, optionally overwriting values of the Job definition.
 
 To work with Job definitions, you can:
 - Create a Job definition
@@ -65,7 +65,7 @@ To work with Job definitions, you can:
 
 ### Job 
 
-A *Job* runs your code to complete a task. A Job can run a large number of instances enabling work on large volumes of input data in parallel.
+A *Job* runs your code to complete a task. A Job can run many instances, which enables work on large volumes of input data in parallel.
 
 A Job is submitted based on a Job definition. After a Job definition is created, which contains the workload configuration, you can then run one or more Jobs that refer to the Job definition, optionally overwriting values of the Job definition.
  
@@ -77,7 +77,7 @@ To work with Jobs, you can:
 - Delete Job
 
 ### Project
-A Project is a container for components, such as Applications and Job definitions. Projects enable you to manage resources and provide access to components in the Project.
+A Project is a container for components, such as Applications and Job definitions. Use Projects to manage resources and provide access to components in the Project.
 
 A Project:
 - Provides a unique namespace for entity names

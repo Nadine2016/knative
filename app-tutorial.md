@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-08"
+lastupdated: "2020-05-12"
 
 keywords: knative
 
@@ -27,7 +27,7 @@ subcollection: knative
 # Deploying application workloads
 {: #knative-deploy-app-tutorial}
 
-With this tutorial, deploy a containerized application in a serverless fashion using the Coligo CLI. The application scales to zero when not in use.
+With this tutorial, deploy a containerized application in a serverless fashion by using the Coligo CLI. The application scales to zero when not in use.
 
 ** Before you start**
 
@@ -81,7 +81,7 @@ For example, create a `helloworld` application in Go.
 
 ## Create and deploy an application
 
-1.  Create your application. Just provide a name of the image used for this application and a name for your application. We are using the `ibmcom/helloworld` image reference. 
+1.  Create your application. Provide a name of the image that is used for this application and a name for your application. We are using the `ibmcom/helloworld` image reference. 
 
     ```
     ibmcloud coligo application create --image ibmcom/helloworld --name helloworld
@@ -158,8 +158,9 @@ For example, create a `helloworld` application in Go.
    ```
    {: screen}
    
-Congratulations, you have successfully deployed and invoked your first Coligo application!
+You have successfully deployed and started your first Coligo application!
 
+<!-->
 
 
 ## Application scaling (scale-to-zero and scale-from-zero)
@@ -226,8 +227,7 @@ Congratulations, you have successfully deployed and invoked your first Coligo ap
 Voilà!
 
 ## What have you seen?
-You have deployed an arbitrary containerized application in a serverless fashion. 
-In a serverless fashion this means, that you:
+You have deployed an arbitrary containerized application in a serverless fashion, meaning that you: 
 
 1. Don't need to think about scaling, the environment **scales-from zero** to however many instances you need.
 2. Don't need to pay for resources that are not used. The environment automatically **scales-to zero** if no requests come in.

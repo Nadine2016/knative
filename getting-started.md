@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-08"
+lastupdated: "2020-05-12"
 
 keywords: knative, getting started
 
@@ -42,7 +42,7 @@ Coligo also includes an [installable CLI plug-in](/docs/knative?topic=knative-kn
 ## Creating your first Coligo app
 {: #kn-hello}
 
-Create your first Coligo app by using the [`Hello World`](docker.io/ibmcom/kn-helloworld) image in Docker Hub. When you send a request to your sample app, the app reads the environment variable `TARGET` and prints `"Hello ${TARGET}!"`. If this environment variable is empty, `"Hello World!"` is returned.
+Create your first Coligo app by using the [`Hello World`](docker.io/ibmcom/helloworld) image in Docker Hub. When you send a request to your sample app, the app reads the environment variable `TARGET` and prints `"Hello ${TARGET}!"`. If this environment variable is empty, `"Hello World!"` is returned.
 {: shortdesc}
 
 1. Access Project Coligo.
@@ -65,12 +65,12 @@ Congratulations, you have deployed your first application to Coligo and tested i
 ## Running your first Coligo job
 {: #kn-first-job}
 
-Create your first Coligo job by using the [Coligo CLI](/docs/knative?topic=knative-install-cli).
+Create your first Coligo job by using the [Coligo CLI](/docs/knative?topic=knative-kn-install-cli).
 
 To run a job, you must first create a job definition. Then, run the job with the parameters provided by the definition. In this example, the job definition uses the container image `busybox` and runs the command `/bin/sh -c` `echo Hello $JOB_INDEX. ENV1 is $ENV1, ENV2 is $ENV2, ENV3 is $ENV3.` When this job runs, the output prints "Hello" followed by the value of the `$JOB_INDEX` and three environment parameters that are defined in `env`.
 
 **Before you begin**
- - Install the [Coligo CLI](/docs/knative?topic=knative-install-cli)
+ - Install the [Coligo CLI](/docs/knative?topic=knative-kn-install-cli)
  - [Create](/docs/knative?topic=knative-manage-project#create-a-project) and [target](/docs/knative?topic=knative-manage-project#target-a-project)  a project.  
 
 1. Create the job definition with the `coligo jobdef create` command.
