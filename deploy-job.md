@@ -39,7 +39,7 @@ Job definitions are templates that are used to define common job types and varia
 ### Creating a job definition from the console
 {: #create-job-def-ui}
 
-Before you begin:  [Create a project](/docs/knative?topic=knative-manage-project).  
+Before you begin, [create a project](/docs/knative?topic=knative-manage-project).  
 
 1. After your project is in **Active** status, click the name of your project on the Projects page.
 2. From the Components page, click **Job definition** to create the job definition.
@@ -49,7 +49,7 @@ Before you begin:  [Create a project](/docs/knative?topic=knative-manage-project
 ### Creating a job definition with the CLI
 {: #create-job-def-cli}
 
-**Before you begin**:
+Before you begin:
 
 * [Create and target a project](/docs/knative?topic=knative-manage-project)
 * Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
@@ -112,7 +112,10 @@ After you create your job definitions, you can use that definition to describe t
 ### Running a job from the console
 {: #run-job-ui}
 
-Before you begin, [create a job definition](#create-job-def-ui).
+Before you begin: 
+* [Create a job definition from the console](#create-job-def-ui).
+* If you want to obtain logs for your job, before you run your job, you must [configure platform logs 
+  through the Observability dashboard](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-config_svc_logs#config_svc_logs_ui). Be sure to review [service plan](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-service_plans) information as you consider retention, search, and log usage needs.
 
 1. From the Projects page, click on your desired project to open the Components page.  
 2. From the Components page, click on the name of the job definition that you want to run your job. If you do not have any job definitions that are defined, [create a job definition](#create-job-def).
@@ -123,7 +126,7 @@ Before you begin, [create a job definition](#create-job-def-ui).
 ### Running a job with the CLI
 {: #run-job-cli}
 
-**Before you begin**
+Before you begin:
 
 * Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
 * [Create a job definition](#create-job-def-cli).
@@ -224,12 +227,41 @@ Job results are available in the console from the Job Run page. The Job Run page
 After your job has completed, find the logs.
 {: shortdesc}
 
-Logs for jobs that are run in the console are available from the Job Run window by clicking **View logs**.
+After your job has completed, view the logs for information on your completed job.
+{: shortdesc}
 
-You can view logs from the CLI by using the 'coligo job logs' command. 
+### Viewing job logs from the console
+{: #batch-viewjobresult-ui}
+
+Access logs for jobs that are run in the console from your job definition page. Coligo uses {{site.data.keyword.la_full}} for log management capabilities. 
+
+If you want to obtain logs for your job, before you run your job, you must [configure platform logs through the Observability dashboard](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-config_svc_logs#config_svc_logs_ui) Review [service plan](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-service_plans) information as you consider retention, search, and log usage needs. 
+{: important}
+
+1. After clicking **Submit Job** to run your job, from the job run details page, click **Launch logging**.  This action launches your log for your specific job in the Observability dashboard where you can view your job log. 
+2. You can also view job logs from the Job definition page. Select the job that you want from the Jobs pane, and click **Logs**. This action launches your log for the specific job your selected on the observability dashboard where you can view your job log. 
+
+### Viewing job logs with the CLI
+{: #batch-viewjobresult-cli}
+
+To view job logs with the CLI, use the `ibmcloud coligo job logs` command. 
+
+For example, to view the logs for our `testjobrun` job, use the command: 
 
 ```
-ibmcloud coligo job logs --name NAME --pod PODINDEX
+ibmcloud coligo job logs --name testjobrun 
 ```
 {: pre}
+
+**Sample output**
+
+```
+Logging Job 'testjobrun' on Pod 0...
+
+Hello World!
+
+Command 'job logs' performed successfully
+```
+{: screen}
+
 

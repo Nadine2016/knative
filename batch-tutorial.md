@@ -120,8 +120,10 @@ After you create your job definition, the job definition is used to describe the
 ### Running a job from the console
 {: #batch-runjob-ui}
 
-Before you begin, [create a job definition from the console](#batch-jobdef-ui).
-
+Before you begin: 
+* [Create a job definition from the console](#batch-jobdef-ui).
+* If you want to obtain logs for your job, before you run your job, you must [configure platform logs 
+  through the Observability dashboard](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-config_svc_logs#config_svc_logs_ui). Be sure to review [service plan](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-service_plans) information as you consider retention, search, and log usage needs. 
 
 1. Navigate to your job definition page. For example:
    1. From the Projects page, click on your desired project to open the Components page.  
@@ -282,18 +284,24 @@ Command 'job get' performed successfully
 ```
 {: screen}
 
-## Step 4.  View job results 
+## Step 4.  View job logs 
 {: #batch-viewjobresult}
 
 After your job has completed, view the logs for information on your completed job.
 {: shortdesc}
 
-### Viewing job results from the console
+### Viewing job logs from the console
 {: #batch-viewjobresult-ui}
 
-Access logs for jobs that are run in the console from your job definition page. Click **View logs**. 
+Access logs for jobs that are run in the console from your job definition page. Coligo uses {{site.data.keyword.la_full}} for log management capabilities. 
 
-### Viewing job results with the CLI
+If you want to obtain logs for your job, before you run your job, you must [configure platform logs through the Observability dashboard](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-config_svc_logs#config_svc_logs_ui) Review [service plan](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-service_plans) information as you consider retention, search, and log usage needs. 
+{: important}
+
+* After clicking **Submit Job** to run your job, from the job run details page, click **Launch logging**.  This action launches your log for your specific job in the Observability dashboard where you can view your job log. 
+* You can also view job logs from the Job definition page. Select the job that you want from the Jobs pane, and click **Logs**. This action launches your log for the specific job your selected on the observability dashboard where you can view your job log. 
+
+### Viewing job logs with the CLI
 {: #batch-viewjobresult-cli}
 
 To view job logs with the CLI, use the `ibmcloud coligo job logs` command. 
@@ -310,54 +318,7 @@ ibmcloud coligo job logs --name testjobrun
 ```
 Logging Job 'testjobrun' on Pod 0...
 
-
-2020-05-08 00:13:49 Envs:
-GOLANG_VERSION=1.13.5
-GOPATH=/go
-HELLOWORLD_QZCST_1_PORT=tcp://172.21.77.219:80
-HELLOWORLD_QZCST_1_PORT_80_TCP=tcp://172.21.77.219:80
-HELLOWORLD_QZCST_1_PORT_80_TCP_ADDR=172.21.77.219
-HELLOWORLD_QZCST_1_PORT_80_TCP_PORT=80
-HELLOWORLD_QZCST_1_PORT_80_TCP_PROTO=tcp
-HELLOWORLD_QZCST_1_PRIVATE_PORT=tcp://172.21.208.175:80
-HELLOWORLD_QZCST_1_PRIVATE_PORT_8022_TCP=tcp://172.21.208.175:8022
-HELLOWORLD_QZCST_1_PRIVATE_PORT_8022_TCP_ADDR=172.21.208.175
-HELLOWORLD_QZCST_1_PRIVATE_PORT_8022_TCP_PORT=8022
-HELLOWORLD_QZCST_1_PRIVATE_PORT_8022_TCP_PROTO=tcp
-HELLOWORLD_QZCST_1_PRIVATE_PORT_80_TCP=tcp://172.21.208.175:80
-HELLOWORLD_QZCST_1_PRIVATE_PORT_80_TCP_ADDR=172.21.208.175
-HELLOWORLD_QZCST_1_PRIVATE_PORT_80_TCP_PORT=80
-HELLOWORLD_QZCST_1_PRIVATE_PORT_80_TCP_PROTO=tcp
 Hello World!
-HELLOWORLD_QZCST_1_PRIVATE_PORT_9090_TCP=tcp://172.21.208.175:9090
-HELLOWORLD_QZCST_1_PRIVATE_PORT_9090_TCP_ADDR=172.21.208.175
-HELLOWORLD_QZCST_1_PRIVATE_PORT_9090_TCP_PORT=9090
-HELLOWORLD_QZCST_1_PRIVATE_PORT_9090_TCP_PROTO=tcp
-HELLOWORLD_QZCST_1_PRIVATE_PORT_9091_TCP=tcp://172.21.208.175:9091
-HELLOWORLD_QZCST_1_PRIVATE_PORT_9091_TCP_ADDR=172.21.208.175
-HELLOWORLD_QZCST_1_PRIVATE_PORT_9091_TCP_PORT=9091
-HELLOWORLD_QZCST_1_PRIVATE_PORT_9091_TCP_PROTO=tcp
-HELLOWORLD_QZCST_1_PRIVATE_SERVICE_HOST=172.21.208.175
-HELLOWORLD_QZCST_1_PRIVATE_SERVICE_PORT=80
-HELLOWORLD_QZCST_1_PRIVATE_SERVICE_PORT_HTTP=80
-HELLOWORLD_QZCST_1_PRIVATE_SERVICE_PORT_HTTP_AUTOMETRIC=9090
-HELLOWORLD_QZCST_1_PRIVATE_SERVICE_PORT_HTTP_QUEUEADM=8022
-HELLOWORLD_QZCST_1_PRIVATE_SERVICE_PORT_HTTP_USERMETRIC=9091
-HELLOWORLD_QZCST_1_SERVICE_HOST=172.21.77.219
-HELLOWORLD_QZCST_1_SERVICE_PORT=80
-HELLOWORLD_QZCST_1_SERVICE_PORT_HTTP=80
-HOME=/root
-HOSTNAME=testjobrun-w6rmp-0-0
-JOB_INDEX=0
-KUBERNETES_PORT=tcp://172.21.0.1:443
-KUBERNETES_PORT_443_TCP=tcp://172.21.0.1:443
-KUBERNETES_PORT_443_TCP_ADDR=172.21.0.1
-KUBERNETES_PORT_443_TCP_PORT=443
-KUBERNETES_PORT_443_TCP_PROTO=tcp
-KUBERNETES_SERVICE_HOST=172.21.0.1
-KUBERNETES_SERVICE_PORT=443
-KUBERNETES_SERVICE_PORT_HTTPS=443
-PATH=/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 Command 'job logs' performed successfully
 ```
