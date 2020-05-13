@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-12"
+lastupdated: "2020-05-13"
 
 keywords: knative
 
@@ -160,7 +160,6 @@ For example, create a `helloworld` application in Go.
    
 You have successfully deployed and started your first Coligo application!
 
-<!-->
 
 
 ## Application scaling (scale-to-zero and scale-from-zero)
