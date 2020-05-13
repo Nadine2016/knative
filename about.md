@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-12"
+lastupdated: "2020-05-13"
 
 keywords: about, knative
 
@@ -35,7 +35,7 @@ Project Coligo (or "Coligo")  was developed by IBM with the goal of helping you 
 Coligo uses a consistent approach across programming languages and frameworks to abstract the operational burden of building, deploying, and managing workloads in Kubernetes so that developers can focus on what matters most to them: the source code. By integrating with Istio, Coligo ensures that your serverless and containerized workloads can be easily exposed on the internet, monitored, and controlled, and that your data is encrypted during transit.
 
 ### What happens behind the scenes when I create Coligo?
-When you create a Coligo service, your app is automatically deployed as a Kubernetes pod in your cluster and exposed by using a Kubernetes service. To assign the public hostname, Coligo uses the IBM-provided Ingress subdomain and TLS certificate. Incoming network traffic is routed based on the default IBM-provided Ingress routing rules.
+When you create a Coligo service, your app is automatically deployed as a Kubernetes pod in your cluster and exposed by using a Kubernetes service. To assign the hostname, Coligo uses the IBM-provided Ingress subdomain and TLS certificate. Incoming network traffic is routed based on the default IBM-provided Ingress routing rules.
 
 ### How can I roll out a new version of my app?
 When you update your application, a new version, or revision, of your app is created. This revision is assigned the same public and private hostnames as your previous version of your app. By default, all incoming network traffic is routed to the latest revision.
@@ -44,7 +44,7 @@ When you update your application, a new version, or revision, of your app is cre
 
 ### Application
 
-An *Application* runs your code to serve HTTP requests. The Application has a private URL for incoming requests. The number of running instances of an Application are automatically scaled up or down (to zero) based on incoming workload. 
+An *Application* runs your code to serve HTTP requests. The Application has a URL for incoming requests. The number of running instances of an Application are automatically scaled up or down (to zero) based on incoming workload. 
 
 An Application contains one or more *revisions* (revision entities). A revision of your app represents an immutable version of the configuration properties of the Application. Each update of an application  configuration property creates a new revision of the Application.
 

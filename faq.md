@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-29"
+lastupdated: "2020-05-13"
 
 keywords: knative
 
@@ -54,7 +54,7 @@ You can think of a Project like a folder on your desktop.  A Project functions a
 
 An *Application* in a Coligo service that runs your code to serve HTTP requests. Applications  are organized and run within a defined [Project](#what-is-project).
 
-Build your code in any language, using your favorite libraries, dependencies, and tools. When you create your Application, you will specify the where your code resides. The Application has a private URL for incoming requests.  
+Build your code in any language, using your favorite libraries, dependencies, and tools. When you create your Application, you will specify the where your code resides. The Application has a URL for incoming requests.  
 
 The number of running instances of an Application are automatically scaled up or down (to zero) based on incoming workload. 
 

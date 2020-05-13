@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-12"
+lastupdated: "2020-05-13"
 
 keywords: knative
 
@@ -251,7 +251,7 @@ export KUBECONFIG=/user/myusername/.bluemix/plugins/coligo/myproject-42642513-88
 ## Application commands
 {: #cli-application}
 
-Before using application commands, you must be targeting a [project](#cli-project).  An application runs your code to serve HTTP requests. The application has a private URL for incoming requests. Use application commands to create, display details, and update, and delete applications. 
+Before using application commands, you must be targeting a [project](#cli-project).  An application runs your code to serve HTTP requests. The application has a URL for incoming requests. Use application commands to create, display details, and update, and delete applications. 
 {: shortdec}
 
  

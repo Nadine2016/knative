@@ -121,8 +121,8 @@ After you create your job definition, the job definition is used to describe the
 {: #batch-runjob-ui}
 
 Before you begin: 
-* [Create a job definition from the console](#batch-jobdef-ui).
-* If you want to obtain logs for your job, before you run your job, you must [configure platform logs 
+   * [Create a job definition from the console](#batch-jobdef-ui).
+   * If you want to obtain logs for your job, before you run your job, you must [configure platform logs 
   through the Observability dashboard](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-config_svc_logs#config_svc_logs_ui). Be sure to review [service plan](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-service_plans) information as you consider retention, search, and log usage needs. 
 
 1. Navigate to your job definition page. For example:

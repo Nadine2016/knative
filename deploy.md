@@ -26,7 +26,7 @@ subcollection: knative
 # Managing application workloads
 {: #application-workloads}
 
-An *Application* runs your code to serve HTTP requests. An Application has a private URL for incoming requests. The number of running instances of an Application are automatically scaled up or down (to zero) based on incoming workload. An Application contains one or more *revisions* (revision entities). A revision represents an immutable version of the configuration properties of the Application. Each update of an application configuration property creates a new revision of the Application.
+An *Application* runs your code to serve HTTP requests. An Application has a URL for incoming requests. The number of running instances of an Application are automatically scaled up or down (to zero) based on incoming workload. An Application contains one or more *revisions* (revision entities). A revision represents an immutable version of the configuration properties of the Application. Each update of an application configuration property creates a new revision of the Application.
 {: #shortdesc} 
 
 ## Deploying application workloads
@@ -138,7 +138,7 @@ requests per instance" times "the maximum number of instances":
 ## Accessing your service
 {: #access-service}
 
-After your service deploys, you can access it through a private URL.
+After your service deploys, you can access it through a URL.
 {: shortdesc}
 
 From the console, your application URL is available from the components page and on the application details page.
