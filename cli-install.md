@@ -30,7 +30,7 @@ subcollection: knative
 Install, update, and delete the required CLIs and set up your environment to use Project Coligo.
 {: shortdesc}
 
-## Installing the {{site.data.keyword.cloud_notm}} CLI
+## Installing the {{site.data.keyword.cloud_notm}} CLI 
 {: #cli-setup}
 
 Install the latest version of the IBM Cloud CLI.
