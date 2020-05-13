@@ -23,6 +23,7 @@ subcollection: knative
 {:deprecated: .deprecated}
 {:download: .download}
 {:gif: data-image-type='gif'}
+{:faq: data-hd-content-type='faq'}
 
 # FAQs
 {: #kn-faqs}

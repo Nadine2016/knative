@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-24"
+lastupdated: "2020-05-13"
 
 keywords: knative
 
@@ -23,52 +23,45 @@ subcollection: knative
 {:deprecated: .deprecated}
 {:download: .download}
 {:gif: data-image-type='gif'}
+{:tsSymptoms: .tsSymptoms}
+{:tsCauses: .tsCauses}
+{:tsResolve: .tsResolve}
+{:troubleshoot: data-hd-content-type='troubleshoot'}
 
 # Troubleshooting tips
 {: #kn-troubleshoot}
 
-Use the troubleshooting tips to learn how to troubleshoot Knative service.
+Use the troubleshooting tips to learn how to troubleshoot Coligo.
 {: shortdesc}
 
-## Set up an IAM policy for Coligo
+## Why can't I access a project?
+{: #ts-access-project}
+{: troubleshoot}
 
-Whenever you are using an IBM Cloud account to create or use a Project that is not owned by you, you must have proper system roles. To perform operations with the Project, the right Access Policy must be applied to you as a user by the Account Owner or by someone with Admin access to the IBM Cloud Account in question. 
+You cannot access a project that was created by someone else.
+{: tsSymptoms}
+   
+Whenever you use an IBM Cloud account to create or use a project that is not owned by you, you must be assigned proper system roles. 
+{: tsCauses}
 
-The following steps must be performed by the Account Owner or someone with Admin access to the Cloud Account. 
-{: note}
+To perform operations with a project that is not owned by you, you must have `Viewer` set for `Platform Access` and `Reader` for `Service Access`. For more information, see [Managing user access](/docs/knative?topic=knative-knative-iam).
+{: tsResolve}
 
-For more information, see [Understanding IAM](https://cloud.ibm.com/docs/iam?topic=iam-getstarted) and [Best Practices](https://cloud.ibm.com/docs/iam?topic=iam-account_setup){: external}.
+## Why can't I create a project?
+{: #ts-create-project}
+{: troubleshoot}
 
-### Assigning access to an existing Project 
+You cannot create a project in your resource group.
+{: tsSymptoms}
+   
+There are several reasons why you might not be able to create a project in your resource group.
 
-1. Determine if the user exists in IAM Access. Go to the [Manage Access Users](https://cloud.ibm.com/iam/users){: external} page and search for the user. 
-  * To add a new user, click `Invite users`. 
-  * If the user already exists in the list, from the List of Actions menu, select the `Assign Access` option. 
-2. Once the user exists in IAM, assign the user access to the Project. From the `Assign users additional access` section on the `IAM Services` tile:
-    1. For `What type of access to you want to assign`, from the dropdown, select `Functions`.  
-    2. For `in`, select the `Resource Group` from the dropdown where the Project exists.  If you select `All Resource Groups`, the user is given access to all Projects in all Resource groups. 
-    3. For `Region`, specify the region from the dropdown. For example, specify  `Dallas` as this only works for the `US-South` region. 
-    4.  For `Platform Access`, select `Viewer` as the role. 
-    5.  For `Service Access`, select `Reader` as the role.
-    6.  For `Resource Group Access`, select `Viewer` as the role. 
-    7.  Click `Add` to add the roles.
-3.  Review the Access Summary information and modify if needed.  
-4.  When ready, click `Invite` to assign the specified access to the user. (?? Invite for new users?  Assign for existing??) 
+- Your project name must be unique in the region. 
+- You might already have a project in the region. During the Experimental release, you are limited to creating a single project in a region.
+- You must have the proper platform access to create a project. 
+{: tsCauses}
 
-### Assigning permissions to create Projects to a user
-
-To create Projects, a user must have an Administrative role in the Project.  
-1. Determine if the user exists in IAM Access. Go to the [Manage Access Users](https://cloud.ibm.com/iam/users){: external} page and search for the user. 
-  * To add a new user, click `Invite users`.  
-  * If the user already exists in the list, from the List of Actions menu, select the option to `Assign Access`. 
-2. Once the user is in IAM, you can assign an Administrative role to the user to enable the user to create Projects.  From from the `Assign users additional access` section on the `IAM Services` tile:
-    1. For `What type of access to you want to assign`, from the dropdown, select `Functions`.  
-      * For `in`, select the `Resource Group` from the dropdown where the Project exists.  If you select `All Resource Groups`, the user is given access to all Projects in all Resource groups.   
-    2. For `Region`, specify the region from the dropdown. For example,  `Dallas` as this only works for the `US-South` region. 
-    3.  For `Platform Access`, select `Administrator` as the role. 
-    4.  For `Service Access`, select `Reader` as the role.
-    5.  For `Resource Group Access`, select `Viewer` as the role. 
-    6.  Click `Add` to add the roles.
-3.  Review the Access Summary information and modify if needed.  
-4.  When ready, click `Assign` to assign the specified access to the user.
-
+- If you receive a warning message about your project name not being unique, select a different name. 
+- You can create only one project per region. For more information, see [Experimental release limitations](/docs/knative?topic=knative-kn-limits#kn-limits_experimental).
+- In order to create a project, you must have `Administrator` set for `Platform Access` and `Reader` for `Service Access`. For more information, see [Managing user access](/docs/knative?topic=knative-knative-iam).
+{: tsResolve}
