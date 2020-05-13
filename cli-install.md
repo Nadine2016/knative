@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-12"
+lastupdated: "2020-05-13"
 
 keywords: knative
 
@@ -178,11 +178,11 @@ Complete the following steps to install the Coligo CLI plug-in.
 1. Install the Coligo plug-in.
 
   ```
-  ibmcloud plugin install Coligo
+  ibmcloud plugin install coligo
   ```
   {: pre}
 
-2. Use the `ibmcloud plugin show Coligo` command to verify that the plug-in is installed.
+2. Use the `ibmcloud plugin show coligo` command to verify that the plug-in is installed.
 
   ```
   ibmcloud plugin list
@@ -199,7 +199,7 @@ Complete the following steps to install the Coligo CLI plug-in.
   ```
   {: screen}
 
-3. All Coligo commands begin with `ibmcloud coligo`. To see everything that you can do with the Coligo plug-in, run `ibmcloud coligo` with no arguments.
+3. All Coligo commands begin with `ibmcloud coligo`. To see everything that you can do with the coligo plug-in, run `ibmcloud coligo` with no arguments.
 
   ```
   ibmcloud coligo
@@ -226,7 +226,7 @@ Update the CLI periodically to take advantage of new features.
    
    ```
    Plugin Name                                 Version   Status        
-   Coligo                              1.0       Update Available   
+   coligo                              1.0       Update Available   
    cloud-object-storage                        1.1.0        
    container-registry                          0.1.437      
    container-service/kubernetes-service        0.4.51       

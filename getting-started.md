@@ -2,9 +2,9 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-12"
+lastupdated: "2020-05-13"
 
-keywords: knative, getting started
+keywords: knative, getting started, coligo
 
 subcollection: knative
 
@@ -45,10 +45,10 @@ Coligo also includes an [installable CLI plug-in](/docs/knative?topic=knative-kn
 Create your first Coligo app by using the [`Hello World`](docker.io/ibmcom/helloworld) image in Docker Hub. When you send a request to your sample app, the app reads the environment variable `TARGET` and prints `"Hello ${TARGET}!"`. If this environment variable is empty, `"Hello World!"` is returned.
 {: shortdesc}
 
-1. Access Project Coligo.
+1. Access [Project Coligo](https://cloud.ibm.com/knative/overview){: external}.
 2. Select a project from the list of available projects. You can also [create a new one](/docs/knative?topic=knative-manage-project#create-a-project). 
 3. After your project is created and the project is in `Active` status, you can create a Coligo application. Click the name of your project to open your project component page.
-4. From the Components page for your project, click **Application** to open the create Application page.
+4. From the Components page for your project, click **Application** to open the Create Application page.
 5. Enter a name for the application and specify `ibmcom/helloworld` for container image. For this example, you do not need to modify the default values for **Runtime settings** or **Environment variables**.
 6. Click **Deploy**. 
 7. After the application status changes to **Ready**, you can test the application by clicking **Test application**. To see the running application, click **Application URL**.  
