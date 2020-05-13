@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-12"
+lastupdated: "2020-05-13"
 
 keywords: knative
 
@@ -295,7 +295,7 @@ After your job has completed, view the logs for information on your completed jo
 
 Access logs for jobs that are run in the console from your job definition page. Coligo uses {{site.data.keyword.la_full}} for log management capabilities. 
 
-If you want to obtain logs for your job, before you run your job, you must [configure platform logs through the Observability dashboard](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-config_svc_logs#config_svc_logs_ui) Review [service plan](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-service_plans) information as you consider retention, search, and log usage needs. 
+If you want to obtain logs for your job, before you run your job, you must [configure platform logs through the Observability dashboard](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-config_svc_logs#config_svc_logs_ui). Review [service plan](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-service_plans) information as you consider retention, search, and log usage needs. 
 {: important}
 
 * After clicking **Submit Job** to run your job, from the job run details page, click **Launch logging**.  This action launches your log for your specific job in the Observability dashboard where you can view your job log. 

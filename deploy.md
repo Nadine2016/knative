@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-12"
+lastupdated: "2020-05-13"
 
 keywords: knative
 
@@ -54,7 +54,7 @@ The following steps describe how to deploy an application by using the Coligo co
 5. Select **Application** as your component type. 
 6. Enter a name for your application and enter the location for your container image.  For example, enter `ibmcom/helloworld` for container image. Click **Deploy**. 
   When you use this example, your sample application uses the `ibmcom/helloworld` image, reads the environment variable `TARGET`, and prints `"Hello ${TARGET}!"`. If this environment variable is empty, `"Hello World!"` is returned.
-7. After the application status changes to **Ready**, you can run your application by clicking **Send Request** and viewing the results in the **Requests** window.
+7. After the application status changes to **Ready**, you can run your application by clicking **Test application**. To see the running application, click **Application URL**.  
 
 You have created and deployed an application to Coligo and tested it out using the console.
 
@@ -166,8 +166,8 @@ For example, update the application that you created in [Deploying an applicatio
    * Click the name of your application to open the application page.
 2. Click **Env. Variables**.
 3. Click **Add Environmental Variables** and enter `TARGET` for name and `Stranger` for value.
-4. Click **Save** to save your change.
-5. When the revision is deployed and ready, run the application again. `Hello Stranger` is displayed in the **Requests** window.
+4. Click **Save and deploy** to save your change and run the application revision.
+5. After the application status changes to **Ready**, you can test the application revision by clicking **Test application**. To see the running application, click **Application URL**. `Hello Stranger` is displayed.
 
 ## Application status
 {: #app-status}
