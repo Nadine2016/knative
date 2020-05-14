@@ -324,13 +324,13 @@ You only need to enable logging for Coligo one time per region, per account.
 
 6. (Optional) To confirm that platform logs are set for your region, check the [Observability dashboard](https://cloud.ibm.com/observe/logging). 
 
-7. Now that logging is enabled on the console for Coligo, whenever you [run a job](##batch-runjob-ui), you can click **Launch logging** from the job details page to open the LogDNA page for all jobs that are run using this job definition.
+7. Now that logging is enabled on the console for Coligo, whenever you [run a job](#batch-runjob-ui), you can click **Launch logging** from the job details page to open the LogDNA page for all jobs that are run using this job definition.
  
 After enabling logging, consider keeping the LogDNA window open to easily view your job log data.
 {: tip}
 
 #### Viewing job log data from the console
- {: #batch-viewjoblogdata-ui}
+{: #batch-viewjoblogdata-ui}
 
 You must enable job logs before you can view job log data from the console.  
 
