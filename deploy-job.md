@@ -24,16 +24,16 @@ subcollection: knative
 {:download: .download}
 {:gif: data-image-type='gif'}
 
-# Deploying a job
+# Running a job
 {: #kn-job-deploy}
 
-Learn how to deploy jobs in Coligo. Jobs in Coligo are meant to run to completion as batch or standalone executables. They are not intended to provide lasting endpoints to access like a [Coligo application] does.
+Learn how to run jobs in Coligo. Jobs in Coligo are meant to run to completion as batch or standalone executables. They are not intended to provide lasting endpoints to access like a Coligo application does.
 {: shortdesc}
 
 ## Create a job definition
 {: #create-job-def}
 
-Job definitions are templates that are used to define common job types and variables. When you deploy a job, you can override many of the variables you set in the template. You can create job definitions from the console or with the CLI.
+Job definitions are templates that are used to define common job types and variables. When you run a job, you can override many of the variables you set in the template. You can create job definitions from the console or with the CLI.
 {: shortdesc}
 
 ### Creating a job definition from the console
@@ -51,8 +51,8 @@ Before you begin, [create a project](/docs/knative?topic=knative-manage-project)
 
 Before you begin:
 
-* [Create and target a project](/docs/knative?topic=knative-manage-project)
-* Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
+* [Create and work with a project](/docs/knative?topic=knative-manage-project)
+* Set up your [Coligo CLI](/docs/knative?topic=knative-kn-install-cli) environment
 
 To create a job definition with the CLI, run the `ibmcloud coligo jobdef create` command. This command requires a name and an image and also allows other optional arguments. 
 
@@ -106,7 +106,7 @@ ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef --memory 
 ## Running a job
 {: #run-job}
 
-After you create your job definitions, you can use that definition to describe the parameters for your job. You can override some parameters that are defined by the job definition. You can run your job from the console or with the CLI.
+After you create your job definitions, you can use that definition to describe the parameters for your job. You can override some parameters that are defined by the job definition. Run your job from the console or with the CLI.
 {: shortdesc}
 
 ### Running a job from the console
@@ -118,14 +118,14 @@ Before you begin, [create a job definition from the console](#create-job-def).
    1. From the Projects page, click on your desired project to open the Components page.  
    2. From the Components page, click on the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#create-job-def).
 
-2. [Add logging capabilities for your job](#enable-joblog-ui). Coligo uses {{site.data.keyword.la_full}} for log management capabilities. You only need to enable logging for Coligo one time per region for your account.  
 
-  From the job definition page, the **Add logging** option indicates that logging capabilities are not set. When logging capabilities are set, the job definition page displays **Logging** instead of **Add Logging**.
-  {: tip}
 
 3. From your job definition page, click **Submit Job** to run a job based on the selected job definition configuration. 
 4. From the Submit job page, review and optionally change configuration values such as array size, CPU, memory, number of job retries and job timeout. **Array size** specifies the number of instances or containers to run your job. 
-5. Click **Submit job** to run your job. The system displays the status of the instances of your job. If logging is enabled before the job run, you can **Launch logging** to view log data. For information about log data for your job, see [viewing job logs from the console](#view-joblogs-ui).
+5. Click **Submit job** to run your job. The system displays the status of the instances of your job on the job details page.
+
+You can view job logs after you add logging capabilities. See [adding log capabilities](#enable-joblogs-ui) and [viewing job logs from the console](#view-joblogs-ui)for more information. 
+{: tip}
 
 ### Running a job with the CLI
 {: #run-job-cli}
@@ -226,7 +226,7 @@ Find details about your job from the console or with the CLI.
 ### Accessing job details from the console
 {: #access-jobdetails-ui}
 
-Job results are available in the console from the job run details page after submitting your job. You can also view job details in the console by clicking on the name of your job in the Jobs pane on your job definition page. Job details include status of your instances, configuration details, and environmental variables of your job.  
+Job results are available in the console from the job details page after submitting your job. You can also view job details in the console by clicking on the name of your job in the Jobs pane on your job definition page. Job details include status of your instances, configuration details, and environmental variables of your job.  
 
 ### Accessing job details with the CLI
 {: #access-jobdetails-cli}
@@ -312,17 +312,19 @@ After your job has completed, view the logs for information on your completed jo
 ### Viewing job logs from the console
 {: #view-joblogs-ui}
 
-Access logs for jobs that are run in the console from your job definition page or from your job run details page. Coligo uses {{site.data.keyword.la_full}} for log management capabilities. 
+Coligo uses {{site.data.keyword.la_full}} for log management capabilities. You can access logs for jobs that are run in the console  from your job details page. 
 
 #### Enabling job logs from the console
- {: #enable-joblog-ui}
+{: #enable-joblogs-ui}
 
-If you want to view logs for your job from the console, enable logging before you run your job. Coligo uses {{site.data.keyword.la_full}} for log management capabilities.
+If you want to view logs for your job from the console, enable logging before you run your job. 
 
-You only need to enable logging for Coligo one time per region for your account.
+You only need to enable logging for Coligo one time per region, per account.
 {: important}
 
-1. Navigate to your job definition page. If logging capabilities are not set, the **Add logging** option is displayed.  When logging capabilties are set, the job definition page displays **Logging** instead of **Add logging**.
+
+
+1. After running a job using your job definition, the system displays the status of the instances of your job on the job details page. If logging capabilities are not set, the **Add logging** option is displayed.  When logging capabilties are set, the job details page displays **Launch logging** instead of **Add logging**.
 2. Click **Add logging** on the job definition page to create a log instance for your region. 
 3. From the LogDNA page, specify a region, review pricing information and select your plan, and review LogDNA resource information.
 
@@ -332,12 +334,16 @@ You only need to enable logging for Coligo one time per region for your account.
 4. Click **Create** to create the logging instance.
 5. Configure platform logs using one of the following ways:  
 
+  * After you **Submit job** to run your job, click **Add logging** from the job details page. Select an IBM Log Analysis with LogDNA instance to receive platform logs. Select an instance for your region and click **Configure**.
+
   * [Configure platform logs](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-config_svc_logs#config_svc_logs_ui) from the [Observability dashboard](https://cloud.ibm.com/observe/logging). Click **Configure platform logs**. Select an IBM Log Analysis with LogDNA instance to receive platform log data by specifying a region and your log instance. Click **Configure**.
 
-  * After you **Submit job** to run your job, click **Add logging** from the job run details page. Select an IBM Log Analysis with LogDNA instance to receive platform logs. Select an instance for your region. Click **Configure**. 
+6. (Optional) To confirm that platform logs are set for your region, check the [Observability dashboard](https://cloud.ibm.com/observe/logging). 
 
-6. To confirm that platform logs are set for your region, check the [Observability dashboard](https://cloud.ibm.com/observe/logging). 
-7. Now that logging is enabled on the console for Coligo, the job definition page displays **Logging** instead of **Add logging**.  Click **Logging** to open the LogDNA page for all [jobs that are run](##run-job-ui)) using this job definition.
+7. Now that logging is enabled on the console for Coligo, whenever you [run a job](#run-job-ui), you can click **Launch logging** from the job details page to open the  the job definition page displays **Logging** instead of **Add logging**.  Click **Logging** to open the LogDNA page for all jobs that are run using this job definition.
+
+After enabling logging, consider keeping the LogDNA window open to easily view your job log data.
+{: tip}
 
 ### Viewing job logs with the CLI
 {: #view-joblog-cli}
