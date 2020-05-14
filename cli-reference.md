@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-13"
+lastupdated: "2020-05-14"
 
 keywords: knative
 
@@ -906,28 +906,29 @@ ibmcloud coligo secret create --name SECRETNAME  --from-literal NAME=VALUE | --f
 
   **Output**
 
-```
-Creating Generic Secret...
-secret/mysecret-fromliteral created
-Generic Secret created successfully
-```
-{: screen}
+  ```
+  Creating Generic Secret...
+  secret/mysecret-fromliteral created
+  Generic Secret created successfully
+  ```
+  {: screen}
 
 - The following example creates a secret that is named `mysecret-fromfile` with values from a file.
-```
-ibmcloud coligo secret create --name mysecret-fromfile  --from-file ./username.txt --from-file ./password.txt
-```
-{: pre}
 
-**Output**
+  ```
+  ibmcloud coligo secret create --name mysecret-fromfile  --from-file ./username.txt --from-file ./password.txt
+  ```
+  {: pre}
 
-```
-Creating Generic Secret...
-secret/mysecret-fromfile created
+  **Output**
 
-Generic Secret created successfully
-```
-{: screen}
+  ```
+  Creating Generic Secret...
+  secret/mysecret-fromfile created
+
+  Generic Secret created successfully
+  ```
+  {: screen}
 
 ### `ibmcloud coligo secret create` (Image pull)
 {: #cli-secret-create-imgpull}
@@ -970,3 +971,147 @@ Image Secret created successfully
 {: screen}
 
 
+
+## Configmap commands
+{: #cli-configmap}
+
+Create Coligo configmaps. 
+{: shortdec}
+
+To see CLI help for the configmap commands, run `ibmcloud coligo configmap`. 
+{: tip}
+
+### `ibmcloud coligo configmap create`
+{: #cli-configmap-create}
+
+Create a configmap.
+{: shortdec}
+
+```
+ibmcloud coligo configmap create --name CONFIGMAPNAME  --from-literal NAME=VALUE | --from-file PATH_TO_FILE
+```
+{: pre}
+
+**Command options**
+<dl>
+<dt>`--name`</dt>
+<dd>The name of the configmap. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.</dd>
+<dt>`-f`, `--from-file value`</dt>
+<dd>Include this flag to create a configmap from a file. You must provide the path to the file as a value. If you do not use this flag, you must use the `--from-literal` flag.</dd>
+<dt>`-l`, `--from-literal`</dt>
+<dd>Include this flag to create a configmap from a value pair. The format must be `NAME=VALUE`.  If you do not use this flag, you must use the `--from-file` flag.</dd>
+</dl>
+
+**Examples**
+
+- The following example creates a configmap that is named `configmap-fromliteral` with a username and password value pair.
+
+  ```
+  ibmcloud coligo configmap create --name configmap-fromliteral --from-literal username=devuser --from-literal password='S!B99d$Y2Ksb'
+  ```
+  {: pre}
+
+  **Output**
+
+  ```
+  Creating Configmap 'configmap-fromliteral'...
+
+  Successfully created configmap 'configmap-fromliteral'. Run `ibmcloud coligo configmap get -n 'configmap-fromliteral'` to see more details.
+  ```
+  {: screen}
+  
+- The following example creates a configmap that is named `configmap-fromfile` with values from a file.
+
+  ```
+  ibmcloud coligo configmap create --name configmap-fromfile  --from-file ./username.txt --from-file ./password.txt
+  ```
+  {: pre}
+
+  **Output**
+
+  ```
+  Creating Configmap 'configmap-fromfile'...
+
+  Successfully created configmap 'configmap-fromfile'. Run `ibmcloud coligo configmap get -n 'configmap-fromfile'` to see    more details.
+  ```
+  {: screen}
+
+### `ibmcloud coligo configmap get`
+{: #cli-configmap-get}
+
+Display the details of a configmap.
+{: shortdec}
+
+```
+ibmcloud coligo configmap get --name CONFIGMAPNAME 
+```
+{: pre}
+
+**Command options**
+<dl>
+<dt>`--name`</dt>
+<dd>The name of the configmap. This value is required.</dd>
+</dl>
+
+**Example**
+
+```
+ibmcloud coligo configmap get --name configmap-fromliteral 
+```
+{: screen}
+
+**Output**
+
+```
+Getting Configmap 'configmap-fromliteral'...
+
+Name:        configmap-fromliteral
+Namespace:   401de621-cc61
+Labels:      <none>
+Annotations: <none>
+
+Data
+====
+username:
+password:
+----
+S!B99d$Y2Ksb
+devuser
+Events:  <none>
+
+Successfully performed 'configmap get configmap-fromliteral' command
+```
+{: screen}
+
+### `ibmcloud coligo configmap delete`
+{: #cli-configmap-delete}
+
+Delete a configmap.
+{: shortdec}
+
+```
+ibmcloud coligo configmap delete --name CONFIGMAPNAME
+```
+{: pre}
+
+**Command options**
+<dl>
+<dt>`--name`</dt>
+<dd>The name of the configmap. This value is required.</dd>
+</dl>
+
+**Example**
+
+```
+ibmcloud coligo configmap delete --name configmap-fromliteral
+```
+{: pre}
+
+**Output**
+
+```
+Deleting Configmap 'configmap-fromliteral'...
+
+Successfully deleted configmap 'configmap-fromliteral'
+```
+{: screen}
