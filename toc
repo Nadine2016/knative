@@ -22,9 +22,10 @@ Project Coligo
     
     {: .navgroup id="howto"}
     cli-install.md
-    project.md 
+    project.md
     deploy.md
     deploy-job.md
+    
         
     {: .topicgroup}
     Enhancing security for Project Coligo
