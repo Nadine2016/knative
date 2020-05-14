@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-12"
+lastupdated: "2020-05-14"
 
 keywords: knative
 
@@ -112,16 +112,20 @@ After you create your job definitions, you can use that definition to describe t
 ### Running a job from the console
 {: #run-job-ui}
 
-Before you begin: 
-* [Create a job definition from the console](#create-job-def-ui).
-* If you want to obtain logs for your job, before you run your job, you must [configure platform logs 
-  through the Observability dashboard](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-config_svc_logs#config_svc_logs_ui). Be sure to review [service plan](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-service_plans) information as you consider retention, search, and log usage needs.
+Before you begin, [create a job definition from the console](#create-job-def).
 
-1. From the Projects page, click on your desired project to open the Components page.  
-2. From the Components page, click on the name of the job definition that you want to run your job. If you do not have any job definitions that are defined, [create a job definition](#create-job-def).
+1. Navigate to your job definition page. For example:
+   1. From the Projects page, click on your desired project to open the Components page.  
+   2. From the Components page, click on the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#create-job-def).
+
+2. [Add logging capabilities for your job](#enable-joblog-ui). Coligo uses {{site.data.keyword.la_full}} for log management capabilities. You only need to enable logging for Coligo one time per region for your account.  
+
+  From the job definition page, the **Add logging** option indicates that logging capabilities are not set. When logging capabilities are set, the job definition page displays **Logging** instead of **Add Logging**.
+  {: tip}
+
 3. From your job definition page, click **Submit Job** to run a job based on the selected job definition configuration. 
 4. From the Submit job page, review and optionally change configuration values such as array size, CPU, memory, number of job retries and job timeout. **Array size** specifies the number of instances or containers to run your job. 
-5. Click **Submit job** to run your job. The system displays the status of the instances of your job.
+5. Click **Submit job** to run your job. The system displays the status of the instances of your job. If logging is enabled before the job run, you can **Launch logging** to view log data. For information about log data for your job, see [viewing job logs from the console](#view-joblogs-ui).
 
 ### Running a job with the CLI
 {: #run-job-cli}
@@ -213,36 +217,130 @@ The following table shows the possible status that your job might have.
 | Failed | All Job instances have terminated, and at least one instance has terminated in failure. That is, the instance either exited with non-zero status or was terminated by the system.
 | Unknown |	For some reason the state of the Job could not be obtained, typically due to an error in communicating with the host. |
 
-## Accessing the job results
-{: #access-job-results}
+## Accessing job details
+{: #access-job-details}
 
-After your job has completed, find the results.
+Find details about your job from the console or with the CLI.
 {: shortdesc}
 
-Job results are available in the console from the Job Run page. The Job Run page launches automatically when you submit a job. You can also click the name of your job from the Jobs pane on the Job definition page to get the results of your job. 
+### Accessing job details from the console
+{: #access-jobdetails-ui}
+
+Job results are available in the console from the job run details page after submitting your job. You can also view job details in the console by clicking on the name of your job in the Jobs pane on your job definition page. Job details include status of your instances, configuration details, and environmental variables of your job.  
+
+### Accessing job details with the CLI
+{: #access-jobdetails-cli}
+
+To view job details with the CLI, use the `ibmcloud coligo job get` command. 
+
+For example, `ibmcloud coligo job get --name testjobrun`.
+
+**Sample output**
+
+```
+Getting Job 'testjobrun'...
+Name:         testjobrun-w6rmp
+Namespace:    ae2f5ad7-6196
+Labels:       coligo.cloud.ibm.com/job-definition=testjobdef
+              jobrun=testjobrun
+Annotations:  coligo.cloud.ibm.com/pod-expectations: 5
+API Version:  coligo.cloud.ibm.com/v1alpha1
+Kind:         JobRun
+Metadata:
+  Creation Timestamp:  2020-05-08T00:13:10Z
+  Generate Name:       testjobrun-
+  Generation:          1
+  Resource Version:    92429386
+  Self Link:           /apis/coligo.cloud.ibm.com/v1alpha1/namespaces/ae2f5ad7-6196/jobruns/testjobrun-w6rmp
+  UID:                 cce00a2d-8db1-44fd-bf17-fda22e863911
+Spec:
+  Array Size:          5
+  Job Definition Ref:  testjobdef
+  Job Definition Spec:
+    Containers:
+      Image:  ibmcom/testjob
+      Name:   testjobdef
+      Resources:
+        Requests:
+          Cpu:         1
+          Memory:      128Mi
+  Max Execution Time:  7200
+  Retry Limit:         2
+Status:
+  Completion Time:  2020-05-08T00:13:51Z
+  Conditions:
+    Last Probe Time:       2020-05-08T00:13:46Z
+    Last Transition Time:  2020-05-08T00:13:46Z
+    Status:                True
+    Type:                  Pending
+    Last Probe Time:       2020-05-08T00:13:50Z
+    Last Transition Time:  2020-05-08T00:13:50Z
+    Status:                True
+    Type:                  Running
+    Last Probe Time:       2020-05-08T00:13:51Z
+    Last Transition Time:  2020-05-08T00:13:51Z
+    Status:                True
+    Type:                  Complete
+  Effective Job Definition Spec:
+    Containers:
+      Image:  ibmcom/testjob
+      Name:   testjobdef
+      Resources:
+        Requests:
+          Cpu:     1
+          Memory:  128Mi
+  Start Time:      2020-05-08T00:13:46Z
+  Succeeded:       5
+Events:
+  Type    Reason     Age                            From                  Message
+  ----    ------     ----                           ----                  -------
+  Normal  Updated    <invalid> (x5 over <invalid>)  batch-job-controller  Updated JobRun "testjobrun-w6rmp"
+  Normal  Completed  <invalid>                      batch-job-controller  JobRun completed successfully
+
+
+Command 'job get' performed successfully
+```
+{: screen}
+
 
 ## Viewing job logs
 {: #view-job-logs}
-
-After your job has completed, find the logs.
-{: shortdesc}
 
 After your job has completed, view the logs for information on your completed job.
 {: shortdesc}
 
 ### Viewing job logs from the console
-{: #batch-viewjobresult-ui}
+{: #view-joblogs-ui}
 
-Access logs for jobs that are run in the console from your job definition page. Coligo uses {{site.data.keyword.la_full}} for log management capabilities. 
+Access logs for jobs that are run in the console from your job definition page or from your job run details page. Coligo uses {{site.data.keyword.la_full}} for log management capabilities. 
 
-If you want to obtain logs for your job, before you run your job, you must [configure platform logs through the Observability dashboard](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-config_svc_logs#config_svc_logs_ui) Review [service plan](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-service_plans) information as you consider retention, search, and log usage needs. 
+#### Enabling job logs from the console
+ {: #enable-joblog-ui}
+
+If you want to view logs for your job from the console, enable logging before you run your job. Coligo uses {{site.data.keyword.la_full}} for log management capabilities.
+
+You only need to enable logging for Coligo one time per region for your account.
 {: important}
 
-1. After clicking **Submit Job** to run your job, from the job run details page, click **Launch logging**.  This action launches your log for your specific job in the Observability dashboard where you can view your job log. 
-2. You can also view job logs from the Job definition page. Select the job that you want from the Jobs pane, and click **Logs**. This action launches your log for the specific job your selected on the observability dashboard where you can view your job log. 
+1. Navigate to your job definition page. If logging capabilities are not set, the **Add logging** option is displayed.  When logging capabilties are set, the job definition page displays **Logging** instead of **Add logging**.
+2. Click **Add logging** on the job definition page to create a log instance for your region. 
+3. From the LogDNA page, specify a region, review pricing information and select your plan, and review LogDNA resource information.
+
+  Review the [service plan](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-service_plans) information as you consider retention, search, and log usage needs.
+  {: tip}
+
+4. Click **Create** to create the logging instance.
+5. Configure platform logs using one of the following ways:  
+
+  * [Configure platform logs](/docs/Log-Analysis-with-LogDNA?topic=LogDNA-config_svc_logs#config_svc_logs_ui) from the [Observability dashboard](https://cloud.ibm.com/observe/logging). Click **Configure platform logs**. Select an IBM Log Analysis with LogDNA instance to receive platform log data by specifying a region and your log instance. Click **Configure**.
+
+  * After you **Submit job** to run your job, click **Add logging** from the job run details page. Select an IBM Log Analysis with LogDNA instance to receive platform logs. Select an instance for your region. Click **Configure**. 
+
+6. To confirm that platform logs are set for your region, check the [Observability dashboard](https://cloud.ibm.com/observe/logging). 
+7. Now that logging is enabled on the console for Coligo, the job definition page displays **Logging** instead of **Add logging**.  Click **Logging** to open the LogDNA page for all [jobs that are run](##run-job-ui)) using this job definition.
 
 ### Viewing job logs with the CLI
-{: #batch-viewjobresult-cli}
+{: #view-joblog-cli}
 
 To view job logs with the CLI, use the `ibmcloud coligo job logs` command. 
 
