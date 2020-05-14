@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-13"
+lastupdated: "2020-05-14"
 
 keywords: knative
 
@@ -59,9 +59,11 @@ There are several reasons why you might not be able to create a project in your 
 - Your project name must be unique in the region. 
 - You might already have a project in the region. During the Experimental release, you are limited to creating a single project in a region.
 - You must have the proper platform access to create a project. 
+
 {: tsCauses}
 
 - If you receive a warning message about your project name not being unique, select a different name. 
 - You can create only one project per region. For more information, see [Experimental release limitations](/docs/knative?topic=knative-kn-limits#kn-limits_experimental).
 - In order to create a project, you must have `Administrator` set for `Platform Access` and `Reader` for `Service Access`. For more information, see [Managing user access](/docs/knative?topic=knative-knative-iam).
+
 {: tsResolve}
