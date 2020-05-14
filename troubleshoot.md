@@ -38,14 +38,14 @@ Use the troubleshooting tips to learn how to troubleshoot Coligo.
 {: #ts-access-project}
 {: troubleshoot}
 
-You cannot access a project that was created by someone else.
 {: tsSymptoms}
-   
-Whenever you use an IBM Cloud account to create or use a project that is not owned by you, you must be assigned proper system roles. 
-{: tsCauses}
+You cannot access a project that was created by someone else.
 
-To perform operations with a project that is not owned by you, you must have `Viewer` set for `Platform Access` and `Reader` for `Service Access`. For more information, see [Managing user access](/docs/knative?topic=knative-knative-iam).
+{: tsCauses}
+Whenever you use an IBM Cloud account to create or use a project that is not owned by you, you must be assigned proper system roles. 
+
 {: tsResolve}
+To perform operations with a project that is not owned by you, you must have `Viewer` set for `Platform Access` and `Reader` for `Service Access`. For more information, see [Managing user access](/docs/knative?topic=knative-knative-iam).
 
 ## Why can't I create a project?
 {: #ts-create-project}
@@ -56,10 +56,9 @@ You cannot create a project in your resource group.
 
 {: tsCauses}
 There are several reasons why you might not be able to create a project in your resource group.
-
 1. Your project name must be unique in the region. 
 2. You might already have a project in the region. During the Experimental release, you are limited to creating a single project in a region.
-3. You must have the proper platform access to create a project. 
+3. You might not have the proper platform access to create a project. 
 
 {: tsResolve}
 1. If you receive a warning message about your project name not being unique, select a different name. 
