@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-13"
+lastupdated: "2020-05-14"
 
 keywords: knative, getting started, coligo
 
@@ -42,7 +42,7 @@ Coligo also includes an [installable CLI plug-in](/docs/knative?topic=knative-kn
 ## Creating your first Coligo app
 {: #kn-hello}
 
-Create your first Coligo app by using the [`Hello World`](docker.io/ibmcom/helloworld) image in Docker Hub. When you send a request to your sample app, the app reads the environment variable `TARGET` and prints `"Hello ${TARGET}!"`. If this environment variable is empty, `"Hello World!"` is returned.
+Create your first Coligo app by using the [`Hello World`](https://hub.docker.com/r/ibmcom/helloworld) image in Docker Hub. When you send a request to your sample app, the app reads the environment variable `TARGET` and prints `"Hello ${TARGET}!"`. If this environment variable is empty, `"Hello World!"` is returned.
 {: shortdesc}
 
 1. Access [Project Coligo](https://cloud.ibm.com/knative/overview){: external}.
