@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-14"
+lastupdated: "2020-05-15"
 
 keywords: knative
 
@@ -51,7 +51,7 @@ Before you begin, [create a project](/docs/knative?topic=knative-manage-project)
 
 1. After your project is in **Active** status, click the name of your project on the Projects page. 
 2. From the Components page, click **Job definition** to create the job definition. 
-3. From the Create job definition page, provide a name for your job definition name and a container image reference. You can also modify default runtime settings. You can specify the sample container image reference `ibmcom/testjob`.
+3. From the Create job definition page, provide a name for your job definition name and a container image reference. You can also modify default runtime settings. You can specify the sample container image reference `ibmcom/testjob`. This tutorial uses a sample Docker image file is available at [ibmcom/testjob](https://hub.docker.com/r/ibmcom/testjob).
 4. Click **Create**. 
 
 ### Creating a job definition with the CLI
@@ -125,8 +125,6 @@ Before you begin, [create a job definition from the console](#batch-jobdef-ui).
 1. Navigate to your job definition page. For example:
    1. From the Projects page, click on your desired project to open the Components page.  
    2. From the Components page, click on the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#batch-jobdef-ui). 
-
-
 
 3. From your job definition page, click **Submit Job** to run a job based on the selected job definition configuration. 
 4. From the Submit job page, review and optionally change configuration values such as array size, CPU, memory, number of job retries, and job timeout. **Array size** specifies the number of instances or containers to run your job. 
@@ -338,7 +336,7 @@ You must enable job logs before you can view job log data from the console.
 
  
 
-Coligo automatically sets log filters depending on whether you are launching logs from the job definition page or from a specific job details page.  From the LogDNA page, you can modify and scope the preset filter to display log data at the job definition level or a more granular level of a specific job run. For example, the filter `_platform:Coligo app:myjob-jobrun-t6m7l` filters log data to the specific `myjob-jobrun-t6m7l` job run level; whereas, `_platform:Coligo app:myjob` scopes the log data to the job definition level. 
+Coligo automatically sets log filters. From the LogDNA page, you can modify and scope the preset filter to display log data at the job definition level or a more granular level of a specific job run. For example, the filter `_platform:Coligo app:myjob-jobrun-t6m7l` filters log data to the specific `myjob-jobrun-t6m7l` job run level; whereas, `_platform:Coligo app:myjob` scopes the log data to the job definition level. 
 {: tip}
 
 ### Viewing job logs with the CLI

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-14"
+lastupdated: "2020-05-15"
 
 keywords: knative
 
@@ -37,7 +37,7 @@ With this tutorial, deploy a containerized application in a serverless fashion b
 
 ## Select an image file
 
-This tutorial uses a sample Docker image file is available at [ibmcom/helloworld](https://cloud.docker.com/repository/docker/ibmcom/helloworld). This example is a simple `Hello World!` program. The program includes an environment variable `TARGET`, and prints "Hello ${TARGET}!". If the environment variable is empty, "Hello World!" is returned.
+This tutorial uses a sample Docker image file is available at [ibmcom/helloworld](https://hub.docker.com/r/ibmcom/helloworld). This example is a simple `Hello World!` program. The program includes an environment variable `TARGET`, and prints "Hello ${TARGET}!". If the environment variable is empty, "Hello World!" is returned.
 
 If you have a container image that you want to use, you can replace the image reference in the next step with your Docker repository, image name, and version.
 

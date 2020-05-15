@@ -36,7 +36,8 @@ Run these commands to manage the entities that make up Project Coligo (or "Colig
 A project is a container for components, such as applications and job definitions. Projects enable you to manage resources and provide access to components in the project. Use project commands to create, display details, and delete projects.
 {: shortdec}
 
-To see CLI help for the project command, run `ibmcloud coligo project`.
+You can use either `project` or `proj` in your project commands. 
+To see CLI help for the project command, run `ibmcloud coligo `proj`. 
 {: tip}
 
 ### `ibmcloud coligo project create`
@@ -254,8 +255,8 @@ export KUBECONFIG=/user/myusername/.bluemix/plugins/coligo/myproject-42642513-88
 Before using application commands, you must be targeting a [project](#cli-project).  An application runs your code to serve HTTP requests. The application has a URL for incoming requests. Use application commands to create, display details, and update, and delete applications. 
 {: shortdec}
 
- 
-To see CLI help for the application command, run `ibmcloud coligo application`. 
+You can use either `application` or `app` in your application commands. 
+To see CLI help for the application command, run `ibmcloud coligo app`. 
 {: tip}
 
 ### `ibmcloud coligo application create`
@@ -265,7 +266,7 @@ Create an application.
 {: shortdec}
 
 ```
-ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registry-secret SECRET] [--cpu CPU] [--memory MEMORY] [--timeout TIMEOUT] [--concurrency REQUESTS] [--minscale MIN_NUM] [--maxscale MAX_NUM] [--project PROJECT_NAME]
+ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registry-secret SECRET] [--cpu CPU] [--memory MEMORY] [--timeout TIMEOUT] [--concurrency REQUESTS] [--minscale MIN_NUM] [--maxscale MAX_NUM] [--env ENV][--quiet]
 ```
 {: pre}
 
@@ -274,13 +275,13 @@ ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registr
 <dt>`-n`, `--name`</dt>
 <dd>The name of the application. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.
 <dt>`-i`, `--image`</dt>
-<dd>The name of the image used for this application. This value is required. [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
+<dd>The name of the image used for this application. This value is required. For images in [Docker Hub](https://hub.docker.com){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
 <dt>`--rs`, `--registry-secret`</dt>
 <dd>The name of the secret for the image. This value is optional.</dd>
 <dt>`-c`, `--cpu`</dt>
 <dd>The amount of CPU set for the instance of the application. The default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
-<dd>The amount of memory set for the instance of the application. The default value is 64 M. This value is optional.</dd>
+<dd>The amount of memory set for the instance of the application. The default value is 1024 M. This value is optional.</dd>
 <dt>`-t`, `--timeout`</dt>
 <dd>The amount of time that can pass before the application must succeed or fail. The default value is 360 seconds. This value is optional.</dd>
 <dt>`--cn`, `--concurrency`</dt>
@@ -289,8 +290,8 @@ ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registr
 <dd>The minimum number of instances that can be used for this application. The default value is 1. This value is optional.</dd>
 <dt>`--max`, `--maxscale`</dt>
 <dd>The maximum number of instances that can be used for this application. The default value is 1. This value is optional.</dd>
-<dt>`-p`, `--project`</dt>
-<dd>The name of the project to contain this application. If this value is not set, then the current project is used. This value is optional.</dd>
+<dt>`-e`, `--env`</dt>
+<dd>Set any environmental variables to pass to the application. Variables use a `KEY=VALUE` format. This value is optional.</dd>
 <dt>`-q`, `--quiet`</dt>
 <dd>Specify this option to reduce the output of the command. The default value is `false`. This value is optional.</dd>
 </dl>
@@ -352,7 +353,7 @@ Display the details of an application.
 {: shortdec}
 
 ```
-ibmcloud coligo application get --name APP_NAME
+ibmcloud coligo application get --name APP_NAME [--more-details]
 ```
 {: pre}
 
@@ -360,6 +361,8 @@ ibmcloud coligo application get --name APP_NAME
 <dl>
 <dt>`-n`, `--name`</dt>
 <dd>The name of the application. This value is required.</dd>
+<dt>`--md`, `--more-details`</dt>
+<dd>Specify this option to print more details about the application. The default value is `false`. This value is optional.</dd>
 </dl>
 
 **Example**
@@ -391,13 +394,63 @@ Command 'application get' performed successfully
 ```
 {: screen}
 
+### `ibmcloud coligo application update`
+{: #cli-app-update}
 
--->
+Update an application. Updating your application creates a revision. By default, when calls are made to the application, traffic is routed to the revision.
+{: shortdec}
+
+```
+ibmcloud coligo application update --name APP_NAME --image IMAGE_REF [--registry-secret SECRET] [--cpu CPU] [--memory MEMORY] [--timeout TIMEOUT] [--concurrency REQUESTS] [--minscale MIN_NUM] [--maxscale MAX_NUM] [--env ENV][--quiet]
+```
+{: pre}
+
+**Command options**
+<dl>
+<dt>`-n`, `--name`</dt>
+<dd>The name of the application. This value is required.</dd>
+<dt>`-i`, `--image`</dt>
+<dd>The name of the image used for this application. This value is required. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</dd>
+<dt>`--rs`, `--registry-secret`</dt>
+<dd>The name of the secret for the image. This value is optional.</dd>
+<dt>`-c`, `--cpu`</dt>
+<dd>The amount of CPU set for the application. The default value is 1. This value is optional.</dd>
+<dt>`-m`, `--memory`</dt>
+<dd>Specify to change the amount of memory set for the application. This value is optional.</dd>
+<dt>`-t`, `--timeout`</dt>
+<dd>The amount of time that can pass before the application must succeed or fail. The default value is 360 seconds. This value is optional.</dd>
+<dt>`--cn`, `--concurrency`</dt>
+<dd>The number of requests that can be processed concurrently. The default value is 1. This value is optional.</dd>
+<dt>`--min`, `--minscale`</dt>
+<dd>The minimum number of instances that can be used for this application. The default value is 1. This value is optional.</dd>
+<dt>`--max`, `--maxscale`</dt>
+<dd>The maximum number of instances that can be used for this application. The default value is 1. This value is optional.</dd>
+<dt>`-e`, `--env`</dt>
+<dd>Set any environmental variables to pass to the application. Variables use a `KEY=VALUE` format. This value is optional.</dd>
+<dt>`-q`, `--quiet`</dt>
+<dd>Specify this option to reduce the output of the command. The default value is `false`. This value is optional.</dd>
+</dl>
+
+**Example**
+
+```
+ibmcloud coligo application update --name myapp --image ibmcom/helloworld 
+```
+{: pre}
+
+**Output**
+
+```
+Updating Application 'myapp' in namespace 'f0173a8d-abc3':
+Application 'fmoapp' updated to latest revision 'myapp-oobym-3' and is available at URL:
+http://myapp.f0173a8d-abc3.us-south.knative.appdomain.cloud
+```
+{: screen} -->
 
 ### `ibmcloud coligo application list`
 {: #cli-application-list}
 
-List the details of an application.
+List all applications in a project. 
 {: shortdec}
 
 ```
@@ -430,7 +483,8 @@ Before using job definition commands, you must be targeting a [project](#cli-pro
 
 {: shortdec}
 
-To see CLI help for the job definition command, run `ibmcloud coligo jobdef`.
+You can use either `jobdef` or `jd` in your job definition commands. 
+To see CLI help for the job definition command, run `ibmcloud coligo `jd`. 
 {: tip}
 
 ### `ibmcloud coligo jobdef create`
@@ -449,7 +503,7 @@ ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argu
 <dt>`-n`, `--name`</dt>
 <dd>The name of the job definition. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.
 <dt>`-i`, `--image`</dt>
-<dd>The name of the image used for this job definition. This value is required. For images in [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
+<dd>The name of the image used for this job definition. This value is required. For images in [Docker Hub](https://hub.docker.com){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
 <dt>`-a`, `--argument`</dt>
 <dd>Set any arguments for the job definition. This value is required. Specify one argument per `--argument` flag.  To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`.</dd>
 <dt>`-e`, `--env`</dt>
@@ -459,7 +513,7 @@ ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argu
 <dt>`--cpu`</dt>
 <dd>Specifies the number of CPUs to be assigned to the job definition. The default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
-<dd>The amount of memory set for the job definition. The default value is 64 M. This value is optional.</dd>
+<dd>The amount of memory set for the job definition. The default value is 128 M. This value is optional.</dd>
 </dl>
 
 **Example**
@@ -619,7 +673,7 @@ Run a job based on a job definition.
 {: shortdec}
 
 ```
-ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image IMAGE_REF] [--cpu CPU] [--memory MEMORY] [--env ENV] [--argument ARGUMENT] [--command COMMAND] [--arraysize ARRAY] [--retrylimit RETRY]
+ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image IMAGE_REF] [--cpu CPU] [--memory MEMORY] [--env ENV] [--argument ARGUMENT] [--command COMMAND] [--arraysize ARRAY] [--retrylimit RETRY] [--maxexecutiontime MAXEXECUTIONTIME]
 ```
 {: pre}
 
@@ -630,7 +684,7 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 <dt>`--jd`, `--jobdef`</dt>
 <dd>Identifies the job definition that contains the description of the job to be run. This value is required.</dd>
 <dt>`-i`, `--image`</dt>
-<dd>The name of the image used for this job. This value is required. [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. This value overrides any `--image` value that is assigned in the job definition.</dd>
+<dd>The name of the image used for this job. This value is required. For images in [Docker Hub](https://hub.docker.com){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. This value overrides any `--image` value that is assigned in the job definition.</dd>
 <dt>`-e`, `--env`</dt>
 <dd>Specifies any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables that are passed in the job definition. This value is optional. </dd>
 <dt>`-a`, `--argument`</dt>
@@ -640,11 +694,13 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 <dt>`--cpu`</dt>
 <dd>Specifies the number of CPUs to assign to the container that is running the image. This value overrides any `--cpu` value that is assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
-<dd>Specifies the amount of memory to assign to the container that is running the image. This value overrides any `--memory` value that is assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 64 M. This value is optional.</dd>
+<dd>Specifies the amount of memory to assign to the container that is running the image. This value overrides any `--memory` value that is assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 128 M. This value is optional.</dd>
 <dt>`--as`, `--arraysize`</dt>
 <dd>Specifies the number of pods used to run the container specified by the job definition. The default value is 1. This value is optional.</dd>
 <dt>`-r`, `--retrylimit`</dt>
 <dd>Specifies the number of times to retry the job.  The default value is 3. This value is optional.</dd>
+<dt>`--met`, `--maxexecutiontime`</dt>
+<dd>Specifies the maximum execution time for the job.  The default value is 7200 seconds. This value is optional.</dd>
 </dl>
 
 **Example**
@@ -865,7 +921,7 @@ Deleted Job 'myjobrun'
 ```
 {: screen}
 
-## Secrets commands
+## Secret commands
 {: #cli-secrets}
 
 Create Coligo secrets. 
@@ -970,6 +1026,39 @@ Image Secret created successfully
 ```
 {: screen}
 
+### `ibmcloud coligo secret delete`
+{: #cli-secret-delete}
+
+Delete a secret.
+{: shortdec}
+
+```
+ibmcloud coligo secret delete --name SECRETNAME
+```
+{: pre}
+
+**Command options**
+<dl>
+<dt>`--name`</dt>
+<dd>The name of the secret. This value is required.</dt>
+</dl>
+
+**Example**
+
+```
+ibmcloud coligo secret delete mysecret
+```
+{: pre}
+
+**Output**
+
+```
+Deleting Secret mysecret...
+
+Successfully deleted secret 'mysecret'.
+```
+{: screen}
+
 
 
 ## Configmap commands
@@ -978,7 +1067,8 @@ Image Secret created successfully
 Use configmap commands to create, display details, and delete configmaps. 
 {: shortdec}
 
-To see CLI help for the configmap commands, run `ibmcloud coligo configmap`. 
+You can use either `configmap` or `cm` in your configmap commands. 
+To see CLI help for the configmap commands, run `ibmcloud coligo configmap`.
 {: tip}
 
 ### `ibmcloud coligo configmap create`
@@ -1082,6 +1172,93 @@ Events:  <none>
 Successfully performed 'configmap get configmap-fromliteral' command
 ```
 {: screen}
+
+### `ibmcloud coligo configmap update`
+{: #cli-configmap-update}
+
+Update a configmap.
+{: shortdec}
+
+```
+ibmcloud coligo configmap update --name CONFIGMAPNAME  --from-literal NAME=VALUE | --from-file PATH_TO_FILE
+```
+{: pre}
+
+**Command options**
+<dl>
+<dt>`--name`</dt>
+<dd>The name of the configmap. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.</dd>
+<dt>`-f`, `--from-file value`</dt>
+<dd>Include this flag to update a configmap from a file. You must provide the path to the file as a value. If you do not use this flag, you must use the `--from-literal` flag.</dd>
+<dt>`-l`, `--from-literal`</dt>
+<dd>Include this flag to update a configmap from a value pair. The format must be `NAME=VALUE`.  If you do not use this flag, you must use the `--from-file` flag.</dd>
+</dl>
+
+**Examples**
+
+- The following example updates a configmap that is named `configmap-fromliteral` with a username and password value pair.
+
+  ```
+  ibmcloud coligo configmap update --name configmap-fromliteral --from-literal username=devuser --from-literal password='S!B99d$Y2Ksb'
+  ```
+  {: pre}
+
+  **Output**
+
+  ```
+  Updating Configmap configmap-fromliteral...
+  OK
+  Successfully updated configmap 'configmap-fromliteral'. Run `ibmcloud coligo configmap get -n configmap-fromliteral` to see more details.
+  ```
+  {: screen}
+  
+- The following example updates a configmap that is named `configmap-fromfile` with values from a file.
+
+  ```
+  ibmcloud coligo configmap update --name configmap-fromfile  --from-file ./username.txt --from-file ./password.txt
+  ```
+  {: pre}
+
+  **Output**
+
+  ```
+  Updating Configmap configmap-fromfile...
+  OK
+  Successfully updated configmap 'configmap-fromfile'. Run `ibmcloud coligo configmap get -n configmap-fromfile` to see more details.
+
+  ```
+  {: screen}
+
+### `ibmcloud coligo configmap list`
+{: #cli-configmap-list}
+
+List all configmaps in a project.  
+{: shortdec}
+
+```
+ibmcloud coligo configmap list
+```
+{: pre}
+
+**Example**
+
+```
+ibmcloud coligo configmap list 
+```
+{: pre}
+
+**Output**
+
+```
+Listing Configmaps...
+Name                    Data   Age
+configmap-fromfile      2      19m13s
+configmap-fromliteral   2      16m12s
+
+Command 'configmap list' performed successfully
+```
+{: screen}
+
 
 ### `ibmcloud coligo configmap delete`
 {: #cli-configmap-delete}
