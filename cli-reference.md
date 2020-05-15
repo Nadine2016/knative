@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-14"
+lastupdated: "2020-05-15"
 
 keywords: knative
 
@@ -606,7 +606,7 @@ myjobdef    5d15h
 ## Job commands
 {: #cli-job-runcmd}
 
-A job runs your code to complete a task. Before using job commands, you must be targeting a [project](#cli-project) and have a [job definition](#cli-jobdef) created. Jobs are submitted based on a job definition. After a job definition is created, you can run one or more jobs that refer to the job definition, optionally overwriting values of the jJob definition. Use job commands to create, display details, and delete jobs. 
+A job runs your code to complete a task. Before using job commands, you must be targeting a [project](#cli-project) and have a [job definition](#cli-jobdef) created. Jobs are submitted based on a job definition. After a job definition is created, you can run one or more jobs that refer to the job definition, optionally overwriting values of the job definition. Use job commands to create, display details, and delete jobs. 
 {: shortdec}
 
 To see CLI help for the job commands, run `ibmcloud coligo job`. 
@@ -975,7 +975,7 @@ Image Secret created successfully
 ## Configmap commands
 {: #cli-configmap}
 
-Create Coligo configmaps. 
+Use configmap commands to create, display details, and delete configmaps. 
 {: shortdec}
 
 To see CLI help for the configmap commands, run `ibmcloud coligo configmap`. 
