@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-13"
+lastupdated: "2020-05-15"
 
 keywords: knative
 
@@ -39,7 +39,7 @@ Deploy your app with Coligo.
 
 * Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
 * [Target a project](/docs/knative?topic=knative-manage-project)
-* Application as an image file
+* Create your application as an image file
 
 ### Deploying an application from console
 {: #deploy-app-console}
@@ -47,7 +47,7 @@ Deploy your app with Coligo.
 The following steps describe how to deploy an application by using the Coligo console.
 {: shortdesc}
 
-1. Access Coligo.
+1. Open the [Coligo dashboard](https://cloud.ibm.com/knative/overview).
 2. Select a project from the list of available projects. You can also [create a new one](/docs/knative?topic=knative-manage-project).
 3. From the Projects page, click the name of your project to open the project component page. 
 4. From your project component page, select **Create component**.

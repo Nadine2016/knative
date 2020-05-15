@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-14"
+lastupdated: "2020-05-15"
 
 keywords: knative, project
 
@@ -36,7 +36,7 @@ With Coligo, you can create Identity and Access (IAM) managed projects to group 
 
 ### How can I see what projects I can access?
 
-You can see a list of your projects in the [Coligo console](https://cloud.ibm.com/coligo){: external}.
+You can see a list of your projects in the [Coligo console](https://cloud.ibm.com/knative/overview){: external}.
 
 You can also run the [`project list`](/docs/knative?topic=knative-kn-cli#cli-project-list) command. 
 
@@ -59,7 +59,7 @@ Command 'project list' performed successfully
 
 ### How can I see what a project contains?
 
-You can see a list of your project components by selecting a project from [Coligo console](https://cloud.ibm.com/coligo){: external}.
+You can see a list of your project components by selecting a project from [Coligo console](https://cloud.ibm.com/knative/overview){: external}.
 
 You can also run the [`project get`](/docs/knative?topic=knative-kn-cli#cli-project-get) command. Replace `PROJECT_NAME` with the name of your project.
 
@@ -102,8 +102,8 @@ Please wait for several minutes after creating your project before you proceed t
 ### Create a project through the console
 {: #create-project-console}
 
-1. From the [Coligo console](https://cloud.ibm.com/coligo){: external} project menu, select **Create Project**.
-2. Enter a display name for the namespace and a short description, such as the actions or packages that you plan to create in this namespace.
+1. From the [Coligo console](https://cloud.ibm.com/knative/overview){: external} project menu, select **Create Project**.
+2. Enter a display name for the namespace and a short description, such as the actions or packages that you plan to create in this namespace. Use a project name that is unique to your region. 
 3. Choose the resource group where you want to create the project and a location to deploy the project.
 4. Click **Create**.
 
@@ -116,7 +116,7 @@ You can update the name or description of the project from the **Projects Settin
 
 1. Install the [Coligo CLI](/docs/knative?topic=knative-kn-install-cli). Target the resource group that you want to use for the project. 
 
-2. Create a project with the [`project create`](/docs/knative?topic=knative-kn-cli#cli-project-create) command. Optional: Include a description for your project by using the `-d` or `--description` flag. If your description is longer than one word, it must be in quotations.
+2. Create a project with the [`project create`](/docs/knative?topic=knative-kn-cli#cli-project-create) command. Optional: Include a description for your project by using the `-d` or `--description` flag. If your description is longer than one word, it must be in quotations. Use a project name that is unique to your region. 
 
   ```
   ibmcloud coligo project --name PROJECT_NAME [--description PROJ_DESC]
@@ -169,7 +169,7 @@ After you create a project, you can work with the project with Coligo. You can u
 ### Work with a project from the console
 {: #target-project-console}
 
-To work with a project from the [Coligo console](https://cloud.ibm.com/coligo){: external} project menu, click on the name of the project from the list.
+To work with a project from the [Coligo console](https://cloud.ibm.com/knative/overview){: external} project menu, click on the name of the project from the list.
 
 From the context of the selected project, you can work with [kn-service]} components, such as job definitions [job definitions](/docs/knative?topic=knative-kn-job-deploy) or applications [applications](/docs/knative?topic=knative-application-workloads).
 
@@ -205,7 +205,7 @@ When you no longer need a project, you can delete it. Deleting a project deletes
 ### Delete a project through the console
 {: #delete-project-console}
 
-From the [Coligo console](https://cloud.ibm.com/coligo){: external} project menu, select delete project.
+From the [Coligo console](https://cloud.ibm.com/knative/overview){: external} project menu, select delete project.
 
 ### Delete a project through the CLI
 {: #delete-project-cli}

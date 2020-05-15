@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-14"
+lastupdated: "2020-05-15"
 
 keywords: knative
 
@@ -217,12 +217,6 @@ The following table shows the possible status that your job might have.
 | Failed | All Job instances have terminated, and at least one instance has terminated in failure. That is, the instance either exited with non-zero status or was terminated by the system.
 | Unknown |	For some reason the state of the Job could not be obtained, typically due to an error in communicating with the host. |
 
-## Accessing job details
-{: #access-job-details}
-
-Find details about your job from the console or with the CLI.
-{: shortdesc}
-
 ### Accessing job details from the console
 {: #access-jobdetails-ui}
 
@@ -367,5 +361,6 @@ Hello World!
 Command 'job logs' performed successfully
 ```
 {: screen}
+
 
 

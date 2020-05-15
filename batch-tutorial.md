@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-14"
+lastupdated: "2020-05-15"
 
 keywords: knative
 
@@ -51,7 +51,7 @@ Before you begin, [create a project](/docs/knative?topic=knative-manage-project)
 
 1. After your project is in **Active** status, click the name of your project on the Projects page. 
 2. From the Components page, click **Job definition** to create the job definition. 
-3. From the Create job definition page, provide a name for your job definition name and a container image reference. You can also modify default runtime settings. You can specify the sample container image reference `ibmcom/testjob`.
+3. From the Create job definition page, provide a name for your job definition name and a container image reference. You can also modify default runtime settings. You can specify the sample container image reference `ibmcom/testjob`. This tutorial uses a sample Docker image file is available at [ibmcom/testjob](https://hub.docker.com/r/ibmcom/testjob).
 4. Click **Create**. 
 
 ### Creating a job definition with the CLI
@@ -83,7 +83,7 @@ ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef --memory 
    </tr>
    <tr>
    <td><code>--image</code></td>
-   <td>The name of the image used for this job definition. This value is required. For images in [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</td>
+   <td>The name of the image used for this job definition. This value is required. For images in [Docker Hub](https://hub.docker.com), you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</td>
    </tr>
    <tr>
    <td><code>--name</code></td>
@@ -103,7 +103,7 @@ ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef --memory 
    </tr>
    <tr>
    <td><code>--memory</code></td>
-   <td>The amount of memory set for the job definition. The default value is 64 M. This value is optional.</td>
+   <td>The amount of memory set for the job definition. The default value is 128 M. This value is optional.</td>
    </tr>
    <tr>
    <td><code>--cpu</code></td>
@@ -125,8 +125,6 @@ Before you begin, [create a job definition from the console](#batch-jobdef-ui).
 1. Navigate to your job definition page. For example:
    1. From the Projects page, click on your desired project to open the Components page.  
    2. From the Components page, click on the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#batch-jobdef-ui). 
-
-
 
 3. From your job definition page, click **Submit Job** to run a job based on the selected job definition configuration. 
 4. From the Submit job page, review and optionally change configuration values such as array size, CPU, memory, number of job retries, and job timeout. **Array size** specifies the number of instances or containers to run your job. 
@@ -170,7 +168,7 @@ ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --re
    </tr>
    <tr>
    <td><code>--image</code></td>
-   <td>The name of the image used for this job. This value is required. [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. This value overrides any `--image` value that is assigned in the job definition.</td>
+   <td>The name of the image used for this job. This value is required. For images in [Docker Hub](https://hub.docker.com), you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. This value overrides any `--image` value that is assigned in the job definition.</td>
    </tr>
    <tr>
    <td><code>--cpu</code></td>
@@ -178,7 +176,7 @@ ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --re
    </tr>
    <tr>
    <td><code>--memory</code></td>
-   <td>Specifies the amount of memory to assign to the container that is running the image. This value overrides any `--memory` value that is assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 64 M. This value is optional.</td>
+   <td>Specifies the amount of memory to assign to the container that is running the image. This value overrides any `--memory` value that is assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 128 M. This value is optional.</td>
    </tr>
    <tr>
    <td><code>--retrylimit</code></td>
@@ -199,6 +197,10 @@ ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --re
    <tr>
    <td><code>--env</code></td>
    <td>Specifies any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables that are passed in the job definition. This value is optional.</td>
+   </tr>
+      <tr>
+   <td><code>--maxexecutiontime</code></td>
+   <td>Specifies the maximum execution time for the job.  The default value is 7200 seconds. This value is optional.</td>
    </tr>
    </tbody></table>
 
@@ -324,13 +326,13 @@ You only need to enable logging for Coligo one time per region, per account.
 
 6. (Optional) To confirm that platform logs are set for your region, check the [Observability dashboard](https://cloud.ibm.com/observe/logging). 
 
-7. Now that logging is enabled on the console for Coligo, whenever you [run a job](##batch-runjob-ui), you can click **Launch logging** from the job details page to open the LogDNA page for all jobs that are run using this job definition.
+7. Now that logging is enabled on the console for Coligo, whenever you [run a job](#batch-runjob-ui), you can click **Launch logging** from the job details page to open the LogDNA page for all jobs that are run using this job definition.
  
 After enabling logging, consider keeping the LogDNA window open to easily view your job log data.
 {: tip}
 
 #### Viewing job log data from the console
- {: #batch-viewjoblogdata-ui}
+{: #batch-viewjoblogdata-ui}
 
 You must enable job logs before you can view job log data from the console.  
 
@@ -338,7 +340,7 @@ You must enable job logs before you can view job log data from the console.
 
  
 
-Coligo automatically sets log filters depending on whether you are launching logs from the job definition page or from a specific job details page.  From the LogDNA page, you can modify and scope the preset filter to display log data at the job definition level or a more granular level of a specific job run. For example, the filter `_platform:Coligo app:myjob-jobrun-t6m7l` filters log data to the specific `myjob-jobrun-t6m7l` job run level; whereas, `_platform:Coligo app:myjob` scopes the log data to the job definition level. 
+Coligo automatically sets log filters. From the LogDNA page, you can modify and scope the preset filter to display log data at the job definition level or a more granular level of a specific job run. For example, the filter `_platform:Coligo app:myjob-jobrun-t6m7l` filters log data to the specific `myjob-jobrun-t6m7l` job run level; whereas, `_platform:Coligo app:myjob` scopes the log data to the job definition level. 
 {: tip}
 
 ### Viewing job logs with the CLI
