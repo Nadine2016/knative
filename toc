@@ -44,7 +44,7 @@ Project Coligo
     {: .topicgroup}
     API reference
         api.md
-        [Coligo API](https://test.cloud.ibm.com/apidocs/knative){: new_window}
+        [Coligo API](https://cloud.ibm.com/apidocs/knative){: new_window}
     limits.md
     regions.md
     release-notes.md

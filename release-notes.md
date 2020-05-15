@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-04-13"
+lastupdated: "2020-05-15"
 
 keywords: knative
 
@@ -27,11 +27,12 @@ subcollection: knative
 # Release notes
 {: #kn-release}
 
-Use the release notes to learn about the latest changes to Knative service that are grouped by month.
+Use the release notes to learn about the latest changes to Coligo that are grouped by month.
 {: shortdesc}
 
-## April 2020
-{: #april20}
+## May 2020
+{: #may20}
 
 | Date | Description |
 | --------- | -------- |
+| 18 May 2020 | **New! [Coligo experimental release](https://cloud.ibm.com/knative/overview){: external}**: With Coligo, you can build [applications](/docs/knative?topic=knative-application-workloads) in any language and then deploy them in seconds. Offload long running and resource hungry tasks to [asynchronous jobs](/docs/knative?topic=knative-kn-job-deploy) that allow for optimized scale and cost efficiency. Learn how to get started with our [Deploying application workloads](/docs/knative?topic=knative-deploy-app-tutorial) and [Running jobs](/docs/knative?topic=knative-kn-deploy-job-tutorial) tutorials. |
