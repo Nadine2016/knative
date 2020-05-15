@@ -37,7 +37,7 @@ Project Coligo
     {: .navgroup id="reference"}
     {: .topicgroup}
     CLI reference
-        /knative-cli-plugin/knative-cli-plugin-cli-reference
+        cli-reference.md
         [Knative CLI Reference](https://github.com/knative/client/blob/master/docs/cmd/kn.md){: new_window}
         [Kubernetes CLI Reference](/docs/containers?topic=containers-cli-plugin-kubernetes-service-cli){: new_window}
     
