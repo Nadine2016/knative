@@ -138,7 +138,7 @@ ibmcloud coligo application get --name NAME
 ## Updating your app
 {: #update-app}
 
-An Application contains one or more *revisions*. A revision represents an immutable version of the configuration properties of the Application. Each update of an application configuration property creates a new revision of the Application.
+An application contains one or more *revisions*. A revision represents an immutable version of the configuration properties of the application. Each update of an application configuration property creates a new revision of the application.
 {: shortdesc} 
 
 To create a revision of the application, modify the application. 
@@ -161,24 +161,10 @@ The following table shows the possible status that your application might have.
 
 | Status | Description |
 | ------ | ------------|
-| Deploying | The application is deploying, but one or more of the images has not been created. This includes time before being scheduled as well as time spent downloading images over the network, which could take a while. |
+| Deploying | The application is deploying. This includes time before being scheduled as well as time spent downloading images over the network, which can take a while. |
 | Ready | The application is deployed and ready to use. |
-| Ready (with warnings) | The application revision failed but the original deployment is available. |
+| Ready (with warnings) | The deployment of a new application revision failed, but the original deployment is available. |
 | Failed | The application deployment has terminated, and at least one instance has terminated in failure. That is, the instance either exited with non-zero status or was terminated by the system.
 | Unknown |	For some reason the state of the application could not be obtained, typically due to an error in communicating with the host. |
 
-## Viewing job logs
-{: #view-app-logs}
-
-After your application has deployed, find the logs.
-{: shortdesc}
-
-Logs for application from the console are available from the application window by clicking **View logs**.
-
-You can view logs from the CLI by using the `coligo application logs` command. 
-
-```
-ibmcloud coligo application logs --name NAME --pod PODINDEX
-```
-{: pre}
 

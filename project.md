@@ -173,7 +173,7 @@ After you create a project, you can work with the project with Coligo. You can u
 
 To work with a project, go to the [Coligo Projects page](https://cloud.ibm.com/knative/projects){: external}, click the name of the project from the list.
 
-From the context of the selected project, you can work with [kn-service]} components, such as  [job definitions](/docs/knative?topic=knative-kn-job-deploy) or [applications](/docs/knative?topic=knative-application-workloads).
+From the context of your project, you can work with [kn-service]} components, such as  [job definitions](/docs/knative?topic=knative-kn-job-deploy) or [applications](/docs/knative?topic=knative-application-workloads).
 
 ### Work with a project with the CLI
 {: #target-project-cli}
@@ -196,7 +196,7 @@ export KUBECONFIG=/users/myusername/.bluemix/plugins/coligo/myproject-42642513-8
 Notice that the Coligo system provides the `export` command to set the `KUBECONFIG` environmental variable for you. This command is tailored to your operating system and user information.  Run this command to use `kubectl` with your project. Alternatively, you can specify the `--export` option on the `target` command to export and automatically append the project configuration to the Kubernetes configuration file (`$HOME/.kube/config`). 
 {: tip}
 
-From the context of the targeted project, you can work with Coligo components, such as job definitions [job definitions](/docs/knative?topic=knative-kn-job-deploy) or applications [applications](/docs/knative?topic=knative-application-workloads).
+From the context of the targeted project, you can work with Coligo components, such as [job definitions](/docs/knative?topic=knative-kn-job-deploy) or [applications](/docs/knative?topic=knative-application-workloads).
 
 ## Delete a project
 {: #delete-project}
