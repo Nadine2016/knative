@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-15"
+lastupdated: "2020-05-18"
 
 keywords: knative
 
@@ -115,8 +115,8 @@ After you create your job definitions, you can use that definition to describe t
 Before you begin, [create a job definition from the console](#create-job-def).
 
 1. Navigate to your job definition page. For example:
-   1. From the Projects page, click on your desired project to open the Components page.  
-   2. From the Components page, click on the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#create-job-def).
+   1. From the Projects page, click the name of your Project to open the Components page.  
+   2. From the Components page, click the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#create-job-def).
 
 
 

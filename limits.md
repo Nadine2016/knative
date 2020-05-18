@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-13"
+lastupdated: "2020-05-18"
 
 keywords: knative
 
@@ -36,7 +36,6 @@ The following sections provide technical details about the Coligo limit settings
 During the Experimental release of Project Coligo, be aware of the following limitations:
 
 - One project per location
-- Three projects per account
 - After 7 days, your project and everything that the project contains will be deleted.
 
 Be aware that Experimental releases are not intended for production and any projects, apps, or jobs that you create during Experimental will not carry over to other releases.

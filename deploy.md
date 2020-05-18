@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-15"
+lastupdated: "2020-05-18"
 
 keywords: knative
 
@@ -26,7 +26,8 @@ subcollection: knative
 # Managing application workloads
 {: #application-workloads}
 
-An *Application* runs your code to serve HTTP requests. An Application has a URL for incoming requests. The number of running instances of an Application are automatically scaled up or down (to zero) based on incoming workload. An Application contains one or more *revisions* (revision entities). A revision represents an immutable version of the configuration properties of the Application. Each update of an application configuration property creates a new revision of the Application.
+An *Application* runs your code to serve HTTP requests. An Application has a URL for incoming requests. The number of running instances of an Application are automatically scaled up or down (to zero) based on incoming workload. An Application contains one or more revisions . A revision represents an immutable version of the configuration properties of the Application. Each update of an application configuration property creates a new revision of the Application.
+
 {: #shortdesc} 
 
 ## Deploying application workloads
@@ -38,7 +39,7 @@ Deploy your app with Coligo.
 **Before you begin**
 
 * Set up your [Coligo](/docs/knative?topic=knative-kn-install-cli) environment
-* [Target a project](/docs/knative?topic=knative-manage-project)
+* [Create and target a project](/docs/knative?topic=knative-manage-project)
 * Create your application as an image file
 
 ### Deploying an application from console
@@ -47,14 +48,12 @@ Deploy your app with Coligo.
 The following steps describe how to deploy an application by using the Coligo console.
 {: shortdesc}
 
-1. Open the [Coligo dashboard](https://cloud.ibm.com/knative/overview).
-2. Select a project from the list of available projects. You can also [create a new one](/docs/knative?topic=knative-manage-project).
-3. From the Projects page, click the name of your project to open the project component page. 
-4. From your project component page, select **Create component**.
-5. Select **Application** as your component type. 
-6. Enter a name for your application and enter the location for your container image.  For example, enter `ibmcom/helloworld` for container image. Click **Deploy**. 
+1. To work with a project, go to the [Coligo Projects page](https://cloud.ibm.com/knative/projects){: external}. 
+2. From the Projects page, click the name of your project to open the project Components page. 
+3. From your project Components page, click **Application** to create an app. 
+4. From the Create Application page, enter a name for your application and provide an image reference for your container. For example, enter `myapp` for the application name and `ibmcom/helloworld` for container image. Click **Deploy**. 
   When you use this example, your sample application uses the `ibmcom/helloworld` image, reads the environment variable `TARGET`, and prints `"Hello ${TARGET}!"`. If this environment variable is empty, `"Hello World!"` is returned.
-7. After the application status changes to **Ready**, you can run your application by clicking **Test application**. To see the running application, click **Application URL**.  
+5. After the application status changes to **Ready**, you can run your application by clicking **Test application**. To see the running application, click **Application URL**.  
 
 You have created and deployed an application to Coligo and tested it out using the console.
 
@@ -81,25 +80,19 @@ ibmcloud coligo application create --name NAME --image IMAGE
    </tr>
    <tr>
    <td><code>--name</code></td>
-   <td>The name of the job to be run. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project.</td>
+   <td>The name of the application. This value is required. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique within the project.</td>
    </tr>
    <tr>
    <td><code>--image</code></td>
-   <td>The name of the image used for this application. This value is required. The format for the image must be `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</td>
+   <td>The container image for this application. This value is required. For images in [Docker Hub](https://hub.docker.com), you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</td>
    </tr>
    <tr>
    <td><code>--concurrency</code></td>
-   <td>If your code is written in a way that it can handle multiple concurrent
-requests, set concurrency to the maximum number of requests that
-a single instance should handle concurrently. The number of
-instances will be increased when existing instances are reaching
-this limit.
-<p>If your code should work on a single request at a time,
-  set concurrency to 1 and each request will get its own instance.</p>
-<p>The maximum number of overall concurrent requests that the app component
-can work on concurrently is determined by "the maximum number of concurrent
-requests per instance" times "the maximum number of instances":
-  max_instances x max_concurrency.</p></td>
+   <td>The number of requests that can be processed concurrently per instance. The default value is 10. This value is optional. 
+   <p> If you set this value to 0, the system attempts to ensure that no more than 100 requests will be sent to any one instance; however, this is not a hard limit and can exceed this value at times. </p>
+   <p> If your code should work on a single request at a time, set concurrency to 1 and each instance will only process one request at a time. </p>
+   <p> The maximum number of overall concurrent requests that the app component can work on concurrently is determined by "the maximum number of concurrent requests per instance" times "the maximum number of instances":   max_instances x max_concurrency.</p>
+   </td>
    </tr>
    <tr>
    <td><code>--cpu</code></td>
@@ -111,29 +104,21 @@ requests per instance" times "the maximum number of instances":
    </tr>
    <tr>
    <td><code>--minscale</code></td>
-   <td>The minimum number of instances that can be used for this application. The default value is 1. This value is optional.</td>
+   <td>The minimum number of instances that can be used for this application. This option is useful to ensure no instances are running when not needed. The default value is 0. This value is optional. </td>
    </tr>
    <tr>
    <td><code>--maxscale</code></td>
-   <td>The maximum number of instances that can be used for this application. The default value is 1. This value is optional.</td>
+   <td>The maximum number of instances that can be used for this application. The default value is 10. This value is optional.</td>
    </tr>
    <tr>
    <td><code>--timeout</code></td>
-   <td>The amount of time that can pass before the application must succeed or fail. The default value is 360 seconds. This value is optional.</td>
+   <td>The amount of time that can pass before the application must succeed or fail. The default value is 300 seconds. This value is optional.</td>
    </tr>
-   <tr>
-   <td><code>--concurrency</code></td>
-   <td></td>
-   </tr>
-   <tr>
+      <tr>
    <td><code>--registry-secret</code></td>
-   <td>The name of the secret for the image. This value is optional.</td>
+   <td>The name of the secret used to authenticate with a private registry when downloading the container image. This value is optional.</td>
    </tr>
-   <tr>
-   <td><code>--project</code></td>
-   <td>The name of the project to contain this application. If this value is not set, then the current project is used. This value is optional.</td>
-   </tr>
-   </table>
+      </table>
 
 ## Accessing your service
 {: #access-service}
@@ -153,7 +138,7 @@ ibmcloud coligo application get --name NAME
 ## Updating your app
 {: #update-app}
 
-An Application contains one or more *revisions*. A revision represents an immutable version of the configuration properties of the Application. Each update of an application configuration property creates a new revision of the Application.
+An application contains one or more *revisions*. A revision represents an immutable version of the configuration properties of the application. Each update of an application configuration property creates a new revision of the application.
 {: shortdesc} 
 
 To create a revision of the application, modify the application. 
@@ -161,7 +146,7 @@ To create a revision of the application, modify the application.
 For example, update the application that you created in [Deploying an application from console](#deploy-app-console) to add an environmental variable.
 
 1. Navigate to your application page. One way to navigate to your application page is to: 
-   * Locate the Projects page. 
+   * Locate the [Coligo Projects page](https://cloud.ibm.com/knative/projects){: external}.. 
    * Click the name of your project to open the project component page.
    * Click the name of your application to open the application page.
 2. Click **Env. Variables**.
@@ -176,24 +161,10 @@ The following table shows the possible status that your application might have.
 
 | Status | Description |
 | ------ | ------------|
-| Deploying | The application is deploying, but one or more of the images has not been created. This includes time before being scheduled as well as time spent downloading images over the network, which could take a while. |
+| Deploying | The application is deploying. This includes time before being scheduled as well as time spent downloading images over the network, which can take a while. |
 | Ready | The application is deployed and ready to use. |
-| Ready (with warnings) | The application revision failed but the original deployment is available. |
+| Ready (with warnings) | The deployment of a new application revision failed, but the original deployment is available. |
 | Failed | The application deployment has terminated, and at least one instance has terminated in failure. That is, the instance either exited with non-zero status or was terminated by the system.
 | Unknown |	For some reason the state of the application could not be obtained, typically due to an error in communicating with the host. |
 
-## Viewing job logs
-{: #view-app-logs}
-
-After your application has deployed, find the logs.
-{: shortdesc}
-
-Logs for application from the console are available from the application window by clicking **View logs**.
-
-You can view logs from the CLI by using the `coligo application logs` command. 
-
-```
-ibmcloud coligo application logs --name NAME --pod PODINDEX
-```
-{: pre}
 

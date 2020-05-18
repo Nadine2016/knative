@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-15"
+lastupdated: "2020-05-18"
 
 keywords: knative
 
@@ -267,7 +267,7 @@ Create an application.
 {: shortdec}
 
 ```
-ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registry-secret SECRET] [--cpu CPU] [--memory MEMORY] [--timeout TIMEOUT] [--concurrency REQUESTS] [--minscale MIN_NUM] [--maxscale MAX_NUM] [--env ENV][--quiet]
+ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registry-secret SECRET] [--cpu CPU] [--memory MEMORY] [--timeout TIMEOUT] [--concurrency REQUESTS] [--minscale MIN_NUM] [--maxscale MAX_NUM] [--env ENV] [--env-from-secret SECRETNAME:KEYNAME] [--env-from-configmap CONFIGMAPNAME:KEYNAME] [--quiet] [--bind-service --service-instance SERVICE_NAME --service-type SERVICE_TYPE --service-plan SERVICE_PLAN] [--service-credentials CREDENTIALS] [--no-wait | --wait-timeout] [--cluster-local]
 ```
 {: pre}
 
@@ -276,7 +276,7 @@ ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registr
 <dt>`-n`, `--name`</dt>
 <dd>The name of the application. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.
 <dt>`-i`, `--image`</dt>
-<dd>The name of the image used for this application. This value is required. For images in [Docker Hub](https://hub.docker.com), you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
+<dd>The name of the image used for this application. This value is required. For images in [Docker Hub](https://hub.docker.com), you can specify the image with `NAMESPACE/REPOSITORY`. For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
 <dt>`--rs`, `--registry-secret`</dt>
 <dd>The name of the secret for the image. This value is optional.</dd>
 <dt>`-c`, `--cpu`</dt>
@@ -293,8 +293,19 @@ ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registr
 <dd>The maximum number of instances that can be used for this application. The default value is 1. This value is optional.</dd>
 <dt>`-e`, `--env`</dt>
 <dd>Set any environmental variables to pass to the application. Variables use a `KEY=VALUE` format. This value is optional.</dd>
+<dt>`--env-sec`, `--env-from-secret`</dt>
+<dd>Provides the application environment variable that is taken from a secret, in the format `secretName:keyName`. This value is optional.</dd>
+<dt>`--env-cm`, `--env-from-configmap`</dt>
+<dd>Indicates the application environment variable that is taken from a configmap, in the format `configmapName:keyName`. This value is optional.</dd>
 <dt>`-q`, `--quiet`</dt>
 <dd>Specify this option to reduce the output of the command. The default value is `false`. This value is optional.</dd>
+
+<dt>`--nw`, `--no-wait`</dt>
+<dd>Create the application asynchronously. This value is optional. The default value is `false`.</dd> 
+<dt>`--wto`, `--wait-timeout`</dt>
+<dd> The length of time in seconds to wait for the application to start. This value is ignored when `no-wait` is specified. This value is optional. The default value is 300 seconds.</dd> 
+<dt>`--cl`, `--cluster-local`</dt>
+<dd>Deploy the application with a private endpoint. This value is optional. The default value is `false`.</dd> 
 </dl>
 
 **Example**
@@ -495,7 +506,7 @@ Create a job definition.
 {: shortdec}
 
 ```
-ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argument ARGUMENT [--command COMMAND][--cpu CPU] [--memory MEMORY] [--env ENV]
+ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argument ARGUMENT [--command COMMAND][--cpu CPU] [--memory MEMORY] [--env ENV] [--env-from-secret SECRETNAME:KEYNAME] [--env-from-configmap CONFIGMAPNAME:KEYNAME]
 ```
 {: pre}
 
@@ -509,6 +520,10 @@ ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argu
 <dd>Set any arguments for the job definition. This value is required. Specify one argument per `--argument` flag.  To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`.</dd>
 <dt>`-e`, `--env`</dt>
 <dd>Set any environmental variables to pass to the job definition. Variables use a `KEY=VALUE` format. This value is optional.</dd>
+ <dt>`--env-sec`, `--env-from-secret`</dt>
+<dd>Provides the job definition environment variable that is taken from a secret, in the format `secretName:keyName`. This value is optional.</dd>
+<dt>`--env-cm`, `--env-from-configmap`</dt>
+<dd>Indicates the job definition environment variable that is taken from a configmap, in the format `configmapName:keyName`. This value is optional.</dd>
 <dt>`-c`, `--command`</dt>
 <dd>Set a command for the job definition. This value is optional.</dd>
 <dt>`--cpu`</dt>
@@ -674,7 +689,7 @@ Run a job based on a job definition.
 {: shortdec}
 
 ```
-ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image IMAGE_REF] [--cpu CPU] [--memory MEMORY] [--env ENV] [--argument ARGUMENT] [--command COMMAND] [--arraysize ARRAY] [--retrylimit RETRY] [--maxexecutiontime MAXEXECUTIONTIME]
+ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image IMAGE_REF] [--cpu CPU] [--memory MEMORY] [--env ENV] [--env-from-secret SECRETNAME:KEYNAME] [--env-from-configmap CONFIGMAPNAME:KEYNAME] [--argument ARGUMENT] [--command COMMAND] [--arraysize ARRAY] [--retrylimit RETRY] [--maxexecutiontime MAXEXECUTIONTIME]
 ```
 {: pre}
 
@@ -688,6 +703,10 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 <dd>The name of the image used for this job. This value is required. For images in [Docker Hub](https://hub.docker.com), you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. This value overrides any `--image` value that is assigned in the job definition.</dd>
 <dt>`-e`, `--env`</dt>
 <dd>Specifies any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables that are passed in the job definition. This value is optional. </dd>
+<dt>`--env-sec`, `--env-from-secret`</dt>
+<dd>Provides the job run environment variable that is taken from a secret, in the format `secretName:keyName`. This value is optional.</dd>
+<dt>`--env-cm`, `--env-from-configmap`</dt>
+<dd>Indicates the job run environment variable that is taken from a configmap, in the format `configmapName:keyName`. This value is optional.</dd>
 <dt>`-a`, `--argument`</dt>
 <dd>Sets any arguments for the container. To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`. This value overrides any arguments passed in the job definition. This value is optional.</dd>  
 <dt>`-c`, `--command`</dt>
