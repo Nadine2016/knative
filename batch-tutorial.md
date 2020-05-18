@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-15"
+lastupdated: "2020-05-18"
 
 keywords: knative
 
@@ -123,8 +123,10 @@ After you create your job definition, the job definition is used to describe the
 Before you begin, [create a job definition from the console](#batch-jobdef-ui).
 
 1. Navigate to your job definition page. For example:
-   1. From the Projects page, click on your desired project to open the Components page.  
-   2. From the Components page, click on the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#batch-jobdef-ui). 
+   1. From the Projects page, click the name of your desired Project to open the Components page for your Project. 
+   2. From the Components page, click the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#batch-jobdef-ui). 
+
+
 
 3. From your job definition page, click **Submit Job** to run a job based on the selected job definition configuration. 
 4. From the Submit job page, review and optionally change configuration values such as array size, CPU, memory, number of job retries, and job timeout. **Array size** specifies the number of instances or containers to run your job. 

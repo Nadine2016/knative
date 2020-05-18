@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-12"
+lastupdated: "2020-05-18"
 
 keywords: knative, data encryption in knative, data storage for knative, bring your own keys for knative, BYOK for knative, key management for knative, key encryption for knative, personal data in knative, data deletion for knative, data in knative, data security in knative
 
@@ -27,7 +27,7 @@ subcollection: knative
 # Securing your data in Coligo
 {: #mng-data}
 
-Coligo provides a platform to unify the deployment of functions, applications, and pre-built containers to Kubernetes-based infrastructure. As Coligo is not a data service, it does not store personal or sensitive data.
+Coligo provides a platform to unify the deployment of all of your container-based applications. Whether those applications are functions, traditional 12-factor apps, batch workloads or any other container-based workloads, if they can be bundled into a container image, then Coligo can host and manage them for you - all on a Kubernetes-based infrastructure. And Coligo does this without the need for you to learn, or even know about, Kubernetes.  As Coligo is not a data service, it does not store personal or sensitive data.
 {: shortdesc}
 
 ## How your data is stored and encrypted in Coligo
