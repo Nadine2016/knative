@@ -38,6 +38,7 @@ Project Coligo service bindings are under development. Please be aware of the fo
 3. A service binding cannot be deleted individually, but is removed when the application is deleted.
 4. Only pre-exisiting services can be used. (Coligo does not currently create new service instances for you).
 
+<br/>
 **What types of services can I bind to my application?**
 
 You can add any {{site.data.keyword.cloud_notm}} service that is enabled for {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM) to your application. To find a list of supported {{site.data.keyword.cloud_notm}} services, see the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog).
