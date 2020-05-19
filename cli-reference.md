@@ -329,7 +329,8 @@ When you run `ibmcloud coligo application get -n 'myapp'` to check the applicati
 ### `ibmcloud coligo application bind`
 {: #cli-application-bind}
 
-Bind an {{site.data.keyword.cloud_notm}} service to resources in a Coligo project. {:shortdesc}
+Bind an {{site.data.keyword.cloud_notm}} service to an application in a Coligo project. 
+{:shortdesc}
 
 ```
 ibmcloud coligo application bind --name APPLICATION_NAME --service-instance SERVICE_NAME [--service-credentials CREDENTIALS]
