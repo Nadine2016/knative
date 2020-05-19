@@ -69,6 +69,8 @@ Before you begin:
    
 * Create a Coligo application.
 
+   For example, to create an application called `my-application` that uses the `ibmcom/helloworld` image:
+
    ```
    ibmcloud coligo application create --name my-application --image ibmcom/helloworld
    ```
