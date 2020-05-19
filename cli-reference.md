@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-18"
+lastupdated: "2020-05-19"
 
 keywords: knative
 
@@ -267,14 +267,14 @@ Create an application.
 {: shortdec}
 
 ```
-ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registry-secret SECRET] [--cpu CPU] [--memory MEMORY] [--timeout TIMEOUT] [--concurrency REQUESTS] [--minscale MIN_NUM] [--maxscale MAX_NUM] [--env ENV] [--env-from-secret SECRETNAME:KEYNAME] [--env-from-configmap CONFIGMAPNAME:KEYNAME] [--quiet] [--bind-service --service-instance SERVICE_NAME --service-type SERVICE_TYPE --service-plan SERVICE_PLAN] [--service-credentials CREDENTIALS] [--no-wait | --wait-timeout] [--cluster-local]
+ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registry-secret SECRET] [--cpu CPU] [--memory MEMORY] [--timeout TIMEOUT] [--concurrency REQUESTS] [--minscale MIN_NUM] [--maxscale MAX_NUM] [--env ENV] [--env-from-secret SECRETNAME:KEYNAME] [--env-from-configmap CONFIGMAPNAME:KEYNAME] [--quiet] [--no-wait | --wait-timeout] [--cluster-local]
 ```
 {: pre}
 
 **Command options**
 <dl>
 <dt>`-n`, `--name`</dt>
-<dd>The name of the application. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.
+<dd>The name of the application. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.</dd>
 <dt>`-i`, `--image`</dt>
 <dd>The name of the image used for this application. This value is required. For images in [Docker Hub](https://hub.docker.com), you can specify the image with `NAMESPACE/REPOSITORY`. For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
 <dt>`--rs`, `--registry-secret`</dt>
@@ -299,7 +299,6 @@ ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registr
 <dd>Indicates the application environment variable that is taken from a configmap, in the format `configmapName:keyName`. This value is optional.</dd>
 <dt>`-q`, `--quiet`</dt>
 <dd>Specify this option to reduce the output of the command. The default value is `false`. This value is optional.</dd>
-
 <dt>`--nw`, `--no-wait`</dt>
 <dd>Create the application asynchronously. This value is optional. The default value is `false`.</dd> 
 <dt>`--wto`, `--wait-timeout`</dt>
@@ -326,6 +325,45 @@ Run `ibmcloud coligo application get -n 'myapp'` to check the application status
 
 When you run `ibmcloud coligo application get -n 'myapp'` to check the application status, the URL for your application is displayed.  
 {: tip}
+
+### `ibmcloud coligo application bind`
+{: #cli-application-bind}
+
+Bind an {{site.data.keyword.cloud_notm}} service to resources in a Coligo project. {:shortdesc}
+
+```
+ibmcloud coligo application bind --name APPLICATION_NAME --service-instance SERVICE_NAME [--service-credentials CREDENTIALS]
+```
+{: pre}
+
+**Command options**
+<dl>
+<dt>`-n`, `--name`</dt>
+<dd>The name of the application. This value is required.</dd>
+<dt>`--si`, `--service-instance`</dt>
+<dd>Specifies the service instance name to bind to the application. This value is required.</dd> 
+<dt>`--sc`, `--service-credential`</dt>
+<dd>Provides the service instance credential for binding the service to the application. This value is optional. If you do not specify a service instance credential, new credentials are generated during the bind action.</dd>
+</dl>
+
+**Example**
+
+In this example, bind your language-translator service instance called `langtranslator` to your application called `myapp`.
+
+```
+ibmcloud coligo application bind --name myapp --service-instance langtranslator
+```
+{: pre}
+
+**Output**
+
+```
+Configuring your project for service bindings...
+Project successfully configured for service bindings
+Binding service...
+Successfully created service binding for 'langtranslator'
+```
+{: screen}
 
 ### `ibmcloud coligo application delete`
 {: #cli-application-delete}

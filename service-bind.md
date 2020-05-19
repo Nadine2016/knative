@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-14"
+lastupdated: "2020-05-19"
 
 keywords: about, knative
 
@@ -24,7 +24,7 @@ subcollection: knative
 {:download: .download}
 {:gif: data-image-type='gif'}
 
-# Service Bindings
+# Binding services to applications
 {: #kn-service-binding}
 
 Find out how to automatically bind an {{site.data.keyword.cloud_notm}} service to resources in a Coligo project.
