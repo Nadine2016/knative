@@ -48,7 +48,7 @@ ibmcloud coligo project list
 ```
 {: pre}
 
-**Example output**
+**Example output:**
 
 ```
 Name            ID                                    Status         Tags   Location   Resource Group
@@ -71,7 +71,7 @@ ibmcloud coligo project get --name PROJECT_NAME
 ```
 {: pre}
 
-**Example output**
+**Example output:**
 
 ```
 Getting project 'myproject'...
@@ -110,7 +110,7 @@ Please wait for several minutes after creating your project before you proceed t
 3. Choose the resource group where you want to create the project and a location to deploy the project.
 4. Click **Create**.
 
-To view the service instance for the project resource, go to your [{{site.data.keyword.cloud_notm}} dashboard ](https://cloud.ibm.com/resources){: external} and find your project name in **Coligo Projects**.
+To view the service instance for the project resource, go to your [{{site.data.keyword.cloud_notm}} dashboard](https://cloud.ibm.com/resources){: external} and find your project name in **Coligo Projects**.
 
 ### Create a project with the CLI
 {: #create-project-cli}

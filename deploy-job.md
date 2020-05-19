@@ -120,11 +120,11 @@ Before you begin, [create a job definition from the console](#create-job-def).
 1. Navigate to your job definition page. For example:
    * From the [Coligo Projects page](https://cloud.ibm.com/knative/projects){: external}, click the name of your Project to open the Components page.  
    * From the Components page, click the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#create-job-def).
+2. From your job definition page, click **Submit Job** to run a job based on the selected job definition configuration. 
+3. From the Submit job pane, review and optionally change configuration values such as array size, CPU, memory, number of job retries and job timeout. **Array size** specifies the number of instances or containers to run your job. 
+4. Click **Submit job** to run your job. The system displays the status of the instances of your job on the job details page.
 
 
-3. From your job definition page, click **Submit Job** to run a job based on the selected job definition configuration. 
-4. From the Submit job pane, review and optionally change configuration values such as array size, CPU, memory, number of job retries and job timeout. **Array size** specifies the number of instances or containers to run your job. 
-5. Click **Submit job** to run your job. The system displays the status of the instances of your job on the job details page.
 
 You can view job logs after you add logging capabilities. See [adding log capabilities](#enable-joblogs-ui) and [viewing job logs from the console](#view-joblogs-ui)for more information. 
 {: tip}
