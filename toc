@@ -25,7 +25,7 @@ Project Coligo
     project.md
     deploy.md
     deploy-job.md
-    
+    service-bind.md
         
     {: .topicgroup}
     Enhancing security for Project Coligo

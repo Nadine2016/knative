@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-14"
+lastupdated: "2020-05-19"
 
 keywords: about, knative
 
@@ -24,7 +24,7 @@ subcollection: knative
 {:download: .download}
 {:gif: data-image-type='gif'}
 
-# Service Bindings
+# Binding services to applications
 {: #kn-service-binding}
 
 Find out how to automatically bind an {{site.data.keyword.cloud_notm}} service to resources in a Coligo project.
@@ -38,6 +38,7 @@ Project Coligo service bindings are under development. Please be aware of the fo
 3. A service binding cannot be deleted individually, but is removed when the application is deleted.
 4. Only pre-exisiting services can be used. (Coligo does not currently create new service instances for you).
 
+<br/>
 **What types of services can I bind to my application?**
 
 You can add any {{site.data.keyword.cloud_notm}} service that is enabled for {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM) to your application. To find a list of supported {{site.data.keyword.cloud_notm}} services, see the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog).
@@ -67,6 +68,8 @@ Before you begin:
    {: pre}
    
 * Create a Coligo application.
+
+   For example, to create an application called `my-application` that uses the `ibmcom/helloworld` image:
 
    ```
    ibmcloud coligo application create --name my-application --image ibmcom/helloworld

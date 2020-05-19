@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-18"
+lastupdated: "2020-05-19"
 
 keywords: knative, getting started, coligo
 
@@ -27,7 +27,7 @@ subcollection: knative
 # Getting started with Project Coligo (Experimental)
 {: #getting-started}
 
-Project Coligo (or "Coligo")provides a platform to unify the deployment of all of your container-based applications. Whether those applications are functions, traditional 12-factor apps, batch workloads or any other container-based workloads, if they can be bundled into a container image, then Coligo can host and manage them for you - all on a Kubernetes-based infrastructure. And Coligo does this without the need for you to learn, or even know about, Kubernetes. The Coligo experience is designed so that you can focus on writing code and not on the infrastructure needed to host it.
+Project Coligo (or "Coligo") provides a platform to unify the deployment of all of your container-based applications. Whether those applications are functions, traditional 12-factor apps, batch workloads or any other container-based workloads, if they can be bundled into a container image, then Coligo can host and manage them for you - all on a Kubernetes-based infrastructure. And Coligo does this without the need for you to learn, or even know about, Kubernetes. The Coligo experience is designed so that you can focus on writing code and not on the infrastructure needed to host it.
 {: shortdesc}
 
 Project Coligo is experimental. Experimental runtimes and services might be unstable or change frequently. Be aware of [experimental limitations](/docs/knative?topic=knative-kn-limits#kn-limits_experimental).
@@ -41,16 +41,16 @@ In this topic, create your first app and run your first job from the console.
 
 
 
-## What are Coligo Projects, Applications and Jobs?
+## What are Coligo projects, applications, and jobs?
 {: #kn-term-summary}
 
 Before we get started, let's become familiar with some key terms for Coligo. 
 
-A *Project* is a grouping of runtime components such as applications and job definitions. The grouping of components is up to you, but typically runtime components that are part of a larger application are grouped together. Projects are used to manage resources and provide access to components in the Project. 
+A *project* is a grouping of runtime components such as applications and job definitions. The grouping of components is up to you, but typically runtime components that are part of a larger application are grouped together. Projects are used to manage resources and provide access to components in the project. 
 
-An *Application* runs your code to serve HTTP requests. An Application has a URL for incoming requests. The number of running instances of an Application are automatically scaled up or down (to zero) based on incoming workload. An Application contains one or more revisions. A revision represents an immutable version of the configuration properties of the Application. Each update of an application configuration property creates a new revision of the Application.
+An *application*, or app, runs your code to serve HTTP requests. An application has a URL for incoming requests. The number of running instances of an application are automatically scaled up or down (to zero) based on incoming workload. An application contains one or more revisions. A revision represents an immutable version of the configuration properties of the application. Each update of an application configuration property creates a new revision of the application.
 
-A *Job* is a standalone executable for batch jobs and runs one or more containers according to a *Job definition*.  A job definition is like a template that contains the workload configuration. After a job definition is created, you can then run one or more jobs that refer to the job definition to perform your task. 
+A *job* is a standalone executable for batch jobs and runs one or more containers according to a *job definition*.  A job definition is like a template that contains the workload configuration. After a job definition is created, you can then run one or more jobs that refer to the job definition to perform your task. 
 
 ## Creating your first Coligo app
 {: #kn-hello}
@@ -70,7 +70,7 @@ Now that our application is running, let's create a revision by adding an enviro
 1. Click **Env. variables**.
 2. Click **Add environmental variable**.
 3. Enter `TARGET` for name and `Stranger` for value. 
-4. Click **Save and deploy** to run the application revision. 
+4. Click **Save and deploy** to deploy the application revision. 
 5. After the application status changes to **Ready**, you can test the application revision by clicking **Test application**. To see the running application, click **Application URL**. `Hello Stranger` is displayed.
 6. You can see the revisions for the application by clicking **Revisions and Traffic** from the navigation. 
 
@@ -99,7 +99,7 @@ Before you run a job, you must first create a job definition. A job definition i
 You are now ready to run your job that is based on your job definition.
 
 1. From the job definition page, in the Jobs pane, click **Submit job**. 
-2. From the Submit job page, review and optionally change configuration values such as array size, CPU, memory, number of job retries, and job timeout. **Array size** specifies the number of instances or containers to run your job. For this example, let's specify an array size of 5 and use the other values set in the job description.
+2. From the Submit job pane, review and optionally change configuration values such as array size, CPU, memory, number of job retries, and job timeout. **Array size** specifies the number of instances or containers to run your job. For this example, let's specify an array size of 5 and use the other values set in the job description.
 3. Click **Submit job** to run your job. The system displays the status of the instances of your job on the job details page. The job run details page displays that all 5 of the instances of my job were completed. 
 
 When logging is enabled, the expected output of `Hello World` is displayed in the logs. To learn about running jobs with logging enabled, see [Running a job](/docs/knative?topic=knative-kn-job-deploy). 
@@ -112,5 +112,5 @@ Congratulations, you have created a job definition and run your job from the con
 
 Learn more about performing these Coligo tasks from the console or with the [Coligo CLI](/docs/knative?topic=knative-kn-install-cli):
 - [Managing projects](/docs/knative?topic=knative-manage-project)
-- [Deploying application workloads](/docs/knative?topic=knative-application-workloads)
-- [Running a job](/docs/knative?topic=knative-kn-job-deploy)
+- [Deploying applications](/docs/knative?topic=knative-application-workloads)
+- [Running jobs](/docs/knative?topic=knative-kn-job-deploy)

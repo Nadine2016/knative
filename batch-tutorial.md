@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-18"
+lastupdated: "2020-05-19"
 
 keywords: knative
 
@@ -24,7 +24,7 @@ subcollection: knative
 {:download: .download}
 {:gif: data-image-type='gif'}
 
-# Running jobs 
+# Tutorial: Running jobs 
 {: #kn-deploy-job-tutorial}
 
 With this tutorial, run a batch job using the Coligo CLI or the console. 
@@ -49,7 +49,7 @@ Job definitions are templates that define common job types and variables. When y
 
 Before you begin, [create a project](/docs/knative?topic=knative-manage-project).
 
-1. After your project is in **Active** status, click the name of your project on the Projects page. 
+1. After your project is in **Active** status, click the name of your project on the [Coligo Projects page](https://cloud.ibm.com/knative/projects){: external}. 
 2. From the Components page, click **Job definition** to create the job definition. 
 3. From the Create job definition page, provide a name for your job definition name and a container image reference. You can also modify default runtime settings. You can specify the sample container image reference `ibmcom/testjob`. This tutorial uses a sample Docker image file is available at [ibmcom/testjob](https://hub.docker.com/r/ibmcom/testjob).
 4. Click **Create**. 
@@ -69,7 +69,6 @@ The following example creates a job definition named `testjobdef` that uses the 
 ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef --memory 128M --cpu 1
 ```
 {: pre}
-
 
 <table>
    <caption>jobdef create components</caption>
@@ -125,7 +124,6 @@ Before you begin, [create a job definition from the console](#batch-jobdef-ui).
 1. Navigate to your job definition page. For example:
    1. From the Projects page, click the name of your desired Project to open the Components page for your Project. 
    2. From the Components page, click the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#batch-jobdef-ui). 
-
 
 
 3. From your job definition page, click **Submit Job** to run a job based on the selected job definition configuration. 
@@ -370,4 +368,4 @@ Command 'job logs' performed successfully
 
 Congratulations! You have created a job definition, run a job, and viewed details and results of the job.
 
-For more information, see [Running a job](/docs/knative?topic=knative-kn-job-deploy).
+For more information, see [Running jobs](/docs/knative?topic=knative-kn-job-deploy).
