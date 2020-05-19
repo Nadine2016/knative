@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-18"
+lastupdated: "2020-05-19"
 
 keywords: knative
 
@@ -23,11 +23,10 @@ subcollection: knative
 {:download: .download}
 {:preview: .preview}
 
-# Managing application workloads
+# Deploying applications
 {: #application-workloads}
 
-An *Application* runs your code to serve HTTP requests. An Application has a URL for incoming requests. The number of running instances of an Application are automatically scaled up or down (to zero) based on incoming workload. An Application contains one or more revisions . A revision represents an immutable version of the configuration properties of the Application. Each update of an application configuration property creates a new revision of the Application.
-
+An *application*, or app, runs your code to serve HTTP requests. An application has a URL for incoming requests. The number of running instances of an application are automatically scaled up or down (to zero) based on incoming workload. An application contains one or more revisions. A revision represents an immutable version of the configuration properties of the application. Each update of an application configuration property creates a new revision of the application.
 {: #shortdesc} 
 
 ## Deploying application workloads
@@ -151,7 +150,7 @@ For example, update the application that you created in [Deploying an applicatio
    * Click the name of your application to open the application page.
 2. Click **Env. Variables**.
 3. Click **Add Environmental Variables** and enter `TARGET` for name and `Stranger` for value.
-4. Click **Save and deploy** to save your change and run the application revision.
+4. Click **Save and deploy** to save your change and deploy the application revision.
 5. After the application status changes to **Ready**, you can test the application revision by clicking **Test application**. To see the running application, click **Application URL**. `Hello Stranger` is displayed.
 
 ## Application status

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-15"
+lastupdated: "2020-05-19"
 
 keywords: knative
 
@@ -24,7 +24,7 @@ subcollection: knative
 {:download: .download}
 {:gif: data-image-type='gif'}
 
-# Deploying application workloads
+# Tutorial: Deploying application 
 {: #knative-deploy-app-tutorial}
 
 With this tutorial, deploy a containerized application in a serverless fashion by using the Coligo CLI. The application scales to zero when not in use.

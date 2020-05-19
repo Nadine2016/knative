@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-18"
+lastupdated: "2020-05-19"
 
 keywords: knative
 
@@ -24,7 +24,7 @@ subcollection: knative
 {:download: .download}
 {:gif: data-image-type='gif'}
 
-# Running a job
+# Running jobs
 {: #kn-job-deploy}
 
 Learn how to run jobs in Coligo. Jobs in Coligo are meant to run to completion as batch or standalone executables. They are not intended to provide lasting endpoints to access like a Coligo application does.
@@ -33,7 +33,10 @@ Learn how to run jobs in Coligo. Jobs in Coligo are meant to run to completion a
 ## Create a job definition
 {: #create-job-def}
 
-Job definitions are templates that are used to define common job types and variables. When you run a job, you can override many of the variables you set in the template. You can create job definitions from the console or with the CLI.
+Jobs, unlike applications which react to incoming HTTP requests, are meant to be used for running container images that contain an executable designed to run one time and then exit. Rather than specifying the full configuration of a job each time it is executed, you can create a *job definition* which acts as a "template" for the job.
+
+When you run a job, you can override many of the variables that you set in the template. You can create job definitions from the console or with the CLI.
+
 {: shortdesc}
 
 ### Creating a job definition from the console
@@ -43,7 +46,7 @@ Before you begin, [create a project](/docs/knative?topic=knative-manage-project)
 
 1. After your project is in **Active** status, click the name of your project on the Projects page.
 2. From the Components page, click **Job definition** to create the job definition.
-3. From the Create job definition page, provide a name for your job definition name and a container image.  You can also modify default runtime settings. 
+3. From the Create job definition page, provide a name for your job definition and a container image.  You can also modify default runtime settings. 
 4. Click **Create**. 
 
 ### Creating a job definition with the CLI
@@ -56,10 +59,10 @@ Before you begin:
 
 To create a job definition with the CLI, run the `ibmcloud coligo jobdef create` command. This command requires a name and an image and also allows other optional arguments. 
 
-The following example creates a job definition named `testjobdef` that uses the container image `ibmcom/testjob` and assigns 128 MB as memory and 1 CPU to the container.
+The following example creates a job definition named `testjobdef` that uses the container image `ibmcom/testjob`. 
 
 ```
-ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef --memory 128M --cpu 1
+ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef 
 ```
 {: pre}
 
@@ -75,7 +78,7 @@ ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef --memory 
    </tr>
    <tr>
    <td><code>--image</code></td>
-   <td>The name of the image used for this job definition. This value is required. For images in [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</td>
+   <td>The name of the image used for this job definition. This value is required. For images in [Docker Hub](https://hub.docker.com/), you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`.</td>
    </tr>
    <tr>
    <td><code>--name</code></td>
@@ -83,7 +86,7 @@ ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef --memory 
    </tr>
    <tr>
    <td><code>--argument</code></td>
-   <td>Set any arguments for the job definition. This value is required. Specify one argument per `--argument` flag.  To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`.</td>
+   <td>Set any arguments for the job definition. This value is optional. Specify one argument per `--argument` flag.  To specify more than one argument, use more than one `--argument` flag; for example, `-a argA -a argB`.</td>
    </tr>
    <tr>
    <td><code>--env</code></td>
@@ -91,7 +94,7 @@ ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef --memory 
    </tr>
    <tr>
    <td><code>--command</code></td>
-   <td>Set a command for the job definition. This value is optional.</td>
+   <td>Override the default command specified within the container image. This value is optional.</td>
    </tr>
    <tr>
    <td><code>--memory</code></td>
@@ -115,13 +118,12 @@ After you create your job definitions, you can use that definition to describe t
 Before you begin, [create a job definition from the console](#create-job-def).
 
 1. Navigate to your job definition page. For example:
-   1. From the Projects page, click the name of your Project to open the Components page.  
-   2. From the Components page, click the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#create-job-def).
-
+   * From the [Coligo Projects page](https://cloud.ibm.com/knative/projects){: external}, click the name of your Project to open the Components page.  
+   * From the Components page, click the name of the job definition that you want to run your job. If you do not have any job definitions defined, [create a job definition](#create-job-def).
 
 
 3. From your job definition page, click **Submit Job** to run a job based on the selected job definition configuration. 
-4. From the Submit job page, review and optionally change configuration values such as array size, CPU, memory, number of job retries and job timeout. **Array size** specifies the number of instances or containers to run your job. 
+4. From the Submit job pane, review and optionally change configuration values such as array size, CPU, memory, number of job retries and job timeout. **Array size** specifies the number of instances or containers to run your job. 
 5. Click **Submit job** to run your job. The system displays the status of the instances of your job on the job details page.
 
 You can view job logs after you add logging capabilities. See [adding log capabilities](#enable-joblogs-ui) and [viewing job logs from the console](#view-joblogs-ui)for more information. 
@@ -138,7 +140,7 @@ Before you begin:
 To run a job with the CLI, use the `ibmcloud coligo job run` command. The following example creates three new pods to run the container image specified in the `testjobdef` job definition. The resource limits and requests are applied per pod, so each of the pods gets 128 MB memory and 1 vCPU. This array job allocates 5 \* 128 MiB = 640 MiB memory and 5 \* 1 vCPU = 5 vCPUs.
 
 ```
-ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --retrylimit 2 --memory 128M --cpu 1
+ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --retrylimit 2 
 ```
 {: pre}
 
@@ -162,7 +164,7 @@ ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --re
    </tr>
    <tr>
    <td><code>--image</code></td>
-   <td>The name of the image used for this job. This value is required. [Docker Hub](https://hub.docker.com/){: external}, you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. This value overrides any `--image` value that is assigned in the job definition.</td>
+   <td>The name of the image used for this job. This value is optional. For images in [Docker Hub](https://hub.docker.com/), you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. This value overrides any `--image` value that is assigned in the job definition.</td>
    </tr>
    <tr>
    <td><code>--cpu</code></td>
@@ -174,11 +176,11 @@ ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --re
    </tr>
    <tr>
    <td><code>--retrylimit</code></td>
-   <td>Specifies the number of times to retry the job. The default value is 3. This value is optional.</td>
+   <td>Specifies the number of times to retry the job. A job is retried when it gives an exit code other than zero. The default value is 3. This value is optional.</td>
    </tr>
    <tr>
    <td><code>--arraysize</code></td>
-   <td>Indicates how may pods can be used to run the container specified by the job definition. The default value is 1. This value is optional.</td>
+   <td>Indicates how many instances of the job definition to run. The default value is 1. This value is optional.</td>
    </tr>
    <tr>
    <td><code>--argument</code></td>
@@ -191,6 +193,10 @@ ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --re
    <tr>
    <td><code>--env</code></td>
    <td>Specifies any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables that are passed in the job definition. This value is optional.</td>
+   </tr>
+      <tr>
+   <td><code>--maxexecutiontime</code></td>
+   <td>Specifies the maximum execution time for the job.  The default value is 7200 seconds. This value is optional.</td>
    </tr>
    </tbody></table>
 
@@ -211,7 +217,7 @@ The following table shows the possible status that your job might have.
 
 | Status | Description |
 | ------ | ------------|
-| Pending | The Job has been accepted by the system, but one or more of the Container images has not been created. This status includes time before being scheduled as well as time spent downloading images over the network, which might take a while. |
+| Pending | The Job has been accepted by the system, but one or more of the instances of the job has not been created yet. This status includes time before being scheduled as well as time spent downloading images over the network, which might take a while. |
 | Running | The Job instances have been created. At least one instance is still running, or is in the process of starting or restarting. |
 | Succeeded | All Job instances have terminated in success, and will not be restarted. |
 | Failed | All Job instances have terminated, and at least one instance has terminated in failure. That is, the instance either exited with non-zero status or was terminated by the system.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-18"
+lastupdated: "2020-05-19"
 
 keywords: knative, project
 
@@ -62,7 +62,7 @@ Command 'project list' performed successfully
 
 ### How can I see details about a project? 
 
-From the Coligo console, you can see a details of a project by clicking on the name of a project from the [Coligo Projects page](https://cloud.ibm.com/knative/projects){: external}.
+From the Coligo console, you can see details of a project by clicking on the name of a project from the [Coligo Projects page](https://cloud.ibm.com/knative/projects){: external}.
 
 You can also run the [`project get`](/docs/knative?topic=knative-kn-cli#cli-project-get) command. Replace `PROJECT_NAME` with the name of your project.
 
@@ -120,11 +120,11 @@ To view the service instance for the project resource, go to your [{{site.data.k
 2. Create a project with the [`project create`](/docs/knative?topic=knative-kn-cli#cli-project-create) command. Use a project name that is unique to your region. 
 
   ```
-  ibmcloud coligo project --name PROJECT_NAME [--description PROJ_DESC]
+  ibmcloud coligo project create --name PROJECT_NAME 
   ```
   {: pre}
 
-  **Example output:**W
+  **Example output:**
 
   ```
   Creating project 'myProject'...
@@ -165,7 +165,7 @@ To view the service instance for the project resource, go to your [{{site.data.k
 ## Work with a project
 {: #target-a-project}
 
-After you create a project, you can work with the project with Coligo. You can use the console or the CLI.
+After you create a project, you can work with the project by using the Coligo console or CLI.
 {: shortdesc} 
 
 ### Work with a project from the console
@@ -173,7 +173,7 @@ After you create a project, you can work with the project with Coligo. You can u
 
 To work with a project, go to the [Coligo Projects page](https://cloud.ibm.com/knative/projects){: external}, click the name of the project from the list.
 
-From the context of your project, you can work with [kn-service]} components, such as  [job definitions](/docs/knative?topic=knative-kn-job-deploy) or [applications](/docs/knative?topic=knative-application-workloads).
+From the context of your project, you can create and work with Coligo components, such as [applications](/docs/knative?topic=knative-application-workloads) or [job definitions](/docs/knative?topic=knative-kn-job-deploy).
 
 ### Work with a project with the CLI
 {: #target-project-cli}
@@ -196,7 +196,7 @@ export KUBECONFIG=/users/myusername/.bluemix/plugins/coligo/myproject-42642513-8
 Notice that the Coligo system provides the `export` command to set the `KUBECONFIG` environmental variable for you. This command is tailored to your operating system and user information.  Run this command to use `kubectl` with your project. Alternatively, you can specify the `--export` option on the `target` command to export and automatically append the project configuration to the Kubernetes configuration file (`$HOME/.kube/config`). 
 {: tip}
 
-From the context of the targeted project, you can work with Coligo components, such as [job definitions](/docs/knative?topic=knative-kn-job-deploy) or [applications](/docs/knative?topic=knative-application-workloads).
+From the context of the targeted project, you can work with Coligo components, such as [applications](/docs/knative?topic=knative-application-workloads) or [job definitions](/docs/knative?topic=knative-kn-job-deploy).
 
 ## Delete a project
 {: #delete-project}
@@ -208,7 +208,6 @@ When you no longer need a project, you can delete it. Deleting a project deletes
 {: #delete-project-console}
 
 To delete a project from the console, go to the [Coligo Projects page](https://cloud.ibm.com/knative/projects){: external}, select the project you want to delete, and click **Delete** to delete the desired project. 
-**Delete** 
 
 ### Delete a project through the CLI
 {: #delete-project-cli}
@@ -219,3 +218,12 @@ To delete a project with the CLI, use the [`project delete`](/docs/knative?topic
 ibmcloud coligo project delete --name PROJECT_NAME
 ```
 {: pre}
+
+**Example output:**
+
+```
+Deleting project 'myproject'...
+
+Deleted project  myproject
+```
+{: screen}
