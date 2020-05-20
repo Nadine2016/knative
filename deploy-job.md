@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-19"
+lastupdated: "2020-05-20"
 
 keywords: knative
 
@@ -94,7 +94,7 @@ ibmcloud coligo jobdef create --image ibmcom/testjob --name testjobdef
    </tr>
    <tr>
    <td><code>--command</code></td>
-   <td>Override the default command specified within the container image. This value is optional.</td>
+   <td>Override the default command that is specified within the container image. This value is optional.</td>
    </tr>
    <tr>
    <td><code>--memory</code></td>
@@ -180,7 +180,7 @@ ibmcloud coligo job run --name testjobrun --jobdef testjobdef --arraysize 5 --re
    </tr>
    <tr>
    <td><code>--arraysize</code></td>
-   <td>Indicates how many instances of the job definition to run. The default value is 1. This value is optional.</td>
+   <td>Specifies how many instances of the job definition to run. The default value is 1. This value is optional.</td>
    </tr>
    <tr>
    <td><code>--argument</code></td>

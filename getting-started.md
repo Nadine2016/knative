@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-19"
+lastupdated: "2020-05-20"
 
 keywords: knative, getting started, coligo
 
@@ -33,9 +33,11 @@ Project Coligo (or "Coligo") provides a platform to unify the deployment of all 
 Project Coligo is experimental. Experimental runtimes and services might be unstable or change frequently. Be aware of [experimental limitations](/docs/knative?topic=knative-kn-limits#kn-limits_experimental).
 {: important}
 
-Coligo is available in the console at [Coligo overview](https://cloud.ibm.com/knative/overview){: external}. From this interface, you can [create your project](/docs/knative?topic=knative-manage-project) and then begin [deploying apps](/docs/knative?topic=knative-knative-deploy-app) and [running jobs](/docs/knative?topic=knative-kn-job-deploy).
+Coligo is available in the console at [Coligo overview](https://cloud.ibm.com/knative/overview){: external}. 
 
-Coligo also includes an [installable CLI plug-in](/docs/knative?topic=knative-kn-install-cli) where you can also [create your project](/docs/knative?topic=knative-manage-project) and then begin [deploying apps](/docs/knative?topic=knative-knative-deploy-app) and [running jobs](/docs/knative?topic=knative-kn-job-deploy).
+Coligo also includes an [installable CLI plug-in](/docs/knative?topic=knative-kn-install-cli). 
+
+Using the console or the CLI, you can [create your project](/docs/knative?topic=knative-manage-project) and then begin [deploying apps](/docs/knative?topic=knative-knative-deploy-app) and [running jobs](/docs/knative?topic=knative-kn-job-deploy).
 
 In this topic, create your first app and run your first job from the console.
 
