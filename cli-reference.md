@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-19"
+lastupdated: "2020-05-20"
 
 keywords: knative
 
@@ -55,7 +55,7 @@ ibmcloud coligo project create --name PROJECT_NAME  [--tag TAG]
 **Command options**
 <dl>
 <dt>`-n`, `--name`</dt>
-<dd>The name of the project. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique within the project.
+<dd>The name of the project. This value is required. The name must begin with a lowercase letter, can contain letters, numbers, periods (.), and hyphens (-), and must be 35 characters or fewer. The name must start and end with a lowercase alphanumeric character. Use a name that is unique to your region.
 <dt>`-t`, `--tag`</dt>
 <dd>A label to assign to your resource.  This value is optional. The label must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer. Use a name that is unique across regions. Specify one label per `--tag` flag.  To specify more than one label, use more than one `--tag` flag; for example, `--tag tagA --tag tagB`.</dd>
 </dl>
@@ -278,7 +278,7 @@ ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registr
 <dt>`-i`, `--image`</dt>
 <dd>The name of the image used for this application. This value is required. For images in [Docker Hub](https://hub.docker.com), you can specify the image with `NAMESPACE/REPOSITORY`. For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. </dd>
 <dt>`--rs`, `--registry-secret`</dt>
-<dd>The name of the secret for the image. This value is optional.</dd>
+<dd>The name of the secret that is used to authenticate with a private registry when downloading the container image. This value is optional.</dd>
 <dt>`-c`, `--cpu`</dt>
 <dd>The amount of CPU set for the instance of the application. The default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
@@ -288,9 +288,9 @@ ibmcloud coligo application create --image IMAGE_REF --name APP_NAME  [--registr
 <dt>`--cn`, `--concurrency`</dt>
 <dd>The number of requests that can be processed concurrently per instance. The default value is 1. This value is optional.</dd>
 <dt>`--min`, `--minscale`</dt>
-<dd>The minimum number of instances that can be used for this application. The default value is 1. This value is optional.</dd>
+<dd>The minimum number of instances that can be used for this application. This option is useful to ensure no instances are running when not needed. The default value is 0. This value is optional.</dd>
 <dt>`--max`, `--maxscale`</dt>
-<dd>The maximum number of instances that can be used for this application. The default value is 1. This value is optional.</dd>
+<dd>The maximum number of instances that can be used for this application. The default value is 10. This value is optional.</dd>
 <dt>`-e`, `--env`</dt>
 <dd>Set any environmental variables to pass to the application. Variables use a `KEY=VALUE` format. This value is optional.</dd>
 <dt>`--env-sec`, `--env-from-secret`</dt>
@@ -564,7 +564,7 @@ ibmcloud coligo jobdef create --name JOBDEFINITION_NAME --image IMAGE_REF --argu
 <dt>`--env-cm`, `--env-from-configmap`</dt>
 <dd>Indicates the job definition environment variable that is taken from a configmap, in the format `configmapName:keyName`. This value is optional.</dd>
 <dt>`-c`, `--command`</dt>
-<dd>Set a command for the job definition. This value is optional.</dd>
+<dd>Override the default command that is specified within the container image. This value is optional.</dd>
 <dt>`--cpu`</dt>
 <dd>Specifies the number of CPUs to be assigned to the job definition. The default value is 1. This value is optional.</dd>
 <dt>`-m`, `--memory`</dt>
@@ -739,7 +739,7 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 <dt>`--jd`, `--jobdef`</dt>
 <dd>Identifies the job definition that contains the description of the job to be run. This value is required.</dd>
 <dt>`-i`, `--image`</dt>
-<dd>The name of the image used for this job. This value is required. For images in [Docker Hub](https://hub.docker.com), you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. This value overrides any `--image` value that is assigned in the job definition.</dd>
+<dd>The name of the image used for this job. This value is optional. For images in [Docker Hub](https://hub.docker.com), you can specify the image with `NAMESPACE/REPOSITORY`.  For other registries, use `REGISTRY/NAMESPACE/REPOSITORY` or `REGISTRY/NAMESPACE/REPOSITORY:TAG`. This value overrides any `--image` value that is assigned in the job definition.</dd>
 <dt>`-e`, `--env`</dt>
 <dd>Specifies any environmental variables to pass to the image. Variables use a `KEY=VALUE` format. This value overrides any environmental variables that are passed in the job definition. This value is optional. </dd>
 <dt>`--env-sec`, `--env-from-secret`</dt>
@@ -755,9 +755,9 @@ ibmcloud coligo job run --name JOBRUN_NAME --jobdef JOBDEFINITION_NAME [--image 
 <dt>`-m`, `--memory`</dt>
 <dd>Specifies the amount of memory to assign to the container that is running the image. This value overrides any `--memory` value that is assigned in the job definition. If this value is not set in the job definition or the job run, the default value is 128 M. This value is optional.</dd>
 <dt>`--as`, `--arraysize`</dt>
-<dd>Specifies the number of pods used to run the container specified by the job definition. The default value is 1. This value is optional.</dd>
+<dd>Specifies how many instances of the job definition to run. The default value is 1. This value is optional.</dd>
 <dt>`-r`, `--retrylimit`</dt>
-<dd>Specifies the number of times to retry the job.  The default value is 3. This value is optional.</dd>
+<dd>Specifies the number of times to retry the job. A job is retried when it gives an exit code other than zero. The default value is 3. This value is optional.</dd>
 <dt>`--met`, `--maxexecutiontime`</dt>
 <dd>Specifies the maximum execution time for the job.  The default value is 7200 seconds. This value is optional.</dd>
 </dl>

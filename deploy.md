@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-05-19"
+lastupdated: "2020-05-20"
 
 keywords: knative
 
@@ -59,7 +59,7 @@ You have created and deployed an application to Coligo and tested it out using t
 ### Deploying an application from CLI
 {: #deploy-app-cli}
 
-Deploy your application from the CLI with the `coligo application create` command. 
+Deploy your application from the CLI with the `ibmcloud coligo application create` command. 
 {: shortdesc}
 
 ```
@@ -90,7 +90,7 @@ ibmcloud coligo application create --name NAME --image IMAGE
    <td>The number of requests that can be processed concurrently per instance. The default value is 10. This value is optional. 
    <p> If you set this value to 0, the system attempts to ensure that no more than 100 requests will be sent to any one instance; however, this is not a hard limit and can exceed this value at times. </p>
    <p> If your code should work on a single request at a time, set concurrency to 1 and each instance will only process one request at a time. </p>
-   <p> The maximum number of overall concurrent requests that the app component can work on concurrently is determined by "the maximum number of concurrent requests per instance" times "the maximum number of instances":   max_instances x max_concurrency.</p>
+   <p> The maximum number of overall concurrent requests that the app component can work on concurrently is determined by "the maximum number of concurrent requests per instance" times "the maximum number of instances":  max_instances x max_concurrency.</p>
    </td>
    </tr>
    <tr>
@@ -127,7 +127,7 @@ After your service deploys, you can access it through a URL.
 
 From the console, your application URL is available from the components page and on the application details page.
 
-From the CLI, run `coligo application get` to find the URL. 
+From the CLI, run `ibmcloud coligo application get` to find the URL. 
 
 ```
 ibmcloud coligo application get --name NAME
